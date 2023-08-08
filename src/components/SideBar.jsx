@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { TbMovie } from "react-icons/tb";
 import { BiBook, BiMoviePlay } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
@@ -19,57 +20,57 @@ const SideBar = () => {
       <section className="sidebar-section">
         <ul className="sidebar-section_ul">
           <li className="li-custom">
-            <div className="li-custom_list">
+            <Link to="/" className="li-custom_list">
               <div className="li-custom_info">
                 <div className="li-custom_icon">
                   <TbMovie />
                 </div>
               </div>
               비디오
-            </div>
+            </Link>
           </li>
           <li className="li-custom">
-            <div className="li-custom_list">
+            <Link to="/webtoon" className="li-custom_list">
               <div className="li-custom_info">
                 <div className="li-custom_icon">
                   <BiBook />
                 </div>
               </div>
               웹툰
-            </div>
+            </Link>
           </li>
           <li className="li-custom">
-            <div className="li-custom_list">
+            <Link to="/upcoming" className="li-custom_list">
               <div className="li-custom_info">
                 <div className="li-custom_icon">
                   <BiMoviePlay />
                 </div>
               </div>
               개봉관
-            </div>
+            </Link>
           </li>
         </ul>
         <hr />
         <ul className="sidebar-section_ul">
           <li className="li-custom">
-            <div className="li-custom_list">
+            <Link to="/search" className="li-custom_list">
               <div className="li-custom_info">
                 <div className="li-custom_icon">
                   <BiSearch />
                 </div>
               </div>
               찾기
-            </div>
+            </Link>
           </li>
           <li className="li-custom">
-            <div className="li-custom_list">
+            <Link to="/library" className="li-custom_list">
               <div className="li-custom_info">
                 <div className="li-custom_icon">
                   <LuInbox />
                 </div>
               </div>
               보관함
-            </div>
+            </Link>
           </li>
         </ul>
       </section>
