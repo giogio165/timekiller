@@ -5,6 +5,8 @@ import { BiBook, BiMoviePlay } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
 import { LuInbox } from "react-icons/lu";
 
+// 추후에 컴포넌트 세분화시키기
+
 const SideBar = () => {
   return (
     <SSideBar>
@@ -89,7 +91,7 @@ const SSideBar = styled.nav`
   .container_img {
     left: 0px;
     width: calc(100vw - 60px);
-    margin: 30px 30px;
+    margin: 20px 30px;
 
     img {
       height: 24px;
@@ -139,6 +141,7 @@ const SSideBar = styled.nav`
           background: #303133;
           color: #fff;
           box-sizing: border-box;
+          cursor: pointer;
 
           .li-custom_info {
             display: flex;
