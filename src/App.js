@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  DetailPage,
   LibraryPage,
   MainPage,
   SearchPage,
@@ -21,6 +22,7 @@ function App() {
           <Route path="/upcoming" element={<UpcomingPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/library" element={<LibraryPage />} />
+          <Route path="/detail" element={<DetailPage />} />
         </Routes>
       </Router>
     </>
