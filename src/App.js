@@ -1,5 +1,4 @@
 import "./App.css";
-import MovieList from "./components/MovieList";
 import React from "react";
 import {
   LibraryPage,
