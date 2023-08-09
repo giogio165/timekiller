@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { GlobalLayout } from "../global";
 import { HiPlay } from "react-icons/hi2";
 import { AiOutlinePlus } from "react-icons/ai";
+import { People } from "../components";
 
 // 컴포넌트 세분화 시키기.
 
@@ -106,21 +107,7 @@ const DetailPage = (props) => {
               </div>
               {/* 컴포넌트로 분리 */}
               <ul type="listItem" className="people-list">
-                <li>
-                  <div className="wrapper-people">
-                    <div className="container-people">
-                      <div className="box-people">
-                        <div className="box-people_img">
-                          <img src="https://an2-img.amz.wtchn.net/image/v2/Y2UqG4H95j7GiAEiHOXXDA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeEwzQmxiM0JzWlM4d056aGxOamhoWmpOaFpUTmhOMlkzTkRrd01TNXFjR2NpZlEuWjJ0TWdSTjdDaXRPWUNHN0kyTy1sdDcwMUlXN2Q3TFRrQWN0eW8zMzZmQQ" />
-                        </div>
-                        <div className="box-people_info">
-                          <div className="people-name">로저 미첼</div>
-                          <div className="people-role">감독</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
+                <People />
                 <li>
                   <div className="wrapper-people">
                     <div className="container-people">
