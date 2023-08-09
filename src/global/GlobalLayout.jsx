@@ -8,10 +8,14 @@ const GlobalLayout = ({ children }) => {
 export default GlobalLayout;
 
 const StGlobalContainer = styled.div`
-  max-width: 160rem;
-  width: 100%;
+  max-width: calc(100vw - 240px);
   margin: 0 auto;
-  font-size: 20px;
+  background-color: #000;
+  color: white;
+  height: 100%;
+  padding: 56px 0px 0px 240px;
+  display: flex;
+  flex-direction: column;
   @media (max-width: 1700px) {
     max-width: 150rem;
   }

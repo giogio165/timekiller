@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import {
+  DetailPage,
   LibraryPage,
   MainPage,
   SearchPage,
