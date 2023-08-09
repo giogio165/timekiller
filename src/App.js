@@ -1,3 +1,4 @@
+import "./App.css";
 import React from "react";
 import {
   LibraryPage,
@@ -11,19 +12,21 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <Router>
-        <Header />
-        <SideBar />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/webtoon" element={<WebtoonPage />} />
-          <Route path="/upcoming" element={<UpcomingPage />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/library" element={<LibraryPage />} />
-        </Routes>
-      </Router>
-    </>
+    <div className="App">
+      <>
+        <Router>
+          <Header />
+          <SideBar />
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/webtoon" element={<WebtoonPage />} />
+            <Route path="/upcoming" element={<UpcomingPage />} />
+            <Route path="/search" element={<SearchPage />} />
+            <Route path="/library" element={<LibraryPage />} />
+          </Routes>
+        </Router>
+      </>
+    </div>
   );
 }
 
