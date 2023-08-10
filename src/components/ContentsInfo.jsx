@@ -45,7 +45,7 @@ const ContentsInfo = (props) => {
           <div type="portrait" className="container-info_img">
             <img
               alt="노팅힐"
-              src="https://an2-img.amz.wtchn.net/image/v2/adH53t3Klw1_NW-zAKPnNA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk56STVlREV3T0RCeE9EQWlYU3dpY0NJNklpOTJNaTl6ZEc5eVpTOXBiV0ZuWlM4eE5qTXhNREUwTURVeE5EUXdOalk1TURnMEluMC5KLWNicGhDSWUtQ0pMcGdOaVJGQkFMc3hzM0QxYzdBZXgzTy1uUldIc253"
+              src={`https://image.tmdb.org/t/p/w500${info.poster_path}`}
             />
           </div>
           <div className="contents-info">
