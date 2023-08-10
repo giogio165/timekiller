@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const People = () => {
+const People = (props) => {
   return (
     <>
       <SPeople>
@@ -9,7 +9,10 @@ const People = () => {
           <div className="container-people">
             <div className="box-people">
               <div className="box-people_img">
-                <img src="https://an2-img.amz.wtchn.net/image/v2/Y2UqG4H95j7GiAEiHOXXDA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeEwzQmxiM0JzWlM4d056aGxOamhoWmpOaFpUTmhOMlkzTkRrd01TNXFjR2NpZlEuWjJ0TWdSTjdDaXRPWUNHN0kyTy1sdDcwMUlXN2Q3TFRrQWN0eW8zMzZmQQ" />
+                <img
+                  alt="사람"
+                  src="https://an2-img.amz.wtchn.net/image/v2/Y2UqG4H95j7GiAEiHOXXDA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeEwzQmxiM0JzWlM4d056aGxOamhoWmpOaFpUTmhOMlkzTkRrd01TNXFjR2NpZlEuWjJ0TWdSTjdDaXRPWUNHN0kyTy1sdDcwMUlXN2Q3TFRrQWN0eW8zMzZmQQ"
+                />
               </div>
               <div className="box-people_info">
                 <div className="people-name">로저 미첼</div>
