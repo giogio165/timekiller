@@ -1,41 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const MovieCard2 = ({ it }) => {
-  console.log(it);
   const navigate = useNavigate();
   const gotoDetailPage = () => {
     navigate("/library");
   };
 
-  //   const [genreName, setGenreName] = useState("");
+  const [genreName, setGenreName] = useState("");
 
-  //   useEffect(() => {
-  //     fetchGenreName(it.genre);
-  //   }, [it.genre]);
+  useEffect(() => {
+    fetchGenreName(it.genre_ids[0]); // Pass the first genre ID
+  }, [it.genre_ids]);
 
-  //   const fetchGenreName = async (genreCode) => {
-  //     try {
-  //       const response = await fetch(
-  //         `https://api.themoviedb.org/3/genre/movie/list?api_key=fcdcf37d8779f435786606a2ddd02898&language=en-US`
-  //       );
-  //       const data = await response.json();
-  //       console.log(data);
-
-  //       const genre = data.genres.find((genre) => genre.id === it.genre_ids);
-  //       if (genre) {
-  //         setGenreName(genre.name);
-  //       }
-  //     } catch (error) {
-  //       console.error("API Error:", error);
-  //     }
-  //   };
+  const fetchGenreName = async (genreCode) => {
+    try {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/genre/movie/list`,
+        {
+          params: {
+            api_key: "fcdcf37d8779f435786606a2ddd02898",
+            language: "en-US",
+          },
+        }
+      );
+      const genre = response.data.genres.find(
+        (genre) => genre.id === genreCode
+      );
+      if (genre) {
+        setGenreName(genre.name);
+      }
+    } catch (error) {
+      console.error("API Error:", error);
+    }
+  };
 
   return (
     <div className="MovieCard2" onClick={gotoDetailPage}>
-      {/* <div>{genreName}</div>이거 왜 안됨 ㅠㅠ  */}
+      <div>{genreName}</div>
       <div className="movie-title">{it.original_title}</div>
-
       <div className="img-wrapper">
         <div className="overlay"></div>
         {it.image && (

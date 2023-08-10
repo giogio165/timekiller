@@ -2,11 +2,26 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import "../App.css";
+import "../components/css/MovieList2.css";
 import MovieCard2 from "./MovieCard2";
 
 const MovieList2 = () => {
   const [movies, setMovies] = useState([]);
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 7, // Adjust this value to control the number of items displayed
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 4,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 2,
+    },
+  };
 
   useEffect(() => {
     fetchMovies();
@@ -42,22 +57,21 @@ const MovieList2 = () => {
     }
   };
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-  };
-
   return (
     <div className="MovieList2">
       <div className="carousel">
+        {movies.map((it) => (
+          <MovieCard2 it={it} key={it.id} />
+        ))}
+      </div>
+
+      {/* <div className="carousel">
         <Carousel responsive={responsive}>
           {movies.map((it) => (
             <MovieCard2 key={it.id} it={it} />
           ))}
         </Carousel>
-      </div>
+      </div> */}
     </div>
   );
 };

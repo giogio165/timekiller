@@ -3,18 +3,19 @@ import axios from "axios";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../components/css/MovieList.css";
-import MovieCard1 from "./MovieCard1";
+import TvCard from "./TvCard";
 
-const MovieList = ({ it }) => {
-  const [movies, setMovies] = useState([]);
+const TvList = ({ it }) => {
+  const [tvShows, setTvShows] = useState([]);
 
   useEffect(() => {
-    fetchMovies();
+    fetchTvShows();
   }, []);
-  const fetchMovies = async () => {
+
+  const fetchTvShows = async () => {
     try {
       const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/popular",
+        "https://api.themoviedb.org/3/tv/popular",
         {
           params: {
             api_key: "fcdcf37d8779f435786606a2ddd02898",
@@ -24,7 +25,7 @@ const MovieList = ({ it }) => {
         }
       );
 
-      setMovies(response.data.results);
+      setTvShows(response.data.results);
     } catch (error) {
       console.error("API Error:", error);
     }
@@ -35,12 +36,12 @@ const MovieList = ({ it }) => {
       <h3>{it}</h3>
 
       <div className="carousel">
-        {movies.map((it) => (
-          <MovieCard1 it={it} key={it.id} />
+        {tvShows.map((it) => (
+          <TvCard it={it} key={it.id} />
         ))}
       </div>
     </div>
   );
 };
 
-export default MovieList;
+export default TvList;
