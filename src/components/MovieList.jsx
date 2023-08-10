@@ -3,7 +3,7 @@ import axios from "axios";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import MovieCard from "./MovieCard";
-import "../App.css";
+import "./temp.css";
 
 const MovieList = ({ it }) => {
   const [movies, setMovies] = useState([]);
@@ -11,7 +11,7 @@ const MovieList = ({ it }) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 8, // Adjust this value to control the number of items displayed
+      items: 7, // Adjust this value to control the number of items displayed
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import "../App.css";
+import "./temp.css";
 import MovieCard2 from "./MovieCard2";
 
 const MovieList2 = () => {

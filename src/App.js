@@ -13,22 +13,20 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <>
-        <Router>
-          <Header />
-          <SideBar />
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/webtoon" element={<WebtoonPage />} />
-            <Route path="/upcoming" element={<UpcomingPage />} />
-            <Route path="/search" element={<SearchPage />} />
-            <Route path="/library" element={<LibraryPage />} />
-            <Route path="/detail" element={<DetailPage />} />
-          </Routes>
-        </Router>
-      </>
-    </div>
+    <>
+      <Router>
+        <Header />
+        <SideBar />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/webtoon" element={<WebtoonPage />} />
+          <Route path="/upcoming" element={<UpcomingPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/library" element={<LibraryPage />} />
+          <Route path="/detail/:id" element={<DetailPage />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
