@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const MovieCard2 = ({ it }) => {
-  console.log(it);
+  //console.log(it);
   const navigate = useNavigate();
   const gotoDetailPage = () => {
-    navigate("/library");
+    navigate(`/detail/${it.id}`);
   };
 
   //   const [genreName, setGenreName] = useState("");

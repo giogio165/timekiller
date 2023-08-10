@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 const MovieCard = ({ item }) => {
   const navigate = useNavigate();
   const toDetailPage = () => {
-    navigate("/library");
+    navigate(`/detail/${item.id}`);
   }; //일단 라이브러리로 이동하게 해놨습니다. 후에 디테일 페이지로 이동할 것
+  //console.log(item);
   return (
     <div className="MovieCard" onClick={toDetailPage}>
       <img

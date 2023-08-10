@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
 
-const ContentsInfo = (props) => {
+const ContentsInfo = (id) => {
   const [info, setInfo] = useState({});
-
+  //console.log(id.id);
   const fetchMovie = async () => {
     const options = {
       method: "GET",
@@ -17,10 +16,11 @@ const ContentsInfo = (props) => {
 
     try {
       const response = await fetch(
-        "https://api.themoviedb.org/3/movie/509?language=ko-KR",
+        `https://api.themoviedb.org/3/movie/${id.id}?language=ko-KR`,
         options
       );
       const data = await response.json();
+      console.log(data);
       return data;
     } catch (error) {
       console.error("API Error:", error);
@@ -32,7 +32,7 @@ const ContentsInfo = (props) => {
     const fetchData = async () => {
       const movieInfo = await fetchMovie();
       if (movieInfo) {
-        console.log(movieInfo);
+        //console.log(movieInfo);
         setInfo(movieInfo);
       }
     };

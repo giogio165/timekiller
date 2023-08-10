@@ -1,41 +1,40 @@
 import React from "react";
 import styled from "styled-components";
 
-const BestComment = () => {
+const BestComment = (props) => {
   return (
     <>
-      <SBestComment>
-        <section>
-          <div className="best_review">
-            <div className="box">
-              <div>
-                <h1>베스트 감상평</h1>
+      {props.comment && (
+        <SBestComment>
+          <section>
+            <div className="best_review">
+              <div className="box">
+                <div>
+                  <h1>베스트 감상평</h1>
+                </div>
               </div>
             </div>
-          </div>
-          <article>
-            <div className="best-review_contents">
-              <div>
-                <img
-                  src="https://robohash.org/automnisrerum.png?size=50x50&set=set1"
-                  alt="user"
-                />
+            <article>
+              <div className="best-review_contents">
+                <div>
+                  <img
+                    src="https://robohash.org/sitetnisi.png?size=50x50&set=set1"
+                    alt="user"
+                  />
+                </div>
+                <div>⭐️⭐️⭐️⭐️⭐️</div>
               </div>
-              <div>⭐️⭐️⭐️⭐️⭐️</div>
-            </div>
-            <div className="best-review_name">
-              <span>땅벌</span>
-            </div>
-            <div className="best-review_comment">
-              <hr />
-              <p>
-                휴그랜트 태연한 얼굴로 자조적 아무말 하는게 너무 웃김 눈물
-                한방울 없이 상처받은 연기도 잘함
-              </p>
-            </div>
-          </article>
-        </section>
-      </SBestComment>
+              <div className="best-review_name">
+                <span>{props.comment.author}</span>
+              </div>
+              <div className="best-review_comment">
+                <hr />
+                <p>{props.comment.content}</p>
+              </div>
+            </article>
+          </section>
+        </SBestComment>
+      )}
     </>
   );
 };

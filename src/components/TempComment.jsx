@@ -1,28 +1,31 @@
 import React from "react";
 import styled from "styled-components";
-import user_image from "../global/user_image.json";
 
-const Comment = (props) => {
-  console.log(props);
-  console.log(user_image[props.index].user_img);
+const TempComment = (props) => {
   return (
     <>
       <SComment>
         <article>
           <div className="container-user_img">
             <div>
-              <img src={user_image[props.index].user_img} alt="user" />
+              <img
+                src="https://robohash.org/automnisrerum.png?size=50x50&set=set1"
+                alt="user"
+              />
             </div>
           </div>
           <div className="container-user_name">
             <div className="user-name">
               <div>
-                <span>{props.comment.author}</span>
+                <span>땅벌</span>
               </div>
               <div>⭐️⭐️⭐️⭐️⭐️</div>
             </div>
             <div className="user-review">
-              <p>{props.comment.content}</p>
+              <p>
+                휴그랜트 태연한 얼굴로 자조적 아무말 하는게 너무 웃김 눈물
+                한방울 없이 상처받은 연기도 잘함
+              </p>
             </div>
           </div>
         </article>
@@ -31,7 +34,7 @@ const Comment = (props) => {
   );
 };
 
-export default Comment;
+export default TempComment;
 
 const SComment = styled.li`
   display: block;

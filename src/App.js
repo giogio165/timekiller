@@ -24,7 +24,7 @@ function App() {
             <Route path="/upcoming" element={<UpcomingPage />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/library" element={<LibraryPage />} />
-            <Route path="/detail" element={<DetailPage />} />
+            <Route path="/detail/:id" element={<DetailPage />} />
           </Routes>
         </Router>
       </>

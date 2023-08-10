@@ -1,13 +1,85 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { GlobalLayout } from "../global";
-import { HiPlay } from "react-icons/hi2";
-import { AiOutlinePlus } from "react-icons/ai";
-import { People, Comment, BestComment, ContentsInfo } from "../components";
+import {
+  People,
+  TempComment,
+  Comment,
+  BestComment,
+  ContentsInfo,
+} from "../components";
+import { useParams } from "react-router-dom";
 
 // 컴포넌트 세분화 시키기.
 
 const DetailPage = (props) => {
+  const { id } = useParams();
+  const [peoples, setPeoples] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [button, setButton] = useState(true);
+  const fetchPeople = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyODQ4MGY5NTM0MDFkYjYwZTU1M2U0MTI4NGY1ZjQwNyIsInN1YiI6IjYzNjBmZGI4NDBkMGZlMDA4MjY3ZjUwYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tfm55H9d6vX72r5ZgVUk2HlkmK15hVNdfCiP7NkgWnQ",
+      },
+    };
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/credits?language=ko-KR`,
+        options
+      );
+      const data = await response.json();
+      //console.log(data.cast.slice(0, 7));
+      return data;
+    } catch (error) {
+      console.error("API Error:", error);
+      return null;
+    }
+  };
+  const fetchComment = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyODQ4MGY5NTM0MDFkYjYwZTU1M2U0MTI4NGY1ZjQwNyIsInN1YiI6IjYzNjBmZGI4NDBkMGZlMDA4MjY3ZjUwYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tfm55H9d6vX72r5ZgVUk2HlkmK15hVNdfCiP7NkgWnQ",
+      },
+    };
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1`,
+        options
+      );
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error("API Error:", error);
+      return null;
+    }
+  };
+  const btnHandler = () => {};
+  useEffect(() => {
+    const fetchData = async () => {
+      const peopleInfo = await fetchPeople();
+      if (peopleInfo) {
+        setPeoples(peopleInfo.cast.slice(0, 7));
+      }
+    };
+    fetchData();
+
+    const fetchCommentData = async () => {
+      const commentInfo = await fetchComment();
+      if (commentInfo) {
+        console.log(commentInfo.results);
+        setComments(commentInfo.results);
+      }
+    };
+    fetchCommentData();
+  }, []);
   return (
     <GlobalLayout>
       <SMain>
@@ -16,17 +88,17 @@ const DetailPage = (props) => {
         </div>
         <div>
           <header className="container-header">
-            <ContentsInfo />
+            <ContentsInfo id={id} />
           </header>
         </div>
         <ul className="select-options">
           <li>
-            <button type="button" className="li-btn">
+            <button type="button" className="li-btn" onClick={btnHandler}>
               콘텐츠 정보
             </button>
           </li>
           <li>
-            <button type="button" className="li-btn2">
+            <button type="button" className="li-btn2" onClick={btnHandler}>
               관련 콘텐츠
             </button>
           </li>
@@ -42,7 +114,7 @@ const DetailPage = (props) => {
                     alt="pic"
                     src="https://an2-mars.amz.wtchn.net/assets/reason_icons/rate_24-c3f027bf1048b7f33daefe37a233e9bf8d1d331b0b508bedefe7a8fed772a5d1.png"
                   />
-                  <p>최근 시청한 회원들의 70%가 4점 이상 평가했어요.</p>
+                  <p>최근 시청한 회원들의 70%가 7점 이상 평가했어요.</p>
                 </li>
               </ul>
             </section>
@@ -59,13 +131,9 @@ const DetailPage = (props) => {
               </div>
               {/* 컴포넌트로 분리 */}
               <ul type="listItem" className="people-list">
-                <People />
-                <People />
-                <People />
-                <People />
-                <People />
-                <People />
-                <People />
+                {peoples.map((people, index) => (
+                  <People people={people} key={index} />
+                ))}
               </ul>
             </section>
             <section className="info-oneline">
@@ -75,22 +143,23 @@ const DetailPage = (props) => {
                     <h1>
                       왓챠피디아 사용자 평
                       <div className="review-number">
-                        <span>579572</span>
+                        <span>{comments.length}</span>
                       </div>
                     </h1>
                   </div>
                 </div>
               </div>
               <ul className="review-list">
-                <Comment />
-                <Comment />
-                <Comment />
-                <Comment />
+                {comments.length !== 0
+                  ? comments.map((comment, index) => (
+                      <Comment comment={comment} index={index} key={index} />
+                    ))
+                  : "리뷰가 없습니다."}
               </ul>
             </section>
           </section>
           <section className="container-best_review">
-            <BestComment />
+            <BestComment comment={comments[0]} />
           </section>
         </section>
       </SMain>
@@ -156,6 +225,16 @@ const SMain = styled.main`
         outline: none 0;
         background: none;
       }
+      /* .li-btn2::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: #fff;
+        width: 100%;
+        height: 2px;
+      } */
     }
   }
 
