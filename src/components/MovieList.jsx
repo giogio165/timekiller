@@ -3,7 +3,7 @@ import axios from "axios";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import MovieCard from "./MovieCard";
-import "../App.css";
+import "./temp.css";
 
 const MovieList = ({ it }) => {
   const [movies, setMovies] = useState([]);
