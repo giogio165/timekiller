@@ -6,6 +6,7 @@ import TempComment from "./TempComment";
 import BestComment from "./BestComment";
 import ContentsInfo from "./ContentsInfo";
 import Comment from "./Comment";
+import ContentBox from "./ContentBox";
 
 export {
   Dropdown,
@@ -16,4 +17,5 @@ export {
   BestComment,
   ContentsInfo,
   Comment,
+  ContentBox,
 };

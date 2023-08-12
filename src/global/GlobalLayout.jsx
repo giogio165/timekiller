@@ -10,6 +10,7 @@ export default GlobalLayout;
 const StGlobalContainer = styled.div`
   max-width: calc(100vw - 240px);
   margin: 0 auto;
+  width: 100%;
   background-color: #000;
   color: white;
   height: 100%;
