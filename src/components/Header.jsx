@@ -39,7 +39,10 @@ const Header = () => {
                 <div className="menu-account_detail">
                   <button className="account-btn">
                     <div className="img-container">
-                      <img src="https://i.pinimg.com/236x/90/c7/f7/90c7f7afa68ea9b875eafbe887f454e8.jpg" />
+                      <img
+                        src="https://i.pinimg.com/236x/90/c7/f7/90c7f7afa68ea9b875eafbe887f454e8.jpg"
+                        alt="user"
+                      />
                     </div>
                   </button>
                 </div>

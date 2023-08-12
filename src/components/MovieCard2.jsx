@@ -3,9 +3,16 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const MovieCard2 = ({ it }) => {
+<<<<<<< HEAD:src/components/MovieCard2.js
+  const navigate = useNavigate();
+  const gotoDetailPage = () => {
+    navigate("/detail");
+=======
+  //console.log(it);
   const navigate = useNavigate();
   const gotoDetailPage = () => {
     navigate(`/detail/${it.id}`);
+>>>>>>> devMain:src/components/MovieCard2.jsx
   };
 
   const [genreName, setGenreName] = useState("");

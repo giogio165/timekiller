@@ -1,24 +1,33 @@
 import React from "react";
 import styled from "styled-components";
 
-const People = () => {
+const People = (people) => {
   return (
     <>
-      <SPeople>
-        <div className="wrapper-people">
-          <div className="container-people">
-            <div className="box-people">
-              <div className="box-people_img">
-                <img src="https://an2-img.amz.wtchn.net/image/v2/Y2UqG4H95j7GiAEiHOXXDA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeEwzQmxiM0JzWlM4d056aGxOamhoWmpOaFpUTmhOMlkzTkRrd01TNXFjR2NpZlEuWjJ0TWdSTjdDaXRPWUNHN0kyTy1sdDcwMUlXN2Q3TFRrQWN0eW8zMzZmQQ" />
-              </div>
-              <div className="box-people_info">
-                <div className="people-name">로저 미첼</div>
-                <div className="people-role">감독</div>
+      {people.people && (
+        <SPeople>
+          <div className="wrapper-people">
+            <div className="container-people">
+              <div className="box-people">
+                <div className="box-people_img">
+                  <img
+                    alt="사람"
+                    src={`https://image.tmdb.org/t/p/w500${people.people.profile_path}`}
+                  />
+                </div>
+                <div className="box-people_info">
+                  <div className="people-name">{people.people.name}</div>
+                  <div className="people-role">
+                    {people.people.known_for_department === "Acting"
+                      ? "배우"
+                      : "기타"}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </SPeople>
+        </SPeople>
+      )}
     </>
   );
 };
