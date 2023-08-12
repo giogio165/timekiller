@@ -1,0 +1,52 @@
+/* MovieList2 */
+.MovieList2 {
+  width: 1400px;
+  height: 300px;
+  color: white;
+  margin-bottom: 30px;
+}
+/* MovieCard2 */
+.MovieCard2 {
+  width: 450px;
+  height: 300px;
+  cursor: pointer;
+}
+.img-wrapper {
+  position: relative;
+
+  z-index: 1;
+}
+.MovieCard2__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 450px;
+  height: 230px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 8px;
+}
+
+.MovieCard2:hover .MovieCard2__overlay {
+  display: flex;
+  opacity: 1;
+}
+.movie-poster2 {
+  width: 450px;
+  height: 230px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+}
+
+.movie-title {
+  margin: 20px 0 20px 0;
+  font-size: 20px;
+  font-weight: 700;
+}

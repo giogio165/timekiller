@@ -4,19 +4,20 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../components/css/MovieList.css";
-import MovieCard1 from "./MovieCard1";
+import TvCard from "./TvCard";
 
-const MovieList = ({ it }) => {
-  const [movies, setMovies] = useState([]);
+const TvList = ({ it }) => {
+  const [tvShows, setTvShows] = useState([]);
+  console.log(tvShows);
 
   useEffect(() => {
-    fetchMovies();
+    fetchTvShows();
   }, []);
 
-  const fetchMovies = async () => {
+  const fetchTvShows = async () => {
     try {
       const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/popular",
+        "https://api.themoviedb.org/3/tv/popular",
         {
           params: {
             api_key: "fcdcf37d8779f435786606a2ddd02898",
@@ -26,7 +27,7 @@ const MovieList = ({ it }) => {
         }
       );
 
-      setMovies(response.data.results);
+      setTvShows(response.data.results);
     } catch (error) {
       console.error("API Error:", error);
     }
@@ -47,14 +48,12 @@ const MovieList = ({ it }) => {
       <h3>{it}</h3>
 
       <Slider {...sliderSettings}>
-        {movies.map((it) => (
-          <div key={it.id}>
-            <MovieCard1 it={it} />
-          </div>
+        {tvShows.map((it) => (
+          <TvCard it={it} key={it.id} />
         ))}
       </Slider>
     </div>
   );
 };
 
-export default MovieList;
+export default TvList;
