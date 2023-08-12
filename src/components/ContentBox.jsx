@@ -13,10 +13,7 @@ const ContentBox = (props) => {
                 <div className="link-container2">
                   <div className="link-container3">
                     <div className="img-container">
-                      <img
-                        src="https://an2-img.amz.wtchn.net/image/v2/cUd87tC-O7nptoEl-XXcKw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5USXpNekV3TmpJeE5EUXlNemd3TkRBaWZRLjVVYmg1NnAzYTF4aTdtSUtnY2RTTmhYSDBaSXRmVWVrUUNabm9vQ2N4Qnc"
-                        alt="검색"
-                      />
+                      <img src={props.img} alt="검색" />
                     </div>
                   </div>
                 </div>

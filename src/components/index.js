@@ -7,6 +7,7 @@ import BestComment from "./BestComment";
 import ContentsInfo from "./ContentsInfo";
 import Comment from "./Comment";
 import ContentBox from "./ContentBox";
+import ContentsTitle from "./ContentsTitle";
 
 export {
   Dropdown,
@@ -18,4 +19,5 @@ export {
   ContentsInfo,
   Comment,
   ContentBox,
+  ContentsTitle,
 };

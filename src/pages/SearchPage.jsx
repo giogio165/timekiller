@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { GlobalLayout } from "../global";
 import { Link } from "react-router-dom";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
-import { ContentBox } from "../components";
+import { ContentBox, ContentsTitle } from "../components";
 
 const SearchPage = () => {
   return (
@@ -12,18 +12,7 @@ const SearchPage = () => {
         <div></div>
         <div className="container">
           <div className="container-slider">
-            <div className="container-slider_title">
-              <div className="title">
-                <div>
-                  <h1>인기</h1>
-                </div>
-              </div>
-              <div className="more">
-                <Link to="/" className="more-detail">
-                  모두 보기
-                </Link>
-              </div>
-            </div>
+            <ContentsTitle title="인기" />
             <div className="container-slide_contents">
               <button className="btn-left">
                 <span>
@@ -31,13 +20,13 @@ const SearchPage = () => {
                 </span>
               </button>
               <ul className="contents">
-                <ContentBox />
-                <ContentBox />
-                <ContentBox />
-                <ContentBox />
-                <ContentBox />
-                <ContentBox />
-                <ContentBox />
+                <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/cUd87tC-O7nptoEl-XXcKw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5USXpNekV3TmpJeE5EUXlNemd3TkRBaWZRLjVVYmg1NnAzYTF4aTdtSUtnY2RTTmhYSDBaSXRmVWVrUUNabm9vQ2N4Qnc" />
+                <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/eKF-pdLY5tbergbPSC8sjQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5UWTBNRE14Tmpnek5USTVPVEUxTlRVaWZRLkp0WW1jYlBTZGVLcWt6am1mY3dCdVI1U1l6NEQ5eFViRjhMeDNzYkxtQ0U" />
+                <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/SBNgOzimAOsvFNCsWFV_vQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5USXpNVGcwT0RRNE5UVTNPRGt6TkRRaWZRLkkycWVMS1lzelpsZThvUFJodDMySzV1b0VCeVdsbElXa1ZyQ0REZE1CRXM" />
+                <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/e-tAqiLFRw6HUJ7YzTs0LA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5USXpNekV4TURjME16UTJOemN6TlRBaWZRLkRfX09YT2FseFVTSmRhbzRFT2pfTmp5enJObkJuQlltLS1ISmNYZjZERGs" />
+                <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/Saobl6tsaBCqmFzWaLssuA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5URTRNekk1TWpZNU5UWTBNRFU0TlRJaWZRLmpSNlNUN3dHbE1rY25Cdk5uc25XaF9YUEpXRk1pcG9FT24zTGJ3N1A4U1k" />
+                <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/q93-NejmzE5iO3Zu1jimVQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5USXpNekk0T0RjMU5UZ3lPVFUyTXpjaWZRLlVTX0pxU1VFU0ltX2xtN1hMUjY2TkJoZ2FJQlpPV2xTNFJCaERRLVpMLVk" />
+                <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/NlAAsKoCI-k051kTcjRE4A.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5UWXpPRGt5TWpjNU5qTXdNRFEyTURFaWZRLnN0X2pGZ2w1WDVqdklydVk0Z21GcG1aQ2Nyb3h5NVdLQkwweGlrbGplVVE" />
               </ul>
               <button className="btn-right">
                 <span>
@@ -46,7 +35,9 @@ const SearchPage = () => {
               </button>
             </div>
           </div>
-          <div className="container-slider"></div>
+          <div className="container-slider">
+            <ContentsTitle title="인기" />
+          </div>
           <div className="container-slider"></div>
           <div className="container-slider"></div>
           <div className="container-slider"></div>
@@ -66,49 +57,6 @@ const SSearchPage = styled.div`
     .container-slider {
       max-width: 1600px;
       margin: 0 auto;
-
-      .container-slider_title {
-        display: flex;
-        position: relative;
-        justify-content: space-between;
-        align-items: flex-end;
-        font-size: initial;
-        margin-bottom: 5px;
-
-        .title {
-          display: flex;
-          align-items: center;
-          min-width: 0px;
-
-          h1 {
-            color: rgb(255, 255, 255);
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 0px;
-            line-height: 26px;
-            padding: 0;
-            margin: 0;
-          }
-        }
-
-        .more {
-          flex-shrink: 0;
-          padding-bottom: 3px;
-          margin-left: 6px;
-
-          .more-detail {
-            color: rgb(132, 134, 141);
-            font-size: 15px;
-            font-weight: 400;
-            letter-spacing: 0px;
-            line-height: 20px;
-            outline: #000;
-            text-decoration: none;
-            background-color: transparent;
-            cursor: pointer;
-          }
-        }
-      }
 
       .container-slide_contents {
         position: relative;
