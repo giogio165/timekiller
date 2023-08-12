@@ -1,4 +1,9 @@
 import "./App.css";
+import "./components/css/MovieList.css";
+import "./components/css/MovieList2.css";
+import "./components/css/MovieInfoButton.css";
+import "./components/css/HomeVideo.css";
+
 import React from "react";
 import {
   DetailPage,

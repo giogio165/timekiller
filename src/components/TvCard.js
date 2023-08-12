@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import MovieInfoButton from "./MovieInfoButton";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
@@ -8,13 +9,9 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 const TvCard = ({ it }) => {
   const navigate = useNavigate();
   const toDetailPage = () => {
-    navigate("/library");
+    navigate("/detail");
   }; //일단 라이브러리로 이동하게 해놨습니다. 후에 디테일 페이지로 이동할 것
   const [genreNames, setGenreNames] = useState([]);
-
-  useEffect(() => {
-    fetchGenreNames(it.genre_ids);
-  }, [it.genre_ids]);
 
   const fetchGenreNames = async (genreCodes) => {
     try {
@@ -32,23 +29,27 @@ const TvCard = ({ it }) => {
         genreCodes.includes(genre.id)
       );
 
-      const genreNames = matchingGenres.map((genre) => genre.name);
+      const limitedGenres = matchingGenres.slice(0, 2);
+
+      const genreNames = limitedGenres.map((genre) => genre.name);
       setGenreNames(genreNames);
     } catch (error) {
       console.error("API Error:", error);
     }
   };
+
   return (
     <div className="MovieCard" onClick={toDetailPage}>
-      <div className="img-wrapper">
+      <div className="MovieCard__img-wrapper">
         <img
           src={`https://image.tmdb.org/t/p/w500${it.poster_path}`}
           alt={`${it.original_name} Poster`}
           className="movie-poster"
         />
-        <div className="overlay1">
+        <div className="MovieCard__overlay">
           <div className="movie-info">
-            <h3>{it.original_name}</h3>
+            <MovieInfoButton />
+            <h3 className="movie-info__title">{it.original_name}</h3>
             <div>
               평균
               <FontAwesomeIcon icon={faStar} style={{ color: "#ffffff" }} />

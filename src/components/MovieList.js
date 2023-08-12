@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "../components/css/MovieList.css";
 import MovieCard1 from "./MovieCard1";
 
@@ -11,6 +12,7 @@ const MovieList = ({ it }) => {
   useEffect(() => {
     fetchMovies();
   }, []);
+
   const fetchMovies = async () => {
     try {
       const response = await axios.get(
@@ -30,15 +32,27 @@ const MovieList = ({ it }) => {
     }
   };
 
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 8,
+    slidesToScroll: 1,
+    autoplay: false,
+    autoplaySpeed: 3000,
+  };
+
   return (
     <div className="MovieList">
       <h3>{it}</h3>
 
-      <div className="carousel">
+      <Slider {...sliderSettings}>
         {movies.map((it) => (
-          <MovieCard1 it={it} key={it.id} />
+          <div key={it.id}>
+            <MovieCard1 it={it} />
+          </div>
         ))}
-      </div>
+      </Slider>
     </div>
   );
 };

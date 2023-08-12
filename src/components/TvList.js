@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "../components/css/MovieList.css";
 import TvCard from "./TvCard";
 
 const TvList = ({ it }) => {
   const [tvShows, setTvShows] = useState([]);
+  console.log(tvShows);
 
   useEffect(() => {
     fetchTvShows();
@@ -31,15 +33,25 @@ const TvList = ({ it }) => {
     }
   };
 
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 8,
+    slidesToScroll: 1,
+    autoplay: false,
+    autoplaySpeed: 3000,
+  };
+
   return (
     <div className="MovieList">
       <h3>{it}</h3>
 
-      <div className="carousel">
+      <Slider {...sliderSettings}>
         {tvShows.map((it) => (
           <TvCard it={it} key={it.id} />
         ))}
-      </div>
+      </Slider>
     </div>
   );
 };

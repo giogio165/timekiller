@@ -5,7 +5,7 @@ import axios from "axios";
 const MovieCard2 = ({ it }) => {
   const navigate = useNavigate();
   const gotoDetailPage = () => {
-    navigate("/library");
+    navigate("/detail");
   };
 
   const [genreName, setGenreName] = useState("");
@@ -38,10 +38,10 @@ const MovieCard2 = ({ it }) => {
 
   return (
     <div className="MovieCard2" onClick={gotoDetailPage}>
-      <div>{genreName}</div>
+      {/* <div>{genreName}</div> */}
       <div className="movie-title">{it.original_title}</div>
       <div className="img-wrapper">
-        <div className="overlay"></div>
+        <div className="MovieCard2__overlay"></div>
         {it.image && (
           <img
             src={`https://image.tmdb.org/t/p/original${it.image}`}

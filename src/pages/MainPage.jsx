@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { GlobalLayout } from "../global";
-import MainPageVideo from "../components/MainPageVideo";
+
 import MovieList from "../components/MovieList";
 import MovieList2 from "../components/MovieList2";
 import TvList from "../components/TvList";
+import HomeVideo from "../components/HomeVideo";
 
 const MainPage = () => {
   const [movieButton, setMovieButton] = useState(false);
@@ -37,7 +38,7 @@ const MainPage = () => {
   return (
     <GlobalLayout>
       <div className="Home">
-        <MainPageVideo />
+        <HomeVideo />
         <MovieList2 />
         <button
           className={`Home__button${showWholeButton ? "Clicked" : ""}`}

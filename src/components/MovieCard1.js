@@ -4,11 +4,12 @@ import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import MovieInfoButton from "./MovieInfoButton";
 
 const MovieCard1 = ({ it }) => {
   const navigate = useNavigate();
   const toDetailPage = () => {
-    navigate("/library");
+    navigate("/detail");
   };
   const [genreNames, setGenreNames] = useState([]);
 
@@ -32,7 +33,9 @@ const MovieCard1 = ({ it }) => {
         genreCodes.includes(genre.id)
       );
 
-      const genreNames = matchingGenres.map((genre) => genre.name);
+      const limitedGenres = matchingGenres.slice(0, 2);
+
+      const genreNames = limitedGenres.map((genre) => genre.name);
       setGenreNames(genreNames);
     } catch (error) {
       console.error("API Error:", error);
@@ -41,14 +44,15 @@ const MovieCard1 = ({ it }) => {
 
   return (
     <div className="MovieCard" onClick={toDetailPage}>
-      <div className="img-wrapper">
+      <div className="MovieCard__img-wrapper">
         <img
           src={`https://image.tmdb.org/t/p/w500${it.poster_path}`}
           alt={`${it.original_title} Poster`}
           className="movie-poster"
         />
-        <div className="overlay1">
+        <div className="MovieCard__overlay">
           <div className="movie-info">
+            <MovieInfoButton />
             <h3>{it.original_title}</h3>
             <div>
               평균

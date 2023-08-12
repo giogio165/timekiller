@@ -1,0 +1,28 @@
+.HomeVideo {
+  position: relative;
+}
+.HomeVideo__text {
+  width: 1400px;
+  height: 120px;
+  position: absolute;
+  bottom: 0px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.8) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  padding: 10px 20px;
+}
+.HomeVideo__title {
+  color: white;
+  font-weight: 700;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+.HomeVideo__overview {
+  width: 800px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

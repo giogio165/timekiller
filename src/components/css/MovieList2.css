@@ -16,7 +16,7 @@
 
   z-index: 1;
 }
-.overlay {
+.MovieCard2__overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -33,7 +33,7 @@
   border-radius: 8px;
 }
 
-.MovieCard2:hover .overlay {
+.MovieCard2:hover .MovieCard2__overlay {
   display: flex;
   opacity: 1;
 }
