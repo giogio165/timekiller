@@ -14,11 +14,10 @@ const MovieCard = ({ item }) => {
         alt={`${item.original_title} Poster`}
         className="movie-poster"
       />
-
       <div className="overlay">
         <div className="movie-info">
           <h3>{item.original_title}</h3>
-          <div>평균 {item.vote_average}</div>
+          <div>평균 {item.vote_average}</div>``
           <div>{item.genre_ids}</div>
         </div>
       </div>

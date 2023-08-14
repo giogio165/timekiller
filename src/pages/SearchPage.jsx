@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { GlobalLayout } from "../global";
 import { Link } from "react-router-dom";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
-import { ContentBox, ContentsTitle } from "../components";
+import { ContentBox, ContentsTitle, GenreBox } from "../components";
 
 const SearchPage = () => {
   return (
@@ -11,14 +11,10 @@ const SearchPage = () => {
       <SSearchPage>
         <div></div>
         <div className="container">
+          <div></div>
           <div className="container-slider">
             <ContentsTitle title="인기" />
             <div className="container-slide_contents">
-              <button className="btn-left">
-                <span>
-                  <MdArrowBackIosNew />
-                </span>
-              </button>
               <ul className="contents">
                 <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/cUd87tC-O7nptoEl-XXcKw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5USXpNekV3TmpJeE5EUXlNemd3TkRBaWZRLjVVYmg1NnAzYTF4aTdtSUtnY2RTTmhYSDBaSXRmVWVrUUNabm9vQ2N4Qnc" />
                 <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/eKF-pdLY5tbergbPSC8sjQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5UWTBNRE14Tmpnek5USTVPVEUxTlRVaWZRLkp0WW1jYlBTZGVLcWt6am1mY3dCdVI1U1l6NEQ5eFViRjhMeDNzYkxtQ0U" />
@@ -28,18 +24,89 @@ const SearchPage = () => {
                 <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/q93-NejmzE5iO3Zu1jimVQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5USXpNekk0T0RjMU5UZ3lPVFUyTXpjaWZRLlVTX0pxU1VFU0ltX2xtN1hMUjY2TkJoZ2FJQlpPV2xTNFJCaERRLVpMLVk" />
                 <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/NlAAsKoCI-k051kTcjRE4A.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5UWXpPRGt5TWpjNU5qTXdNRFEyTURFaWZRLnN0X2pGZ2w1WDVqdklydVk0Z21GcG1aQ2Nyb3h5NVdLQkwweGlrbGplVVE" />
               </ul>
-              <button className="btn-right">
-                <span>
-                  <MdArrowForwardIos />
-                </span>
-              </button>
             </div>
           </div>
           <div className="container-slider">
-            <ContentsTitle title="인기" />
+            <ContentsTitle title="웹툰 장르" />
+            <div className="container-slide_contents">
+              <ul className="contents-genre">
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="판타지"
+                />
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="코미디"
+                />
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="짝사랑"
+                />
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="삼각관계"
+                />
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="액션"
+                />
+              </ul>
+            </div>
           </div>
-          <div className="container-slider"></div>
-          <div className="container-slider"></div>
+          <div className="container-slider">
+            <ContentsTitle title="웹툰 장르" />
+            <div className="container-slide_contents">
+              <ul className="contents-genre">
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="판타지"
+                />
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="코미디"
+                />
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="짝사랑"
+                />
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="삼각관계"
+                />
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="액션"
+                />
+              </ul>
+            </div>
+          </div>
+          <div className="container-slider">
+            <ContentsTitle title="웹툰 장르" />
+            <div className="container-slide_contents">
+              <ul className="contents-genre">
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="판타지"
+                />
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="코미디"
+                />
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="짝사랑"
+                />
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="삼각관계"
+                />
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="액션"
+                />
+              </ul>
+            </div>
+          </div>
           <div className="container-slider"></div>
           <div className="container-slider"></div>
         </div>
@@ -55,8 +122,12 @@ const SSearchPage = styled.div`
     padding: 32px 0px 0px;
 
     .container-slider {
-      max-width: 1600px;
       margin: 0 auto;
+      max-width: 1680px;
+      padding-left: 40px;
+      padding-bottom: 32px;
+      padding-right: 40px;
+      overflow: hidden;
 
       .container-slide_contents {
         position: relative;
@@ -128,6 +199,12 @@ const SSearchPage = styled.div`
             color: white;
             font-size: 30px;
           }
+        }
+        .contents-genre {
+          position: relative;
+          z-index: 0;
+          white-space: nowrap;
+          margin: 0px -6px;
         }
       }
     }

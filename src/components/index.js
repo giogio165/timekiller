@@ -8,6 +8,7 @@ import ContentsInfo from "./ContentsInfo";
 import Comment from "./Comment";
 import ContentBox from "./ContentBox";
 import ContentsTitle from "./ContentsTitle";
+import GenreBox from "./GenreBox";
 
 export {
   Dropdown,
@@ -20,4 +21,5 @@ export {
   Comment,
   ContentBox,
   ContentsTitle,
+  GenreBox,
 };
