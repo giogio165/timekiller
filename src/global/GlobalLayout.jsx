@@ -10,22 +10,28 @@ export default GlobalLayout;
 const StGlobalContainer = styled.div`
   max-width: calc(100vw - 240px);
   margin: 0 auto;
+  width: 100%;
   background-color: #000;
   color: white;
   height: 100%;
   padding: 56px 0px 0px 240px;
   display: flex;
   flex-direction: column;
+
   @media (max-width: 1700px) {
-    max-width: 150rem;
+    max-width: 160rem;
   }
   @media (max-width: 1560px) {
-    max-width: 134rem;
+    max-width: 1500px;
   }
   @media (max-width: 1380px) {
     max-width: 120rem;
   }
   @media (max-width: 1240px) {
     max-width: 90%;
+  }
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
   }
 `;

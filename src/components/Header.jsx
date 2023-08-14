@@ -1,13 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { BiBell } from "react-icons/bi";
+import { BiSearch } from "react-icons/bi";
+import { useMatch } from "react-router-dom";
 
 const Header = () => {
+  const searchMatch = useMatch("/search");
+  const [keyword, setKeyword] = useState("");
+
+  const onChangeHandle = (event) => {
+    setKeyword(event.target.value);
+  };
+  const onSubmitHandle = (event) => {
+    event.preventDefault();
+  };
+  console.log(searchMatch);
   return (
     <SHeader>
       <nav>
         <div className="container-logo">
-          <div></div>
+          {searchMatch && (
+            <form className="container-form" onSubmit={onSubmitHandle}>
+              <label>
+                <div className="form-icon">
+                  <BiSearch />
+                </div>
+                <input
+                  autoComplete="off"
+                  id="query"
+                  name="query"
+                  placeholder="콘텐츠, 태그, 인물, 리스트 검색"
+                  type="search"
+                  value={keyword}
+                  className="form-input"
+                  onChange={onChangeHandle}
+                />
+              </label>
+            </form>
+          )}
           <div className="container-logo_img">
             <div className="container-logo_img-detail">
               <img
@@ -81,6 +111,49 @@ const SHeader = styled.header`
     .container-logo {
       display: flex;
       max-width: 100%;
+
+      .container-form {
+        position: relative;
+        width: 337px;
+        display: block;
+        margin-top: 0em;
+
+        label {
+          display: flex;
+          align-items: center;
+          background: rgb(34, 35, 38);
+          padding: 8px 12px;
+          border-radius: 8px;
+          overflow: hidden;
+          cursor: default;
+
+          .form-icon {
+            flex: 0 0 auto;
+            color: rgb(132, 134, 141);
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            font-size: 24px;
+          }
+          .form-input {
+            flex: 1 0 auto;
+            background: transparent;
+            color: rgb(255, 255, 255);
+            padding: 0px;
+            border: 0px;
+            outline: none;
+            margin: 0px;
+            appearance: none;
+            caret-color: rgb(248, 47, 98);
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: 0px;
+            line-height: 20px;
+            outline-offset: 2px;
+            overflow: visible;
+          }
+        }
+      }
 
       .container-logo_img {
         display: none;

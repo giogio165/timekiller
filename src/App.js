@@ -6,6 +6,7 @@ import "./components/css/HomeVideo.css";
 import "./components/css/UpcomingList.css";
 
 import React from "react";
+import { Provider } from "@reduxjs/toolkit";
 import {
   DetailPage,
   LibraryPage,
