@@ -8,10 +8,14 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const TvCard = ({ it }) => {
   const navigate = useNavigate();
-  const toDetailPage = () => {
-    navigate("/detail");
-  }; //일단 라이브러리로 이동하게 해놨습니다. 후에 디테일 페이지로 이동할 것
+  const gotoDetailPage = () => {
+    navigate(`/detail/${it.id}`);
+  };
   const [genreNames, setGenreNames] = useState([]);
+
+  useEffect(() => {
+    fetchGenreNames(it.genre_ids);
+  }, [it.genre_ids]);
 
   const fetchGenreNames = async (genreCodes) => {
     try {
@@ -39,7 +43,7 @@ const TvCard = ({ it }) => {
   };
 
   return (
-    <div className="MovieCard" onClick={toDetailPage}>
+    <div className="MovieCard" onClick={gotoDetailPage}>
       <div className="MovieCard__img-wrapper">
         <img
           src={`https://image.tmdb.org/t/p/w500${it.poster_path}`}

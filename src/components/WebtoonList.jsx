@@ -4,39 +4,30 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../components/css/MovieList.css";
-import MovieCard1 from "./MovieCard1";
+import WebtoonCard from "./WebtoonCard";
 
-const MovieList = ({ it }) => {
-  const [movies, setMovies] = useState([]);
-
+const WebtoonList = ({ it, number }) => {
+  const [webtoons, setWebtoons] = useState([]);
   useEffect(() => {
-    fetchMovies();
+    fetchWebtoons();
   }, []);
 
-  const fetchMovies = async () => {
+  const fetchWebtoons = async () => {
     try {
       const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/popular",
-        {
-          params: {
-            api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "en-US",
-            page: 1,
-          },
-        }
+        "https://korea-webtoon-api.herokuapp.com/?perPage=10&page=1&service=kakao&updateDay=sun"
       );
-
-      setMovies(response.data.results);
+      setWebtoons(response.data.webtoons);
     } catch (error) {
       console.error("API Error:", error);
     }
   };
 
   const sliderSettings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 8,
+    slidesToShow: number,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 3000,
@@ -44,12 +35,11 @@ const MovieList = ({ it }) => {
 
   return (
     <div className="MovieList">
-      <h3>{it}</h3>
-
+      <h1>{it}</h1>
       <Slider {...sliderSettings}>
-        {movies.map((it) => (
+        {webtoons.map((it) => (
           <div key={it.id}>
-            <MovieCard1 it={it} />
+            <WebtoonCard key={it.id} it={it} number={number} />
           </div>
         ))}
       </Slider>
@@ -57,4 +47,4 @@ const MovieList = ({ it }) => {
   );
 };
 
-export default MovieList;
+export default WebtoonList;

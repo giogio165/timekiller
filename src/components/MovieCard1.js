@@ -6,12 +6,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import MovieInfoButton from "./MovieInfoButton";
 
-const MovieCard1 = ({ it }) => {
+const MovieCard1 = ({ it, number }) => {
   const navigate = useNavigate();
-  const toDetailPage = () => {
-    navigate("/detail");
+  const gotoDetailPage = () => {
+    navigate(`/detail/${it.id}`);
   };
   const [genreNames, setGenreNames] = useState([]);
+  const cardClassName = number === 8 ? "MovieCard" : "MovieCard2";
+  const imgPosterName = number === 8 ? "movie-poster" : "movie-poster2";
 
   useEffect(() => {
     fetchGenreNames(it.genre_ids);
@@ -43,27 +45,49 @@ const MovieCard1 = ({ it }) => {
   };
 
   return (
-    <div className="MovieCard" onClick={toDetailPage}>
+    <div className={cardClassName} onClick={gotoDetailPage}>
+      {number === 3 ? (
+        <div className="movie-title">{it.original_title}</div>
+      ) : (
+        ""
+      )}
       <div className="MovieCard__img-wrapper">
-        <img
-          src={`https://image.tmdb.org/t/p/w500${it.poster_path}`}
-          alt={`${it.original_title} Poster`}
-          className="movie-poster"
-        />
-        <div className="MovieCard__overlay">
-          <div className="movie-info">
-            <MovieInfoButton />
-            <h3>{it.original_title}</h3>
-            <div>
-              평균
-              <FontAwesomeIcon icon={faStar} style={{ color: "#ffffff" }} />
-              {it.vote_average}
+        {number === 8 ? (
+          <img
+            src={`https://image.tmdb.org/t/p/w500${it.poster_path}`}
+            alt={`${it.original_title} Poster`}
+            className={imgPosterName}
+          />
+        ) : (
+          ""
+        )}
+        <div className={cardClassName + "__overlay"}>
+          {number === 8 ? (
+            <div className="movie-info">
+              <MovieInfoButton />
+              <h3>{it.original_title}</h3>
+              <div>
+                평균
+                <FontAwesomeIcon icon={faStar} style={{ color: "#ffffff" }} />
+                {it.vote_average}
+              </div>
+              <div className="movie-info__genre-names">
+                {genreNames.join(" ")}
+              </div>
             </div>
-            <div className="movie-info__genre-names">
-              {genreNames.join(" ")}
-            </div>
-          </div>
+          ) : (
+            ""
+          )}
         </div>
+        {number === 3 && it.image ? (
+          <img
+            src={`https://image.tmdb.org/t/p/original${it.image}`}
+            alt={it.title}
+            className="movie-poster2"
+          />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

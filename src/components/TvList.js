@@ -8,7 +8,6 @@ import TvCard from "./TvCard";
 
 const TvList = ({ it }) => {
   const [tvShows, setTvShows] = useState([]);
-  console.log(tvShows);
 
   useEffect(() => {
     fetchTvShows();
@@ -34,7 +33,7 @@ const TvList = ({ it }) => {
   };
 
   const sliderSettings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 8,

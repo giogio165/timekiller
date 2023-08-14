@@ -38,7 +38,7 @@ const MainPage = () => {
   return (
     <GlobalLayout>
       <div className="Home">
-        <HomeVideo />
+        <HomeVideo title={"홈"} />
         <MovieList2 />
         <button
           className={`Home__button${showWholeButton ? "Clicked" : ""}`}
