@@ -14,7 +14,7 @@ const StGlobalContainer = styled.div`
   background-color: #000;
   color: white;
   height: 100%;
-  padding: 56px 0px 0px 240px;
+  padding: 56px 0px 0px 300px;
   display: flex;
   flex-direction: column;
 

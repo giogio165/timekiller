@@ -65,7 +65,7 @@ const DetailPage = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const peopleInfo = await fetchPeople();
-      if (peopleInfo) {
+      if (peopleInfo.cast) {
         setPeoples(peopleInfo.cast.slice(0, 7));
       }
     };
@@ -82,87 +82,91 @@ const DetailPage = (props) => {
   }, []);
   return (
     <GlobalLayout>
-      <SMain>
-        <div>
-          <div className="temp"></div>
-        </div>
-        <div>
-          <header className="container-header">
-            <ContentsInfo id={id} />
-          </header>
-        </div>
-        <ul className="select-options">
-          <li>
-            <button type="button" className="li-btn" onClick={btnHandler}>
-              콘텐츠 정보
-            </button>
-          </li>
-          <li>
-            <button type="button" className="li-btn2" onClick={btnHandler}>
-              관련 콘텐츠
-            </button>
-          </li>
-        </ul>
-        <section className="info">
-          <section className="info-container">
-            <section className="info-oneline">
-              <ul className="comment">
-                <li>
-                  <img
-                    height="24px"
-                    width="24px"
-                    alt="pic"
-                    src="https://an2-mars.amz.wtchn.net/assets/reason_icons/rate_24-c3f027bf1048b7f33daefe37a233e9bf8d1d331b0b508bedefe7a8fed772a5d1.png"
-                  />
-                  <p>최근 시청한 회원들의 70%가 7점 이상 평가했어요.</p>
-                </li>
-              </ul>
-            </section>
-            <section className="info-oneline">
-              <div className="info-people">
-                <div className="people">
-                  <div>
-                    <h1>감독/출연</h1>
+      {comments && (
+        <SMain>
+          <div>
+            <div className="temp"></div>
+          </div>
+          <div>
+            <header className="container-header">
+              <ContentsInfo id={id} />
+            </header>
+          </div>
+          <ul className="select-options">
+            <li>
+              <button type="button" className="li-btn" onClick={btnHandler}>
+                콘텐츠 정보
+              </button>
+            </li>
+            <li>
+              <button type="button" className="li-btn2" onClick={btnHandler}>
+                관련 콘텐츠
+              </button>
+            </li>
+          </ul>
+          <section className="info">
+            <section className="info-container">
+              <section className="info-oneline">
+                <ul className="comment">
+                  <li>
+                    <img
+                      height="24px"
+                      width="24px"
+                      alt="pic"
+                      src="https://an2-mars.amz.wtchn.net/assets/reason_icons/rate_24-c3f027bf1048b7f33daefe37a233e9bf8d1d331b0b508bedefe7a8fed772a5d1.png"
+                    />
+                    <p>최근 시청한 회원들의 70%가 7점 이상 평가했어요.</p>
+                  </li>
+                </ul>
+              </section>
+              <section className="info-oneline">
+                <div className="info-people">
+                  <div className="people">
+                    <div>
+                      <h1>감독/출연</h1>
+                    </div>
+                  </div>
+                  <div className="more">
+                    <div>더보기</div>
                   </div>
                 </div>
-                <div className="more">
-                  <div>더보기</div>
-                </div>
-              </div>
-              {/* 컴포넌트로 분리 */}
-              <ul type="listItem" className="people-list">
-                {peoples.map((people, index) => (
-                  <People people={people} key={index} />
-                ))}
-              </ul>
-            </section>
-            <section className="info-oneline">
-              <div className="container-review_title">
-                <div className="review-title">
-                  <div>
-                    <h1>
-                      왓챠피디아 사용자 평
-                      <div className="review-number">
-                        <span>{comments.length}</span>
-                      </div>
-                    </h1>
+                {/* 컴포넌트로 분리 */}
+                <ul type="listItem" className="people-list">
+                  {peoples.map((people, index) => (
+                    <People people={people} key={index} />
+                  ))}
+                </ul>
+              </section>
+              <section className="info-oneline">
+                <div className="container-review_title">
+                  <div className="review-title">
+                    <div>
+                      <h1>
+                        왓챠피디아 사용자 평
+                        <div className="review-number">
+                          <span>
+                            {comments.length !== 0 ? comments.length : 0}
+                          </span>
+                        </div>
+                      </h1>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <ul className="review-list">
-                {comments.length !== 0
-                  ? comments.map((comment, index) => (
-                      <Comment comment={comment} index={index} key={index} />
-                    ))
-                  : "리뷰가 없습니다."}
-              </ul>
+                <ul className="review-list">
+                  {comments.length !== 0
+                    ? comments.map((comment, index) => (
+                        <Comment comment={comment} index={index} key={index} />
+                      ))
+                    : "리뷰가 없습니다."}
+                </ul>
+              </section>
+            </section>
+            <section className="container-best_review">
+              <BestComment comment={comments[0]} />
             </section>
           </section>
-          <section className="container-best_review">
-            <BestComment comment={comments[0]} />
-          </section>
-        </section>
-      </SMain>
+        </SMain>
+      )}
     </GlobalLayout>
   );
 };
