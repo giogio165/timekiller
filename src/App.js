@@ -1,4 +1,10 @@
 import "./App.css";
+import "./components/css/MovieList.css";
+import "./components/css/MovieList2.css";
+import "./components/css/MovieInfoButton.css";
+import "./components/css/HomeVideo.css";
+import "./components/css/UpcomingList.css";
+
 import React from "react";
 import { Provider } from "@reduxjs/toolkit";
 import {

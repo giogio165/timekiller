@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import "./temp.css";
-import MovieCard2 from "./MovieCard2";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "../components/css/MovieList2.css";
+import MovieCard1 from "./MovieCard1";
 
 const MovieList2 = () => {
   const [movies, setMovies] = useState([]);
@@ -42,22 +43,23 @@ const MovieList2 = () => {
     }
   };
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
+  const sliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: false,
+    autoplaySpeed: 3000,
   };
 
   return (
     <div className="MovieList2">
-      <div className="carousel">
-        <Carousel responsive={responsive}>
-          {movies.map((it) => (
-            <MovieCard2 key={it.id} it={it} />
-          ))}
-        </Carousel>
-      </div>
+      <Slider {...sliderSettings}>
+        {movies.map((it) => (
+          <MovieCard1 it={it} key={it.id} number={3} />
+        ))}
+      </Slider>
     </div>
   );
 };
