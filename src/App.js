@@ -1,5 +1,6 @@
 import "./App.css";
 import React from "react";
+import { Provider } from "@reduxjs/toolkit";
 import {
   DetailPage,
   LibraryPage,
