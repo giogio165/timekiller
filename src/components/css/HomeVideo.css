@@ -12,12 +12,13 @@
     rgba(0, 0, 0, 0.8) 50%,
     rgba(0, 0, 0, 0.7) 100%
   );
-  padding: 10px 20px;
+  margin: 0;
 }
 .HomeVideo__title {
   color: white;
   font-weight: 700;
   font-size: 50px;
+  margin-left: 20px;
   margin-bottom: 10px;
 }
 .HomeVideo__overview {
@@ -25,4 +26,5 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-left: 20px;
 }

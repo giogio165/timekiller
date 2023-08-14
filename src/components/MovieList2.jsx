@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../components/css/MovieList2.css";
-import MovieCard2 from "./MovieCard2";
+import MovieCard1 from "./MovieCard1";
 
 const MovieList2 = () => {
   const [movies, setMovies] = useState([]);
@@ -44,7 +44,7 @@ const MovieList2 = () => {
   };
 
   const sliderSettings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -57,7 +57,7 @@ const MovieList2 = () => {
     <div className="MovieList2">
       <Slider {...sliderSettings}>
         {movies.map((it) => (
-          <MovieCard2 it={it} key={it.id} />
+          <MovieCard1 it={it} key={it.id} number={3} />
         ))}
       </Slider>
     </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const HomeVideo = () => {
+const HomeVideo = ({ title }) => {
   const [movies, setMovies] = useState([]);
   const [video, setVideo] = useState(null);
 
@@ -49,7 +49,7 @@ const HomeVideo = () => {
 
   return (
     <div className="HomeVideo">
-      <h1 className="HomeVideo__home">홈</h1>
+      <h1 className="HomeVideo__home">{title}</h1>
       <div className="HomeVideo__video">
         {video ? (
           <iframe

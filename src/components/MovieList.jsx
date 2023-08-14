@@ -33,7 +33,7 @@ const MovieList = ({ it }) => {
   };
 
   const sliderSettings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 8,
@@ -44,12 +44,12 @@ const MovieList = ({ it }) => {
 
   return (
     <div className="MovieList">
-      <h3>{it}</h3>
+      <h1>{it}</h1>
 
       <Slider {...sliderSettings}>
         {movies.map((it) => (
           <div key={it.id}>
-            <MovieCard1 it={it} />
+            <MovieCard1 it={it} number={8} />
           </div>
         ))}
       </Slider>
