@@ -14,13 +14,16 @@ const UpcomingCard = ({ it, number }) => {
 
   const cardClassName = number === 2 ? "UpcomingCard" : "UpcomingCard2";
   const cardPosterClassName =
-    number === 2 ? "UmcomingCard-poster" : "UmcomingCard-poster2";
+    number === 2 ? "UpcomingCard-poster" : "UpcomingCard-poster2";
 
   return (
     <div className={cardClassName} onClick={gotoDetailPage}>
       {number === 1 ? (
         <div>
-          <div className="movie-title">{it.original_title}</div>
+          <div className="movie-info">
+            <div className="movie-title">{it.original_title}</div>
+            <div className="UpcomingCard-overview">{it.overview}</div>
+          </div>
           <div className="UpcomingCard__img-wrapper">
             <div className={cardClassName + "__overlay"}></div>
             <img
@@ -29,6 +32,7 @@ const UpcomingCard = ({ it, number }) => {
               className={cardPosterClassName}
             />
           </div>
+          <div className="UpcomingCard__purchaseTag">개별구매</div>
         </div>
       ) : (
         <div className="UpcomingCard__img-wrapper">
