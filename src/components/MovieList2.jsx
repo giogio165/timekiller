@@ -20,7 +20,7 @@ const MovieList2 = () => {
         {
           params: {
             api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "en-US",
+            language: "ko-KR",
             page: 1,
           },
         }

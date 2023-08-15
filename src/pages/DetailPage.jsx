@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { GlobalLayout } from "../global";
+import { HiPlay } from "react-icons/hi2";
+import { AiOutlinePlus } from "react-icons/ai";
 import {
   People,
   TempComment,
@@ -9,14 +11,22 @@ import {
   ContentsInfo,
 } from "../components";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // 컴포넌트 세분화 시키기.
 
-const DetailPage = (props) => {
+const DetailPage = () => {
   const { id } = useParams();
   const [peoples, setPeoples] = useState([]);
   const [comments, setComments] = useState([]);
   const [button, setButton] = useState(true);
+
+  const real = useSelector((state) => {
+    return state.contentUpdate.value;
+  });
+
+  console.log(real);
+
   const fetchPeople = async () => {
     const options = {
       method: "GET",
@@ -54,7 +64,6 @@ const DetailPage = (props) => {
         options
       );
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (error) {
       console.error("API Error:", error);
@@ -74,7 +83,6 @@ const DetailPage = (props) => {
     const fetchCommentData = async () => {
       const commentInfo = await fetchComment();
       if (commentInfo) {
-        console.log(commentInfo.results);
         setComments(commentInfo.results);
       }
     };
@@ -82,61 +90,82 @@ const DetailPage = (props) => {
   }, []);
   return (
     <GlobalLayout>
-      {comments && (
-        <SMain>
-          <div>
-            <div className="temp"></div>
-          </div>
-          <div>
-            <header className="container-header">
-              <ContentsInfo id={id} />
-            </header>
-          </div>
-          <ul className="select-options">
-            <li>
-              <button type="button" className="li-btn" onClick={btnHandler}>
-                콘텐츠 정보
-              </button>
-            </li>
-            <li>
-              <button type="button" className="li-btn2" onClick={btnHandler}>
-                관련 콘텐츠
-              </button>
-            </li>
-          </ul>
-          <section className="info">
-            <section className="info-container">
-              <section className="info-oneline">
-                <ul className="comment">
-                  <li>
-                    <img
-                      height="24px"
-                      width="24px"
-                      alt="pic"
-                      src="https://an2-mars.amz.wtchn.net/assets/reason_icons/rate_24-c3f027bf1048b7f33daefe37a233e9bf8d1d331b0b508bedefe7a8fed772a5d1.png"
-                    />
-                    <p>최근 시청한 회원들의 70%가 7점 이상 평가했어요.</p>
-                  </li>
-                </ul>
-              </section>
-              <section className="info-oneline">
-                <div className="info-people">
-                  <div className="people">
-                    <div>
-                      <h1>감독/출연</h1>
+      <SMain>
+        <div>
+          <div className="temp"></div>
+        </div>
+        <div>
+          <header className="container-header">
+            <ContentsInfo id={id} real={real} />
+            <div className="container-play">
+              <section>
+                <div className="container-play_btn">
+                  <div className="play">
+                    <div className="icon">
+                      <HiPlay />
                     </div>
-                  </div>
-                  <div className="more">
-                    <div>더보기</div>
+                    감상하기
                   </div>
                 </div>
-                {/* 컴포넌트로 분리 */}
-                <ul type="listItem" className="people-list">
-                  {peoples.map((people, index) => (
-                    <People people={people} key={index} />
-                  ))}
-                </ul>
+                <div className="container-play_btn">
+                  <button>
+                    <AiOutlinePlus />
+                    보고싶어요
+                  </button>
+                  <div className="etc">
+                    <button>...</button>
+                  </div>
+                </div>
               </section>
+            </div>
+          </header>
+        </div>
+        <ul className="select-options">
+          <li>
+            <button type="button" className="li-btn" onClick={btnHandler}>
+              콘텐츠 정보
+            </button>
+          </li>
+          <li>
+            <button type="button" className="li-btn2" onClick={btnHandler}>
+              관련 콘텐츠
+            </button>
+          </li>
+        </ul>
+        <section className="info">
+          <section className="info-container">
+            <section className="info-oneline">
+              <ul className="comment">
+                <li>
+                  <img
+                    height="24px"
+                    width="24px"
+                    alt="pic"
+                    src="https://an2-mars.amz.wtchn.net/assets/reason_icons/rate_24-c3f027bf1048b7f33daefe37a233e9bf8d1d331b0b508bedefe7a8fed772a5d1.png"
+                  />
+                  <p>최근 시청한 회원들의 70%가 7점 이상 평가했어요.</p>
+                </li>
+              </ul>
+            </section>
+            <section className="info-oneline">
+              <div className="info-people">
+                <div className="people">
+                  <div>
+                    <h1>감독/출연</h1>
+                  </div>
+                </div>
+                <div className="more">
+                  <div>더보기</div>
+                </div>
+              </div>
+              {/* 컴포넌트로 분리 */}
+              <ul type="listItem" className="people-list">
+                {peoples.map((people, index) => (
+                  <People people={people} key={index} />
+                ))}
+              </ul>
+            </section>
+            {comments && (
               <section className="info-oneline">
                 <div className="container-review_title">
                   <div className="review-title">
@@ -160,13 +189,15 @@ const DetailPage = (props) => {
                     : "리뷰가 없습니다."}
                 </ul>
               </section>
-            </section>
+            )}
+          </section>
+          {comments && (
             <section className="container-best_review">
               <BestComment comment={comments[0]} />
             </section>
-          </section>
-        </SMain>
-      )}
+          )}
+        </section>
+      </SMain>
     </GlobalLayout>
   );
 };
