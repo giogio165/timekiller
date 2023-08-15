@@ -14,21 +14,25 @@ const UpcomingCard = ({ it, number }) => {
 
   const cardClassName = number === 2 ? "UpcomingCard" : "UpcomingCard2";
   const cardPosterClassName =
-    number === 2 ? "UmcomingCard-poster" : "UmcomingCard-poster2";
+    number === 2 ? "UpcomingCard-poster" : "UpcomingCard-poster2";
 
   return (
     <div className={cardClassName} onClick={gotoDetailPage}>
       {number === 1 ? (
         <div>
-          <div className="movie-title">{it.original_title}</div>
+          <div className="movie-info">
+            <div className="movie-title">{it.original_title}</div>
+            <div className="UpcomingCard-overview">{it.overview}</div>
+          </div>
           <div className="UpcomingCard__img-wrapper">
             <div className={cardClassName + "__overlay"}></div>
             <img
-              src={`https://image.tmdb.org/t/p/w500${it.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500${it.backdrop_path}`}
               alt={`${it.original_title} Poster`}
               className={cardPosterClassName}
             />
           </div>
+          <div className="UpcomingCard__purchaseTag">개별구매</div>
         </div>
       ) : (
         <div className="UpcomingCard__img-wrapper">

@@ -4,6 +4,7 @@ import "./components/css/MovieList2.css";
 import "./components/css/MovieInfoButton.css";
 import "./components/css/HomeVideo.css";
 import "./components/css/UpcomingList.css";
+import "./components/css/WebtoonHomeImg.css";
 
 import React from "react";
 import {

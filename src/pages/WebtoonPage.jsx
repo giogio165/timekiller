@@ -1,5 +1,6 @@
 import React from "react";
 import HomeVideo from "../components/HomeVideo";
+import WebtoonHomeImg from "../components/WebtoonHomeImg";
 import WebtoonList from "../components/WebtoonList";
 import { GlobalLayout } from "../global";
 
@@ -15,7 +16,8 @@ const WebtoonPage = () => {
   return (
     <GlobalLayout>
       <div className="WebtoonPage">
-        <HomeVideo title={"웹툰"} />
+        <WebtoonHomeImg title={"웹툰"} />
+
         {sliderTitle.map((it) => (
           <>
             <WebtoonList it={it} number={3} />

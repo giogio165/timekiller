@@ -5,11 +5,12 @@ const UpcomingCard1 = ({ it }) => {
     <div className="UpcomingCard3">
       <div className="UpcomingCard__img-wrapper">
         <img
-          src={`https://image.tmdb.org/t/p/w500${it.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w500${it.backdrop_path}`}
           alt={`${it.original_title} Poster`}
-          className="UmcomingCard-poster3"
+          className="UpcomingCard-poster3"
         />
       </div>
+      <h2 className="UpcomingCard3__overview">{it.overview}</h2>
     </div>
   );
 };
