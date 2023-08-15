@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { GlobalLayout } from "../global";
+import { HiPlay } from "react-icons/hi2";
+import { AiOutlinePlus } from "react-icons/ai";
 import {
   People,
   TempComment,
@@ -9,14 +11,22 @@ import {
   ContentsInfo,
 } from "../components";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // 컴포넌트 세분화 시키기.
 
-const DetailPage = (props) => {
+const DetailPage = () => {
   const { id } = useParams();
   const [peoples, setPeoples] = useState([]);
   const [comments, setComments] = useState([]);
   const [button, setButton] = useState(true);
+
+  const real = useSelector((state) => {
+    return state.contentUpdate.value;
+  });
+
+  console.log(real);
+
   const fetchPeople = async () => {
     const options = {
       method: "GET",
@@ -54,7 +64,6 @@ const DetailPage = (props) => {
         options
       );
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (error) {
       console.error("API Error:", error);
@@ -65,7 +74,7 @@ const DetailPage = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const peopleInfo = await fetchPeople();
-      if (peopleInfo) {
+      if (peopleInfo.cast) {
         setPeoples(peopleInfo.cast.slice(0, 7));
       }
     };
@@ -74,7 +83,6 @@ const DetailPage = (props) => {
     const fetchCommentData = async () => {
       const commentInfo = await fetchComment();
       if (commentInfo) {
-        console.log(commentInfo.results);
         setComments(commentInfo.results);
       }
     };
@@ -88,7 +96,28 @@ const DetailPage = (props) => {
         </div>
         <div>
           <header className="container-header">
-            <ContentsInfo id={id} />
+            <ContentsInfo id={id} real={real} />
+            <div className="container-play">
+              <section>
+                <div className="container-play_btn">
+                  <div className="play">
+                    <div className="icon">
+                      <HiPlay />
+                    </div>
+                    감상하기
+                  </div>
+                </div>
+                <div className="container-play_btn">
+                  <button>
+                    <AiOutlinePlus />
+                    보고싶어요
+                  </button>
+                  <div className="etc">
+                    <button>...</button>
+                  </div>
+                </div>
+              </section>
+            </div>
           </header>
         </div>
         <ul className="select-options">
@@ -136,31 +165,37 @@ const DetailPage = (props) => {
                 ))}
               </ul>
             </section>
-            <section className="info-oneline">
-              <div className="container-review_title">
-                <div className="review-title">
-                  <div>
-                    <h1>
-                      왓챠피디아 사용자 평
-                      <div className="review-number">
-                        <span>{comments.length}</span>
-                      </div>
-                    </h1>
+            {comments && (
+              <section className="info-oneline">
+                <div className="container-review_title">
+                  <div className="review-title">
+                    <div>
+                      <h1>
+                        왓챠피디아 사용자 평
+                        <div className="review-number">
+                          <span>
+                            {comments.length !== 0 ? comments.length : 0}
+                          </span>
+                        </div>
+                      </h1>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <ul className="review-list">
-                {comments.length !== 0
-                  ? comments.map((comment, index) => (
-                      <Comment comment={comment} index={index} key={index} />
-                    ))
-                  : "리뷰가 없습니다."}
-              </ul>
+                <ul className="review-list">
+                  {comments.length !== 0
+                    ? comments.map((comment, index) => (
+                        <Comment comment={comment} index={index} key={index} />
+                      ))
+                    : "리뷰가 없습니다."}
+                </ul>
+              </section>
+            )}
+          </section>
+          {comments && (
+            <section className="container-best_review">
+              <BestComment comment={comments[0]} />
             </section>
-          </section>
-          <section className="container-best_review">
-            <BestComment comment={comments[0]} />
-          </section>
+          )}
         </section>
       </SMain>
     </GlobalLayout>

@@ -8,13 +8,13 @@ const GlobalLayout = ({ children }) => {
 export default GlobalLayout;
 
 const StGlobalContainer = styled.div`
-  max-width: calc(100vw - 300px);
+  max-width: calc(100vw - 400px);
   margin: 0 auto;
   width: 100%;
   background-color: #000;
   color: white;
   height: 100%;
-  padding: 80px 50px 0px 300px;
+  padding: 80px 300px 0px 330px;
   display: flex;
   flex-direction: column;
 

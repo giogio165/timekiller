@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { contentUpdate } from "../global/store/detailSlice";
 import MovieInfoButton from "./MovieInfoButton";
 
 const MovieCard1 = ({ it, number }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const gotoDetailPage = () => {
     navigate(`/detail/${it.id}`);
+    dispatch(contentUpdate(it));
   };
   const [genreNames, setGenreNames] = useState([]);
   const cardClassName = number === 8 ? "MovieCard" : "MovieCard2";
@@ -26,7 +29,7 @@ const MovieCard1 = ({ it, number }) => {
         {
           params: {
             api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "en-US",
+            language: "ko-KR",
           },
         }
       );

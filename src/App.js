@@ -7,7 +7,6 @@ import "./components/css/UpcomingList.css";
 import "./components/css/WebtoonHomeImg.css";
 
 import React from "react";
-// import { Provider } from "@reduxjs/toolkit";
 import {
   DetailPage,
   LibraryPage,
@@ -15,6 +14,7 @@ import {
   SearchPage,
   UpcomingPage,
   WebtoonPage,
+  SearchResultPage,
 } from "./pages/index";
 import { Header, SideBar } from "./components/index";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -32,6 +32,7 @@ function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/library" element={<LibraryPage />} />
           <Route path="/detail/:id" element={<DetailPage />} />
+          <Route path="/search/:keyword" element={<SearchResultPage />} />
         </Routes>
       </Router>
     </>

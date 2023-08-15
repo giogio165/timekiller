@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import MovieInfoButton from "./MovieInfoButton";
-
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { contentUpdate } from "../global/store/detailSlice";
 
 const TvCard = ({ it }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const gotoDetailPage = () => {
     navigate(`/detail/${it.id}`);
+    dispatch(contentUpdate(it));
   };
   const [genreNames, setGenreNames] = useState([]);
 
@@ -24,7 +27,7 @@ const TvCard = ({ it }) => {
         {
           params: {
             api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "en-US",
+            language: "ko-KR",
           },
         }
       );

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import user_image from "../global/user_image.json";
 
 const Comment = (props) => {
-  console.log(props);
-  console.log(user_image[props.index].user_img);
+  // console.log(props);
+  // console.log(user_image[props.index].user_img);
   return (
     <>
       <SComment>

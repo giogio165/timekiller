@@ -2,19 +2,25 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { BiBell } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
-import { useMatch } from "react-router-dom";
+import { useMatch, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { search } from "../global/store/searchSlice";
 
 const Header = () => {
   const searchMatch = useMatch("/search");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [keyword, setKeyword] = useState("");
-
   const onChangeHandle = (event) => {
     setKeyword(event.target.value);
   };
   const onSubmitHandle = (event) => {
     event.preventDefault();
+    setKeyword("");
+    dispatch(search(keyword));
+    navigate(`/search/${keyword}`);
   };
-  console.log(searchMatch);
+
   return (
     <SHeader>
       <nav>
