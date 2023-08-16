@@ -3,6 +3,7 @@ import React from "react";
 import MovieInfoButton from "./MovieInfoButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
 
 const WebtoonCard = ({ it, number }) => {
   // number는 WebtoonPage에서 넘어옴, Carousel에 들어갈 아이템 갯수/ it은 webtoon
@@ -11,8 +12,13 @@ const WebtoonCard = ({ it, number }) => {
   const toDetailPage = () => {
     navigate("/detail");
   };
-
-  const cardClassName = number === 3 ? "WebtoonCard" : "WebtoonCard2";
+  const w = window.innerWidth;
+  const cardClassName =
+    number === 3
+      ? w <= 1500
+        ? "WebtoonCardSmall"
+        : "WebtoonCard"
+      : "WebtoonCard2";
 
   return (
     <div>
@@ -70,3 +76,9 @@ const WebtoonCard = ({ it, number }) => {
 };
 
 export default WebtoonCard;
+
+const SWebtoonCard = styled.div`
+  width: 450px;
+  height: 230px;
+  cursor: pointer;
+`;
