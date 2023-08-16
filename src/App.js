@@ -19,6 +19,7 @@ import {
   LogInPage,
   MyPage,
   SignupPage,
+  SearchResultPage,
 } from "./pages/index";
 import { Header, SideBar } from "./components/index";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -39,6 +40,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/settings" element={<MyPage />} />
           <Route path="/detail/:id" element={<DetailPage />} />
+          <Route path="/search/:keyword" element={<SearchResultPage />} />
         </Routes>
       </Router>
     </>

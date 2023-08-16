@@ -20,8 +20,8 @@ const TvList = ({ it }) => {
         {
           params: {
             api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "en-US",
-            page: 1,
+            language: "ko-KR",
+            page: 2,
           },
         }
       );

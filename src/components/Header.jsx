@@ -3,12 +3,14 @@ import styled from "styled-components";
 import { BiBell } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
 import { useMatch, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { search } from "../global/store/searchSlice";
 
 const Header = () => {
   const searchMatch = useMatch("/search");
-  const [keyword, setKeyword] = useState("");
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [keyword, setKeyword] = useState("");
   const gotoLoginPage = () => {
     navigate("/login");
   };
@@ -18,8 +20,11 @@ const Header = () => {
   };
   const onSubmitHandle = (event) => {
     event.preventDefault();
+    setKeyword("");
+    dispatch(search(keyword));
+    navigate(`/search/${keyword}`);
   };
-  console.log(searchMatch);
+
   return (
     <SHeader>
       <nav>

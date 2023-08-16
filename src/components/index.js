@@ -9,6 +9,7 @@ import Comment from "./Comment";
 import ContentBox from "./ContentBox";
 import ContentsTitle from "./ContentsTitle";
 import GenreBox from "./GenreBox";
+import SearchCard from "./SearchCard";
 
 export {
   Dropdown,
@@ -22,4 +23,5 @@ export {
   ContentBox,
   ContentsTitle,
   GenreBox,
+  SearchCard,
 };

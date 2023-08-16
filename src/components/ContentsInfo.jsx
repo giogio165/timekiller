@@ -1,69 +1,72 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import styled from "styled-components";
+import MovieCard from "./MovieCard";
 
-const ContentsInfo = (id) => {
-  const [info, setInfo] = useState({});
-  //console.log(id.id);
-  const fetchMovie = async () => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyODQ4MGY5NTM0MDFkYjYwZTU1M2U0MTI4NGY1ZjQwNyIsInN1YiI6IjYzNjBmZGI4NDBkMGZlMDA4MjY3ZjUwYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tfm55H9d6vX72r5ZgVUk2HlkmK15hVNdfCiP7NkgWnQ",
-      },
-    };
-
-    try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id.id}?language=ko-KR`,
-        options
-      );
-      const data = await response.json();
-      console.log(data);
-      return data;
-    } catch (error) {
-      console.error("API Error:", error);
-      return null;
-    }
-  };
+const ContentsInfo = (props) => {
+  const [genreNames, setGenreNames] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const movieInfo = await fetchMovie();
-      if (movieInfo) {
-        //console.log(movieInfo);
-        setInfo(movieInfo);
-      }
-    };
-    fetchData();
-  }, []);
+    fetchGenreNames(props.real.genre_ids);
+  }, [props.real.genre_ids]);
+
+  const fetchGenreNames = async (genreCodes) => {
+    try {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/genre/movie/list`,
+        {
+          params: {
+            api_key: "fcdcf37d8779f435786606a2ddd02898",
+            language: "ko-KR",
+          },
+        }
+      );
+
+      const matchingGenres = response.data.genres.filter((genre) =>
+        genreCodes.includes(genre.id)
+      );
+
+      const limitedGenres = matchingGenres.slice(0, 2);
+
+      const genreNames = limitedGenres.map((genre) => genre.name);
+      setGenreNames(genreNames);
+    } catch (error) {
+      console.error("API Error:", error);
+    }
+  };
+  console.log(props.real);
   return (
     <SContentsInfo>
-      {info.id && (
+      {props.real.id && (
         <section type="portrait" className="container-info">
           <div type="portrait" className="container-info_img">
             <img
               alt="노팅힐"
-              src={`https://image.tmdb.org/t/p/w500${info.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500${props.real.poster_path}`}
             />
           </div>
           <div className="contents-info">
-            <h1>{info.title}</h1>
+            <h1>
+              {props.real.hasOwnProperty("title")
+                ? props.real.title
+                : props.real.name}
+            </h1>
             <p className="contents-info_p1">
               <span>
-                <label>{info.genres[0].name}</label> ·{" "}
-                <label>{info.genres[1].name}</label> · {info.runtime}분 ·{" "}
+                <label>{genreNames[0]}</label> ·{" "}
+                <label>{genreNames.length >= 2 ? genreNames[1] : ""}</label> ·{" "}
+                {props.real.runtime}
+                {"분"} ·{" "}
                 <span className="contents-info_score">
-                  {Math.round(info.vote_average * 10) / 10} / 10
+                  {Math.round(props.real.vote_average * 10) / 10} / 10
                 </span>
               </span>
               <span className="separator"></span>
               <span>
-                <span className="age">{info.adult ? 19 : 12}</span>
+                <span className="age">{props.real.adult ? 19 : 12}</span>
               </span>
             </p>
-            <p className="contents-info_p2">{info.overview}</p>
+            <p className="contents-info_p2">{props.real.overview}</p>
           </div>
         </section>
       )}
