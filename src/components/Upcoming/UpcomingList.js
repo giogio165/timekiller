@@ -41,12 +41,12 @@ const UpcomingList = ({ title, sliderTitle }) => {
       console.error("API Error:", error);
     }
   };
-
+  const w = window.innerWidth;
   const sliderSettings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4.5,
+    slidesToShow: w <= 1700 ? (w <= 1500 ? 3 : 3.7) : 4.5,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 3000,
@@ -55,7 +55,7 @@ const UpcomingList = ({ title, sliderTitle }) => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3.5,
+    slidesToShow: w <= 1700 ? (w <= 1500 ? 2.3 : 2.8) : 3.5,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 3000,
@@ -64,7 +64,7 @@ const UpcomingList = ({ title, sliderTitle }) => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1.8,
+    slidesToShow: w <= 1700 ? (w <= 1500 ? 1.2 : 1.5) : 1.8,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 3000,
