@@ -10,6 +10,7 @@ import ContentBox from "./ContentBox";
 import ContentsTitle from "./ContentsTitle";
 import GenreBox from "./GenreBox";
 import SearchCard from "./SearchCard";
+import RelativeCard from "./RelativeCard";
 
 export {
   Dropdown,
@@ -24,4 +25,5 @@ export {
   ContentsTitle,
   GenreBox,
   SearchCard,
+  RelativeCard,
 };

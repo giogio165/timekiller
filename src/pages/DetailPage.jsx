@@ -5,18 +5,18 @@ import { HiPlay } from "react-icons/hi2";
 import { AiOutlinePlus } from "react-icons/ai";
 import {
   People,
-  TempComment,
   Comment,
   BestComment,
   ContentsInfo,
+  RelativeCard,
 } from "../components";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-
-// 컴포넌트 세분화 시키기.
+import { useDispatch, useSelector } from "react-redux";
+import { keep } from "../global/store/keepSlice";
 
 const DetailPage = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const [peoples, setPeoples] = useState([]);
   const [comments, setComments] = useState([]);
   const [similar, setSimilar] = useState([]);
@@ -25,6 +25,10 @@ const DetailPage = () => {
   const real = useSelector((state) => {
     return state.contentUpdate.value;
   });
+  const arr = useSelector((state) => {
+    return state.keep.library;
+  });
+  console.log(arr);
   const options = {
     method: "GET",
     headers: {
@@ -41,6 +45,9 @@ const DetailPage = () => {
     setInform(true);
     setRelative(false);
   };
+  const keepHandler = () => {
+    dispatch(keep(real));
+  };
 
   const fetchPeople = async () => {
     try {
@@ -49,7 +56,7 @@ const DetailPage = () => {
         options
       );
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
       console.error("API Error:", error);
@@ -98,13 +105,16 @@ const DetailPage = () => {
     const fetchRelativeData = async () => {
       const contentsRelative = await fetchRelatives();
       if (contentsRelative) {
-        setSimilar(contentsRelative);
+        // console.log(contentsRelative.results);
+        setSimilar(contentsRelative.results);
       }
     };
     fetchData();
     fetchCommentData();
     fetchRelativeData();
   }, []);
+
+  // console.log(similar);
   return (
     <GlobalLayout>
       <SMain>
@@ -125,7 +135,7 @@ const DetailPage = () => {
                   </div>
                 </div>
                 <div className="container-play_btn">
-                  <button>
+                  <button className="btn" onClick={keepHandler}>
                     <AiOutlinePlus />
                     보고싶어요
                   </button>
@@ -238,7 +248,15 @@ const DetailPage = () => {
               <div></div>
             </div>
             <section className="relative-contents">
-              <div className="contents-list"></div>
+              <div className="contents-list">
+                <div className="contents-list_container">
+                  <ul>
+                    {similar.map((elem, index) => (
+                      <RelativeCard info={elem} key={index} />
+                    ))}
+                  </ul>
+                </div>
+              </div>
               <div></div>
             </section>
           </div>
@@ -348,7 +366,7 @@ const SMain = styled.main`
           grid-auto-flow: column;
           gap: 12px;
 
-          button {
+          .btn {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -363,6 +381,10 @@ const SMain = styled.main`
             color: rgb(255, 255, 255);
             border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 9px 15px;
+
+            &:hover {
+              background-color: rgba(255, 255, 255, 0.15);
+            }
           }
 
           .play {
@@ -402,6 +424,10 @@ const SMain = styled.main`
               border: 1px solid rgba(255, 255, 255, 0.15);
               padding: 9px 15px;
               height: 100%;
+
+              &:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+              }
             }
           }
         }
@@ -586,6 +612,65 @@ const SMain = styled.main`
 
     .relative-contents {
       display: block;
+
+      .contents-list {
+        margin-bottom: 12px;
+
+        .contents-list_container {
+          position: relative;
+
+          ul {
+            position: relative;
+            z-index: 0;
+            white-space: nowrap;
+            margin: 0px -6px;
+            padding: 0;
+            list-style-type: none;
+
+            li {
+              width: 10%;
+              display: inline-block;
+              position: relative;
+              vertical-align: top;
+              padding: 0px 6px;
+              cursor: pointer;
+
+              .img-container {
+                display: block;
+                outline: #000;
+                text-decoration: none;
+                color: #fff;
+                background-color: transparent;
+
+                .img-container2 {
+                  position: relative;
+                  white-space: pre-wrap;
+
+                  .img-container3 {
+                    position: relative;
+                    padding-top: 147.3%;
+                    border-radius: 4px;
+                    overflow: hidden;
+
+                    img {
+                      position: absolute;
+                      top: 0px;
+                      left: 0px;
+                      z-index: 2;
+                      width: 100%;
+                      height: 100%;
+                      object-fit: cover;
+                      border-style: none;
+                      overflow: clip;
+                      overflow-clip-margin: content-box;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 `;

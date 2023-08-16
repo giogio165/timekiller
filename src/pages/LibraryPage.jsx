@@ -4,8 +4,13 @@ import { GlobalLayout } from "../global";
 import { Link } from "react-router-dom";
 import { TbMovie } from "react-icons/tb";
 import { BiBook, BiMoviePlay } from "react-icons/bi";
+import { useSelector } from "react-redux";
 
 const LibraryPage = () => {
+  const list = useSelector((state) => {
+    return state.keep.library;
+  });
+  console.log(list);
   return (
     <GlobalLayout>
       <SLibraryPage>
