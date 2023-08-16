@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { BiBell } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
-import { useMatch } from "react-router-dom";
+import { useMatch, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const searchMatch = useMatch("/search");
   const [keyword, setKeyword] = useState("");
+
+  const navigate = useNavigate();
+  const gotoLoginPage = () => {
+    navigate("/login");
+  };
 
   const onChangeHandle = (event) => {
     setKeyword(event.target.value);
@@ -68,7 +73,7 @@ const Header = () => {
               <div>
                 <div className="menu-account_detail">
                   <button className="account-btn">
-                    <div className="img-container">
+                    <div className="img-container" onClick={gotoLoginPage}>
                       <img
                         src="https://i.pinimg.com/236x/90/c7/f7/90c7f7afa68ea9b875eafbe887f454e8.jpg"
                         alt="user"

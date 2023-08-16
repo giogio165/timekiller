@@ -44,8 +44,7 @@ const TvList = ({ it }) => {
 
   return (
     <div className="MovieList">
-      <h3>{it}</h3>
-
+      <h2 className="MovieList__title">{it}</h2>
       <Slider {...sliderSettings}>
         {tvShows.map((it) => (
           <TvCard it={it} key={it.id} />

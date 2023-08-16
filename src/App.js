@@ -4,10 +4,11 @@ import "./components/css/MovieList2.css";
 import "./components/css/MovieInfoButton.css";
 import "./components/css/HomeVideo.css";
 import "./components/css/UpcomingList.css";
-import "./components/css/WebtoonHomeImg.css";
+import "./components/css/WebtoonPage.css";
+import "./components/css/LoginPage.css";
+import "./components/css/SignupPage.css";
 
 import React from "react";
-// import { Provider } from "@reduxjs/toolkit";
 import {
   DetailPage,
   LibraryPage,
@@ -15,6 +16,9 @@ import {
   SearchPage,
   UpcomingPage,
   WebtoonPage,
+  LogInPage,
+  MyPage,
+  SignupPage,
 } from "./pages/index";
 import { Header, SideBar } from "./components/index";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -31,6 +35,9 @@ function App() {
           <Route path="/upcoming" element={<UpcomingPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/library" element={<LibraryPage />} />
+          <Route path="/login" element={<LogInPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/settings" element={<MyPage />} />
           <Route path="/detail/:id" element={<DetailPage />} />
         </Routes>
       </Router>

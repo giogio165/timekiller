@@ -1,5 +1,4 @@
 import React from "react";
-import HomeVideo from "../components/HomeVideo";
 import WebtoonHomeImg from "../components/WebtoonHomeImg";
 import WebtoonList from "../components/WebtoonList";
 import { GlobalLayout } from "../global";

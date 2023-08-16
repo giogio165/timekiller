@@ -1,44 +1,70 @@
 import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import MovieInfoButton from "./MovieInfoButton";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const WebtoonCard = ({ it, number }) => {
+  // number는 WebtoonPage에서 넘어옴, Carousel에 들어갈 아이템 갯수/ it은 webtoon
+  console.log(it);
   const navigate = useNavigate();
   const toDetailPage = () => {
     navigate("/detail");
   };
-  const cardClassName = number === 8 ? "MovieCard" : "MovieCard2";
+
+  const cardClassName = number === 3 ? "WebtoonCard" : "WebtoonCard2";
+
   return (
-    <div className={cardClassName} onClick={toDetailPage}>
-      <div className="MovieCard__img-wrapper">
-        <img src={it.img} alt={`${it.title} Poster`} className="movie-poster" />
-        <div className={cardClassName + "__overlay"}>
-          {number === 8 ? (
-            <div className="movie-info">
-              <MovieInfoButton />
-              <h3 className="it.title">{it.title}</h3>
-              <div>{it.author}</div>
-              <div>
-                찜
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  style={{
-                    "--fa-primary-color": "#ffffff",
-                    "--fa-secondary-color": "#ffffff",
-                  }}
-                />
-                {it.fanCount}
+    <div>
+      {number === 3 ? ( // 첫번째 webtoon Carousel
+        <div>
+          <div className="webtoon-info">
+            <div className="WebtoonCard__subtitle">왓차오리지널 웹툰</div>
+            <div className="WebtoonCard__title">{it.title}</div>
+          </div>
+          <div className={cardClassName} onClick={toDetailPage}>
+            <div className="WebtoonCard__img-wrapper">
+              <img
+                src={it.img}
+                alt={`${it.title} Poster`}
+                className="Webtoon__poster"
+              />
+              <div className={cardClassName + "__overlay"}></div>
+              <div className="WebtoonCard__freeTag">전체 무료</div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        //두번째 webtoon Carousel
+        <div className={cardClassName} onClick={toDetailPage}>
+          <div className="WebtoonCard__img-wrapper">
+            <div className="WebtoonCard__purchaseTag">개별구매</div>
+            <img
+              src={it.img}
+              alt={`${it.title} Poster`}
+              className="Webtoon__poster"
+            />
+            <div className={cardClassName + "__overlay"}>
+              <div className="webtoon-info2">
+                <MovieInfoButton />
+                <h3 className="WebtoonCard2__title">{it.title}</h3>
+                <div>{it.author}</div>
+                <div>
+                  찜
+                  <FontAwesomeIcon
+                    icon={faHeart}
+                    style={{
+                      "--fa-primary-color": "#ffffff",
+                      "--fa-secondary-color": "#ffffff",
+                    }}
+                  />
+                  {it.fanCount}
+                </div>
               </div>
             </div>
-          ) : (
-            ""
-          )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

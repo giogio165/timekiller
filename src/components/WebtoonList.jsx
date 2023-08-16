@@ -35,7 +35,7 @@ const WebtoonList = ({ it, number }) => {
 
   return (
     <div className="MovieList">
-      <h1>{it}</h1>
+      <h2 className="WebtoonList__title">{it}</h2>
       <Slider {...sliderSettings}>
         {webtoons.map((it) => (
           <div key={it.id}>

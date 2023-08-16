@@ -7,6 +7,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const UpcomingCard = ({ it, number }) => {
   const navigate = useNavigate();
+  console.log(it);
 
   const gotoDetailPage = () => {
     navigate(`/detail/${it.id}`);
@@ -27,7 +28,7 @@ const UpcomingCard = ({ it, number }) => {
           <div className="UpcomingCard__img-wrapper">
             <div className={cardClassName + "__overlay"}></div>
             <img
-              src={`https://image.tmdb.org/t/p/w500${it.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500${it.backdrop_path}`}
               alt={`${it.original_title} Poster`}
               className={cardPosterClassName}
             />
