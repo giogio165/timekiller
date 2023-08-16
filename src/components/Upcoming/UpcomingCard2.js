@@ -38,7 +38,7 @@ const UpcomingCard = ({ it, number }) => {
       ) : (
         <div className="UpcomingCard__img-wrapper">
           <img
-            src={`https://image.tmdb.org/t/p/w500${it.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w500${it.backdrop_path}`}
             alt={`${it.original_title} Poster`}
             className={cardPosterClassName}
           />
