@@ -46,14 +46,14 @@ const HomeVideo = ({ title }) => {
       console.error("API Error:", error);
     }
   };
-
+  const w = window.innerWidth;
   return (
     <div className="HomeVideo">
       <h1 className="HomeVideo__home">{title}</h1>
       <div className="HomeVideo__video">
         {video ? (
           <iframe
-            width="1400"
+            width={w <= 1500 ? "1050" : "1400"}
             height="500"
             src={`https://www.youtube.com/embed/${video.key}?autoplay=1&mute=1`}
             title="Video"

@@ -42,12 +42,12 @@ const MovieList2 = () => {
       console.error("API Error:", error);
     }
   };
-
+  console.log(window.innerWidth);
   const sliderSettings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: window.innerWidth <= 1500 ? 2 : 3,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 3000,

@@ -2,7 +2,7 @@
   position: relative;
 }
 .HomeVideo__text {
-  width: 1400px;
+  width: 100%;
   height: 120px;
   position: absolute;
   bottom: 0px;
