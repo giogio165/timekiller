@@ -7,7 +7,7 @@
   font-size: 14px;
   font-weight: 500;
   padding: 8px 16px;
-  margin: 0 8px 0 8px;
+  margin: 0 8px 20px 8px;
 }
 .Home__buttonClicked {
   border: 2px solid white;
@@ -30,9 +30,12 @@
   width: 1500px;
   height: 300px;
   color: white;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
+.MovieList__title {
+  margin: 0px;
+}
 /* MovieCard.js css */
 
 .MovieCard {
@@ -40,12 +43,12 @@
   height: 230px;
   cursor: pointer;
   transition: transform 0.3s;
-  padding: 30px 0 30px 0;
+  padding: 20px 0 20px 0;
 }
 
 .MovieCard2 {
   width: 450px;
-  height: 300px;
+  height: 270px;
   cursor: pointer;
 }
 
@@ -66,9 +69,6 @@
 
 .MovieCard__img-wrapper {
   position: relative;
-  /* 웹툰 설정 */
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA3t6us9u8t1fDovqIXqnY0RiIx-9bJX75IIceoNcnrjyHU02W-POT1XZFj-7gdLt85pg&usqp=CAU);
-  background-size: cover;
   border-radius: 8px;
   z-index: 1;
 }
