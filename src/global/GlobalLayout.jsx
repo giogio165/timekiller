@@ -9,19 +9,17 @@ export default GlobalLayout;
 
 const StGlobalContainer = styled.div`
   margin: 0 auto;
-  width: 100%;
   background-color: #000;
   color: white;
-  height: 100%;
-  padding: 80px 300px 0px 550px;
+  padding: 80px 300px 0px 330px;
   display: flex;
   flex-direction: column;
 
   @media (max-width: 1700px) {
-    max-width: calc(1680px - 50%);
+    max-width: calc(1680px - 300px);
   }
   @media (max-width: 1560px) {
-    max-width: 1500px;
+    max-width: calc(1500px - 300px);
   }
   @media (max-width: 1380px) {
     max-width: 120rem;
