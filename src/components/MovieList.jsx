@@ -44,8 +44,7 @@ const MovieList = ({ it }) => {
 
   return (
     <div className="MovieList">
-      <h1>{it}</h1>
-
+      <h2 className="MovieList__title">{it}</h2>
       <Slider {...sliderSettings}>
         {movies.map((it) => (
           <div key={it.id}>

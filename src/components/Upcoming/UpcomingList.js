@@ -46,7 +46,7 @@ const UpcomingList = ({ title, sliderTitle }) => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 4.5,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 3000,
