@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import styled from "styled-components";
-import MovieCard from "./MovieCard";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const ContentsInfo = (props) => {
   const [genreNames, setGenreNames] = useState([]);
+  const [movieRuntime, setMovieRuntime] = useState("");
+  const [episodes, setEpisodes] = useState("");
+  const real = useSelector((state) => {
+    return state.contentUpdate.value;
+  });
+  console.log(real);
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyODQ4MGY5NTM0MDFkYjYwZTU1M2U0MTI4NGY1ZjQwNyIsInN1YiI6IjYzNjBmZGI4NDBkMGZlMDA4MjY3ZjUwYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tfm55H9d6vX72r5ZgVUk2HlkmK15hVNdfCiP7NkgWnQ",
+    },
+  };
+  console.log(props);
 
-  useEffect(() => {
-    fetchGenreNames(props.real.genre_ids);
-  }, [props.real.genre_ids]);
-
-  const fetchGenreNames = async (genreCodes) => {
+  const fetchGenreName = async (genreCode) => {
     try {
       const response = await axios.get(
         `https://api.themoviedb.org/3/genre/movie/list`,
@@ -23,7 +34,7 @@ const ContentsInfo = (props) => {
       );
 
       const matchingGenres = response.data.genres.filter((genre) =>
-        genreCodes.includes(genre.id)
+        genreCode.includes(genre.id)
       );
 
       const limitedGenres = matchingGenres.slice(0, 2);
@@ -34,10 +45,55 @@ const ContentsInfo = (props) => {
       console.error("API Error:", error);
     }
   };
-  console.log(props.real);
+  const fetchMovieDetail = async () => {
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${props.id}?language=ko-KR`,
+        options
+      );
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("API Error:", error);
+      return null;
+    }
+  };
+  const fetchTvDetail = async () => {
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/tv/${props.id}?language=ko-KR`,
+        options
+      );
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("API Error:", error);
+      return null;
+    }
+  };
+  useEffect(() => {
+    fetchGenreName(props.real.genre_ids);
+    const fetchDetails = async () => {
+      const movieDetail = await fetchMovieDetail();
+      if (movieDetail) {
+        console.log(movieRuntime);
+        setMovieRuntime(movieDetail);
+      }
+    };
+    const fetchTvDetails = async () => {
+      const tvDetail = await fetchTvDetail();
+      if (tvDetail) {
+        setEpisodes(tvDetail);
+      }
+    };
+
+    fetchDetails();
+    fetchTvDetails();
+  }, [props.real.genre_ids]);
+
   return (
     <SContentsInfo>
-      {props.real.id && (
+      {props.real && (
         <section type="portrait" className="container-info">
           <div type="portrait" className="container-info_img">
             <img
@@ -53,12 +109,20 @@ const ContentsInfo = (props) => {
             </h1>
             <p className="contents-info_p1">
               <span>
-                <label>{genreNames[0]}</label> ·{" "}
-                <label>{genreNames.length >= 2 ? genreNames[1] : ""}</label> ·{" "}
-                {props.real.runtime}
-                {"분"} ·{" "}
+                <label>{genreNames[0]}</label>
+                <label>
+                  {genreNames.length >= 2 ? " · " + genreNames[1] : ""}
+                </label>{" "}
+                ·{" "}
+                <span>
+                  {props.real.name !== undefined &&
+                  props.real.name === episodes.name
+                    ? episodes?.episode_run_time[0] + "화 "
+                    : movieRuntime.runtime + "분 "}
+                </span>
+                ·{" "}
                 <span className="contents-info_score">
-                  {Math.round(props.real.vote_average * 10) / 10} / 10
+                  {Math.round(props.real.vote_average * 10) / 10}점
                 </span>
               </span>
               <span className="separator"></span>
