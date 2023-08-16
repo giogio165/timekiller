@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
 const SearchCard = ({ info }) => {
-  console.log(info.media_type);
   return (
     <>
       {info && (

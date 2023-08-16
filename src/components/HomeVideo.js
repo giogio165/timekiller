@@ -17,7 +17,7 @@ const HomeVideo = ({ title }) => {
         {
           params: {
             api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "ko-KR",
+            language: "en-US",
             page: 1,
           },
         }
@@ -34,7 +34,7 @@ const HomeVideo = ({ title }) => {
         {
           params: {
             api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "ko-KR",
+            language: "en-US",
           },
         }
       );
