@@ -9,7 +9,7 @@ const searchSlice = createSlice({
   initialState,
   reducers: {
     search: (state, action) => {
-      state.keyword = action.payload;
+      state.value = action.payload;
     },
   },
 });
