@@ -4,7 +4,6 @@ import axios from "axios";
 const HomeVideo = ({ title }) => {
   const [movies, setMovies] = useState([]);
   const [video, setVideo] = useState(null);
-  console.log(movies[0].id);
 
   useEffect(() => {
     fetchMovies();
