@@ -11,9 +11,27 @@ const LogInPage = () => {
   //로그인 상태 확인 할 수 있음 -> 리덕스 go
   const [login, setLogin] = useState(false);
 
+  const [emailInputcheck, setEmailInputCheck] = useState(false);
+  const [emailFocused, setEmailFocused] = useState(false);
+
+  const [passwordInputCheck, setPasswordInputCheck] = useState(false);
+  const [passwordFocused, setPasswordFocused] = useState(false);
+
   const navigate = useNavigate();
   const gotoSignupPage = () => {
     navigate(`/signup`);
+  };
+
+  // 유효성검사
+  const checkEmail = (e) => {
+    const regExp =
+      /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    setEmailInputCheck(regExp.test(e.target.value));
+  };
+  const checkPassword = (e) => {
+    const regex =
+      /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{10,}$/;
+    setPasswordInputCheck(regex.test(e.target.value));
   };
 
   const handleEmailLogin = async (e) => {
@@ -58,7 +76,19 @@ const LogInPage = () => {
                 placeholder="이메일"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                onFocus={() => setEmailFocused(true)}
+                onBlur={checkEmail}
               />
+              {!emailInputcheck && emailFocused ? (
+                <div className="error-mark"></div>
+              ) : (
+                ""
+              )}
+              {emailInputcheck && emailFocused ? (
+                <div className="success-mark"></div>
+              ) : (
+                ""
+              )}
             </div>
             <div className="inputBox">
               <input
@@ -67,7 +97,19 @@ const LogInPage = () => {
                 placeholder="비밀번호"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                onFocus={() => setPasswordFocused(true)}
+                onBlur={checkPassword}
               />
+              {!passwordInputCheck && passwordFocused ? (
+                <div className="error-mark"></div>
+              ) : (
+                ""
+              )}
+              {passwordInputCheck && passwordFocused ? (
+                <div className="success-mark"></div>
+              ) : (
+                ""
+              )}
             </div>
 
             <div className="LoginPage__loginBtnCon">

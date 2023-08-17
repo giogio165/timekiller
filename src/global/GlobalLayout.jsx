@@ -8,6 +8,7 @@ const GlobalLayout = ({ children }) => {
 export default GlobalLayout;
 
 const StGlobalContainer = styled.div`
+  width: 100%;
   margin: 0 auto;
   background-color: #000;
   color: white;
@@ -15,7 +16,7 @@ const StGlobalContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 1700px) {
+  /* @media (max-width: 1700px) {
     max-width: calc(1680px - 300px);
   }
   @media (max-width: 1560px) {
@@ -26,7 +27,7 @@ const StGlobalContainer = styled.div`
   }
   @media (max-width: 1240px) {
     max-width: 90%;
-  }
+  } */
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TbMovie } from "react-icons/tb";
 import { BiBook, BiMoviePlay } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
@@ -9,6 +9,14 @@ import { LuInbox } from "react-icons/lu";
 // 추후에 컴포넌트 세분화시키기
 
 const SideBar = () => {
+  const navigate = useNavigate();
+  const handleNavigation = (route) => {
+    navigate(route);
+  };
+  const [activeItem, setActiveItem] = useState(null);
+  const handleItemClick = (index) => {
+    setActiveItem(index);
+  };
   return (
     <SSideBar>
       <div className="container_img">
@@ -20,57 +28,97 @@ const SideBar = () => {
       <section className="sidebar-section">
         <ul className="sidebar-section_ul">
           <li className="li-custom">
-            <Link to="/" className="li-custom_list">
+            <div
+              className={`${
+                activeItem === 0 ? "li-custom_list_active" : "li-custom_list"
+              }`}
+              onClick={() => {
+                handleItemClick(0);
+                handleNavigation("/");
+              }}
+            >
               <div className="li-custom_info">
                 <div className="li-custom_icon">
                   <TbMovie />
                 </div>
               </div>
               비디오
-            </Link>
+            </div>
           </li>
           <li className="li-custom">
-            <Link to="/webtoon" className="li-custom_list">
+            <div
+              className={`${
+                activeItem === 1 ? "li-custom_list_active" : "li-custom_list"
+              }`}
+              onClick={() => {
+                handleItemClick(1);
+                handleNavigation("/webtoon");
+              }}
+            >
               <div className="li-custom_info">
                 <div className="li-custom_icon">
                   <BiBook />
                 </div>
               </div>
               웹툰
-            </Link>
+            </div>
           </li>
           <li className="li-custom">
-            <Link to="/upcoming" className="li-custom_list">
+            <div
+              className={`${
+                activeItem === 2 ? "li-custom_list_active" : "li-custom_list"
+              }`}
+              onClick={() => {
+                handleItemClick(2);
+                handleNavigation("/upcoming");
+              }}
+            >
               <div className="li-custom_info">
                 <div className="li-custom_icon">
                   <BiMoviePlay />
                 </div>
               </div>
               개봉관
-            </Link>
+            </div>
           </li>
         </ul>
         <hr />
         <ul className="sidebar-section_ul">
           <li className="li-custom">
-            <Link to="/search" className="li-custom_list">
+            <div
+              className={`${
+                activeItem === 3 ? "li-custom_list_active" : "li-custom_list"
+              }`}
+              onClick={() => {
+                handleItemClick(3);
+                handleNavigation("/search");
+              }}
+            >
               <div className="li-custom_info">
                 <div className="li-custom_icon">
                   <BiSearch />
                 </div>
               </div>
               찾기
-            </Link>
+            </div>
           </li>
           <li className="li-custom">
-            <Link to="/library" className="li-custom_list">
+            <div
+              className={`${
+                activeItem === 4 ? "li-custom_list_active" : "li-custom_list"
+              }`}
+              onClick={() => {
+                handleItemClick(4);
+                handleNavigation("/library");
+              }}
+            >
               <div className="li-custom_info">
                 <div className="li-custom_icon">
                   <LuInbox />
                 </div>
               </div>
               보관함
-            </Link>
+            </div>
           </li>
         </ul>
       </section>
@@ -124,37 +172,16 @@ const SSideBar = styled.nav`
         padding: 0;
         margin: 0;
 
-        .li-custom_list {
+        .li-custom_info {
           display: flex;
-          flex-direction: row;
+          position: relative;
           align-items: center;
-          width: 100%;
-          padding: 8px 12px;
-          border: 0;
-          border-radius: 8px;
-          appearance: none;
-          outline: none;
-          font-size: 14px;
-          font-weight: 400;
-          letter-spacing: 0px;
-          text-decoration: none;
-          line-height: 20px;
-          background: #303133;
-          color: #fff;
-          box-sizing: border-box;
-          cursor: pointer;
+          align-self: stretch;
+          margin: 0 10px 0 0;
 
-          .li-custom_info {
-            display: flex;
-            position: relative;
-            align-items: center;
-            align-self: stretch;
-            margin: 0 10px 0 0;
-
-            .li-custom_icon {
-              color: #fff;
-              font-size: 20px;
-            }
+          .li-custom_icon {
+            color: #fff;
+            font-size: 20px;
           }
         }
       }
