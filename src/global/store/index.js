@@ -1,5 +1,17 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { persistReducer } from "redux-persist";
+import {
+  configureStore,
+  combineReducers,
+  getDefaultMiddleware,
+} from "@reduxjs/toolkit";
+import {
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import searchSlice from "./searchSlice";
 import detailSlice from "./detailSlice";
@@ -11,18 +23,16 @@ const rootReducer = combineReducers({
   keep: keepSlice.reducer,
 });
 
-// const persistConfig = {
-//   key: "root",
-//   storage,
-//   whitelist: ["searchSlice", "detailSlice", "keepSlice"],
-// };
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["searchSlice", "detailSlice", "keepSlice"],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-  reducer: {
-    search: searchSlice.reducer,
-    contentUpdate: detailSlice.reducer,
-    keep: keepSlice.reducer,
-  },
+  reducer: persistedReducer,
 });
 
 export default store;

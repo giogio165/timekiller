@@ -586,6 +586,7 @@ const SMain = styled.main`
     padding-right: 40px;
     padding-left: 40px;
     overflow: hidden;
+    width: 100%;
 
     .relative-title {
       display: flex;
@@ -612,6 +613,7 @@ const SMain = styled.main`
 
     .relative-contents {
       display: block;
+      overflow: hidden;
 
       .contents-list {
         margin-bottom: 12px;
@@ -626,6 +628,7 @@ const SMain = styled.main`
             margin: 0px -6px;
             padding: 0;
             list-style-type: none;
+            width: 100%;
 
             li {
               width: 10%;
