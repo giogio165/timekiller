@@ -7,6 +7,7 @@ import "./components/css/UpcomingList.css";
 import "./components/css/WebtoonPage.css";
 import "./components/css/LoginPage.css";
 import "./components/css/SignupPage.css";
+import "./components/css/SideBar.css";
 
 import React from "react";
 import {
@@ -38,7 +39,6 @@ function App() {
           <Route path="/library" element={<LibraryPage />} />
           <Route path="/login" element={<LogInPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/settings" element={<MyPage />} />
           <Route path="/detail/:id" element={<DetailPage />} />
           <Route path="/search/:keyword" element={<SearchResultPage />} />
         </Routes>
