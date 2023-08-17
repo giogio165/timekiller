@@ -11,71 +11,79 @@ const LibraryPage = () => {
   const list = useSelector((state) => {
     return state.keep.library;
   });
+  const checkLogin = useSelector((state) => {
+    return state.isLogin.login;
+  });
+  console.log(checkLogin);
   console.log(list);
   return (
     <GlobalLayout>
-      <SLibraryPage>
-        <div></div>
-        <div className="wrapper">
-          <div className="library-title">
-            <h1>보관함</h1>
-          </div>
-          <section className="container">
-            <ul className="container-ul">
-              <li>
-                <Link to="/" className="li-custom">
-                  <div className="li-custom_info">
-                    <div className="li-custom_icon">
-                      <TbMovie />
+      {checkLogin ? (
+        <SLibraryPage>
+          <div></div>
+          <div className="wrapper">
+            <div className="library-title">
+              <h1>보관함</h1>
+            </div>
+            <section className="container">
+              <ul className="container-ul">
+                <li>
+                  <Link to="/" className="li-custom">
+                    <div className="li-custom_info">
+                      <div className="li-custom_icon">
+                        <TbMovie />
+                      </div>
+                      <div className="li-custom_title">비디오</div>
                     </div>
-                    <div className="li-custom_title">비디오</div>
-                  </div>
-                  <hr type="regular" />
-                </Link>
-              </li>
-              <li>
-                <Link to="/webtoon" className="li-custom">
-                  <div className="li-custom_info">
-                    <div className="li-custom_icon">
-                      <BiBook />
+                    <hr type="regular" />
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/webtoon" className="li-custom">
+                    <div className="li-custom_info">
+                      <div className="li-custom_icon">
+                        <BiBook />
+                      </div>
+                      <div className="li-custom_title">웹툰</div>
                     </div>
-                    <div className="li-custom_title">웹툰</div>
-                  </div>
-                  <hr type="regular" />
-                </Link>
-              </li>
-              <li>
-                <Link to="/upcoming" className="li-custom">
-                  <div className="li-custom_info">
-                    <div className="li-custom_icon">
-                      <BiMoviePlay />
+                    <hr type="regular" />
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/upcoming" className="li-custom">
+                    <div className="li-custom_info">
+                      <div className="li-custom_icon">
+                        <BiMoviePlay />
+                      </div>
+                      <div className="li-custom_title">개봉작</div>
                     </div>
-                    <div className="li-custom_title">개봉작</div>
+                    <hr type="regular" />
+                  </Link>
+                </li>
+              </ul>
+            </section>
+            <section className="container">
+              <div className="wrapper-title">
+                <div className="container-title">
+                  <div>
+                    <h1>최근 보고싶어요한 콘텐츠</h1>
                   </div>
-                  <hr type="regular" />
-                </Link>
-              </li>
-            </ul>
-          </section>
-          <section className="container">
-            <div className="wrapper-title">
-              <div className="container-title">
-                <div>
-                  <h1>최근 보고싶어요한 콘텐츠</h1>
                 </div>
               </div>
-            </div>
-            <div className="wrapper-contents">
-              <ul className="contents-ul">
-                {list.map((elem, index) => (
-                  <LibraryCard elem={elem} key={index} />
-                ))}
-              </ul>
-            </div>
-          </section>
-          <section className="container"></section>
-        </div>
-      </SLibraryPage>
+              <div className="wrapper-contents">
+                <ul className="contents-ul">
+                  {list.map((elem, index) => (
+                    <LibraryCard elem={elem} key={index} />
+                  ))}
+                </ul>
+              </div>
+            </section>
+            <section className="container"></section>
+          </div>
+        </SLibraryPage>
+      ) : (
+        <h1 className="warning">로그인이 필요합니다.</h1>
+      )}
     </GlobalLayout>
   );
 };
@@ -206,5 +214,11 @@ const SLibraryPage = styled.main`
         }
       }
     }
+  }
+
+  .warning {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;

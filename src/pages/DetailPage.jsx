@@ -324,16 +324,6 @@ const SMain = styled.main`
         outline: none 0;
         background: none;
       }
-      /* .li-btn2::after {
-        content: "";
-        display: inline-block;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        background: #fff;
-        width: 100%;
-        height: 2px;
-      } */
     }
   }
 
@@ -624,18 +614,20 @@ const SMain = styled.main`
           ul {
             position: relative;
             z-index: 0;
-            white-space: nowrap;
             margin: 0px -6px;
             padding: 0;
             list-style-type: none;
             width: 100%;
+            display: flex;
+            flex: auto;
+            flex-wrap: wrap;
 
             li {
               width: 10%;
               display: inline-block;
               position: relative;
               vertical-align: top;
-              padding: 0px 6px;
+              padding: 6px 6px;
               cursor: pointer;
 
               .img-container {

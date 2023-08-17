@@ -16,17 +16,19 @@ import storage from "redux-persist/lib/storage";
 import searchSlice from "./searchSlice";
 import detailSlice from "./detailSlice";
 import keepSlice from "./keepSlice";
+import loginSlice from "./loginSlice";
 
 const rootReducer = combineReducers({
   search: searchSlice.reducer,
   contentUpdate: detailSlice.reducer,
   keep: keepSlice.reducer,
+  isLogin: loginSlice.reducer,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["searchSlice", "detailSlice", "keepSlice"],
+  whitelist: ["searchSlice", "detailSlice", "keepSlice", "loginSlice"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

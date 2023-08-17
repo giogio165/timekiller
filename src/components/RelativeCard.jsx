@@ -11,7 +11,11 @@ const RelativeCard = ({ info }) => {
             <div className="img-container2">
               <div className="img-container3">
                 <img
-                  src={`https://image.tmdb.org/t/p/w500${info.poster_path}`}
+                  src={
+                    info.poster_path != null
+                      ? `https://image.tmdb.org/t/p/w500${info.poster_path}`
+                      : "https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg"
+                  }
                   alt="img"
                 />
               </div>
@@ -30,7 +34,7 @@ const SRelativeCard = styled.li`
   display: inline-block;
   position: relative;
   vertical-align: top;
-  padding: 0px 6px;
+  padding: 6px 6px;
   cursor: pointer;
 
   .img-container {
