@@ -69,7 +69,7 @@ const SearchResultPage = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [word]);
 
   console.log(list);
   return (

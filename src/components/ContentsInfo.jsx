@@ -98,7 +98,7 @@ const ContentsInfo = (props) => {
           <div type="portrait" className="container-info_img">
             <img
               alt="노팅힐"
-              src={`https://image.tmdb.org/t/p/w500${props.real.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w300${props.real.poster_path}`}
             />
           </div>
           <div className="contents-info">
