@@ -11,6 +11,8 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [keyword, setKeyword] = useState("");
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const dropdownRef = useRef(null);
   const word = useSelector((state) => {
     return state.search.value;
   });
@@ -27,9 +29,6 @@ const Header = () => {
   const goHome = () => {
     navigate("/");
   };
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-
-  const dropdownRef = useRef(null);
 
   const gotoLibrary = () => {
     navigate("/library");
@@ -63,7 +62,7 @@ const Header = () => {
     dispatch(search(keyword));
     navigate(`/search/${keyword}`);
   };
-
+  console.log(word);
   return (
     <SHeader>
       <nav>

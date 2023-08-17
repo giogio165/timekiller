@@ -1,24 +1,32 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { contentUpdate } from "../global/store/detailSlice";
 
 const LibraryCard = ({ elem }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const goDetailPage = () => {
+    navigate(`/detail/${elem.id}`);
+    dispatch(contentUpdate(elem));
+  };
   console.log(elem);
   return (
     <>
       <SLibraryCard>
         <div>
-          <Link to={`detail:/${872585}`} className="container-contents">
+          <div className="container-contents" onClick={goDetailPage}>
             <div className="contents-info">
               <div className="container-img">
                 <img
-                  src={`https://image.tmdb.org/t/p/w500${elem.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/w300${elem.poster_path}`}
                 />
               </div>
               <p className="title">{elem.title || elem.name}</p>
               <p className="type">영화</p>
             </div>
-          </Link>
+          </div>
         </div>
         <article></article>
       </SLibraryCard>

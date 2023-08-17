@@ -57,7 +57,7 @@ const MovieCard1 = ({ it, number }) => {
       <div className="MovieCard__img-wrapper">
         {number === 8 ? (
           <img
-            src={`https://image.tmdb.org/t/p/w500${it.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w300${it.poster_path}`}
             alt={`${it.original_title} Poster`}
             className={imgPosterName}
           />
