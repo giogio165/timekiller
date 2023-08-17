@@ -66,9 +66,6 @@
 
 .MovieCard__img-wrapper {
   position: relative;
-  /* 웹툰 설정 */
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA3t6us9u8t1fDovqIXqnY0RiIx-9bJX75IIceoNcnrjyHU02W-POT1XZFj-7gdLt85pg&usqp=CAU);
-  background-size: cover;
   border-radius: 8px;
   z-index: 1;
 }

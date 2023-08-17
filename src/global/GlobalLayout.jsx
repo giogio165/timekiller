@@ -8,6 +8,7 @@ const GlobalLayout = ({ children }) => {
 export default GlobalLayout;
 
 const StGlobalContainer = styled.div`
+  width: 100%;
   margin: 0 auto;
   background-color: #000;
   background: #000;

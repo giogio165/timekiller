@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { BiBell } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
@@ -21,6 +21,29 @@ const Header = () => {
   const goHome = () => {
     navigate("/");
   };
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+
+  const dropdownRef = useRef(null);
+
+  const gotoLibrary = () => {
+    navigate("/library");
+  };
+  // 다른 곳 클릭시 드롭다운 없어지기
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownVisible(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  const toggleDropdown = () => {
+    setIsDropdownVisible((prevState) => !prevState);
+  };
   const onChangeHandle = (event) => {
     setKeyword(event.target.value);
   };
@@ -30,6 +53,7 @@ const Header = () => {
     dispatch(search(keyword));
     navigate(`/search/${keyword}`);
   };
+
   return (
     <SHeader>
       <nav>
@@ -84,7 +108,13 @@ const Header = () => {
               <div>
                 <div className="menu-account_detail">
                   <button className="account-btn">
-                    <div className="img-container" onClick={gotoLoginPage}>
+                    <div
+                      className="img-container"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleDropdown();
+                      }}
+                    >
                       <img
                         src="https://i.pinimg.com/236x/90/c7/f7/90c7f7afa68ea9b875eafbe887f454e8.jpg"
                         alt="user"
@@ -92,6 +122,15 @@ const Header = () => {
                     </div>
                   </button>
                 </div>
+                {isDropdownVisible && (
+                  <div className="dropdown-content" ref={dropdownRef}>
+                    <ul>
+                      <li onClick={gotoLoginPage}>로그인</li>
+                      {/* 로그인 상태에 따라 다르게 보이게 할 것 */}
+                      <li onClick={gotoLibrary}>보관함</li>
+                    </ul>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -223,6 +262,35 @@ const SHeader = styled.header`
               }
             }
           }
+        }
+
+        .dropdown-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 200px;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          background-color: rgb(40, 41, 42);
+          border: none;
+          z-index: 1;
+          cursor: pointer;
+          border-radius: 4px;
+          overflow: hidden;
+        }
+        .dropdown-content ul {
+          padding: 4px 0;
+          margin: 4px 0;
+        }
+        .dropdown-content li {
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          list-style: none;
+          color: white;
+          padding: 0 16px;
+          height: 40px;
         }
 
         .menu-account {
