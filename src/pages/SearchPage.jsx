@@ -9,15 +9,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const SearchPage = () => {
-  const sliderSettings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: window.innerWidth <= 1500 ? 5 : 8,
-    slidesToScroll: 1,
-    autoplay: false,
-    autoplaySpeed: 3000,
-  };
   return (
     <GlobalLayout>
       <SSearchPage>

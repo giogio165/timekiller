@@ -118,6 +118,9 @@
   opacity: 0;
   transition: opacity 0.3s;
   border-radius: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .MovieCard:hover .MovieCard__overlay {

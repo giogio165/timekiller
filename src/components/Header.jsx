@@ -5,6 +5,7 @@ import { BiSearch } from "react-icons/bi";
 import { useMatch, useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { search } from "../global/store/searchSlice";
+import { isLogin } from "../global/store/loginSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,11 @@ const Header = () => {
   });
   const searchMatch = useMatch("/search");
   const searchResultMatch = useMatch(`/search/${word}`);
+
+  const checkLogin = useSelector((state) => {
+    return state.isLogin.login;
+  });
+
   const gotoLoginPage = () => {
     navigate("/login");
   };
@@ -27,7 +33,11 @@ const Header = () => {
   const gotoLibrary = () => {
     navigate("/library");
   };
-  // 다른 곳 클릭시 드롭다운 없어지기
+
+  const logout = () => {
+    dispatch(isLogin(false));
+  };
+  // 배경 클릭시 드롭다운 없어지기
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -124,9 +134,13 @@ const Header = () => {
                 {isDropdownVisible && (
                   <div className="dropdown-content" ref={dropdownRef}>
                     <ul>
-                      <li onClick={gotoLoginPage}>로그인</li>
-                      {/* 로그인 상태에 따라 다르게 보이게 할 것 */}
-                      <li onClick={gotoLibrary}>보관함</li>
+                      {!checkLogin && <li onClick={gotoLoginPage}>로그인</li>}
+                      {checkLogin && (
+                        <>
+                          <li onClick={gotoLibrary}>보관함</li>
+                          <li onClick={logout}>로그아웃</li>
+                        </>
+                      )}
                     </ul>
                   </div>
                 )}

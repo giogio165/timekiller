@@ -4,6 +4,7 @@ import axios from "axios";
 const HomeVideo = ({ title }) => {
   const [movies, setMovies] = useState([]);
   const [video, setVideo] = useState(null);
+  console.log(movies[0].id);
 
   useEffect(() => {
     fetchMovies();
@@ -30,7 +31,7 @@ const HomeVideo = ({ title }) => {
   const fetchVideo = async () => {
     try {
       const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/298618/videos",
+        "https://api.themoviedb.org/3/movie/569094/videos",
         {
           params: {
             api_key: "fcdcf37d8779f435786606a2ddd02898",
