@@ -1,0 +1,95 @@
+/* MainPageVideo */
+.MainPageVideo {
+}
+.MainPageVideo h1 {
+  color: white;
+}
+
+/* MainPageVideo */
+.MainPageVideo {
+  color: white;
+}
+/* MovieList.js css */
+.MovieList {
+  color: white;
+}
+
+/* MovieCard.js css */
+.MovieCard {
+  width: 180px;
+  height: 230px;
+  cursor: pointer;
+}
+
+.movie-poster {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+}
+
+.movie-info {
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 8px;
+}
+
+.MovieCard:hover .overlay {
+  display: flex;
+  opacity: 1;
+}
+
+/* MovieList2 */
+.MovieList2 {
+  width: 1400px;
+  height: 300px;
+  color: white;
+  margin-bottom: 30px;
+  margin: 0 auto;
+}
+/* MovieCard2 */
+.MovieCard2 {
+  width: 450px;
+  height: 100%;
+}
+.img-wrapper {
+  position: relative;
+
+  z-index: 1;
+}
+
+.MovieCard2:hover .overlay {
+  display: flex;
+  opacity: 1;
+}
+.movie-poster2 {
+  width: 450px;
+  height: 230px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+}
+
+.movie-title {
+  margin: 20px 0 20px 0;
+  font-size: 20px;
+  font-weight: 700;
+}

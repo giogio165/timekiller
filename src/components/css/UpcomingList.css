@@ -1,0 +1,145 @@
+.UpcomingList {
+  color: white;
+}
+
+.sliderTitle {
+  margin: 0;
+}
+
+.UpcomingCard {
+  margin: 20px 0 0 0;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.UpcomingCard2 {
+  position: relative;
+  margin: 20px 0 20px 0;
+  cursor: pointer;
+}
+.UpcomingCard3 {
+  position: relative;
+  margin: 20px 0 0 0;
+  cursor: pointer;
+}
+.UpcomingCard3Small {
+  position: relative;
+  margin: 20px 0 0 190px;
+  cursor: pointer;
+}
+
+.UpcomingCard3__overview {
+  position: absolute;
+  width: 400px;
+  padding: 10px;
+  top: 380px;
+  left: 10px;
+  z-index: 2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7); /* Add shadow to the font */
+}
+.UpcomingCard2:hover .UpcomingCard2__overlay {
+  display: flex;
+  opacity: 1;
+}
+
+.UpcomingCard:hover {
+  transform: scale(1.1);
+}
+
+.UpcomingCard__img-wrapper {
+  position: relative;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.UpcomingCard-poster {
+  position: relative;
+  width: 284px;
+  height: 160px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+}
+.UpcomingCard-poster2 {
+  width: 421px;
+  height: 236px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+}
+
+.UpcomingCard-poster3 {
+  width: 800px;
+  height: 450px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+}
+
+.UpcomingCard__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 284px;
+  height: 160px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 8px;
+}
+
+.UpcomingCard2__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 421px;
+  height: 236px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 8px;
+}
+.UpcomingCard:hover .UpcomingCard__overlay {
+  display: flex;
+  opacity: 1;
+}
+.movie-info {
+  font-size: 13px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.UpcomingCard-overview {
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.UpcomingCard__purchaseTag {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  top: 90px;
+  left: 10px;
+  width: 45px;
+  height: 15px;
+  color: black;
+  background-color: white;
+  border-radius: 3px;
+  z-index: 2;
+}

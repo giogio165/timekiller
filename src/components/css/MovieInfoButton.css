@@ -1,0 +1,15 @@
+.movie-info__btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.movie-info__playIcon .movie-info__plusBtn {
+  height: 50px;
+}
+
+.movie-info__plusBtn:hover {
+  color: #f82d62;
+}
+.movie-info__playIcon:hover {
+  color: #f82d62;
+}

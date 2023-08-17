@@ -1,24 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "./components/css/MovieList.css";
+import "./components/css/MovieList2.css";
+import "./components/css/MovieInfoButton.css";
+import "./components/css/HomeVideo.css";
+import "./components/css/UpcomingList.css";
+import "./components/css/WebtoonPage.css";
+import "./components/css/LoginPage.css";
+import "./components/css/SignupPage.css";
+import "./components/css/SideBar.css";
+
+import React from "react";
+import {
+  DetailPage,
+  LibraryPage,
+  MainPage,
+  SearchPage,
+  UpcomingPage,
+  WebtoonPage,
+  LogInPage,
+  MyPage,
+  SignupPage,
+  SearchResultPage,
+} from "./pages/index";
+import { Header, SideBar } from "./components/index";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Header />
+        <SideBar />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/webtoon" element={<WebtoonPage />} />
+          <Route path="/upcoming" element={<UpcomingPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/library" element={<LibraryPage />} />
+          <Route path="/login" element={<LogInPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/detail/:id" element={<DetailPage />} />
+          <Route path="/search/:keyword" element={<SearchResultPage />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
