@@ -1,13 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { contentUpdate } from "../global/store/detailSlice";
 
 const RelativeCard = ({ info }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const gotoDetailPage = () => {
+    navigate(`/detail/${info.id}`);
+    dispatch(contentUpdate(info));
+  };
   return (
     <>
       <SRelativeCard>
         <div>
-          <Link to={`/detail/${info.id}`} className="img-container">
+          <div className="img-container" onClick={gotoDetailPage}>
             <div className="img-container2">
               <div className="img-container3">
                 <img
@@ -20,7 +28,7 @@ const RelativeCard = ({ info }) => {
                 />
               </div>
             </div>
-          </Link>
+          </div>
         </div>
       </SRelativeCard>
     </>

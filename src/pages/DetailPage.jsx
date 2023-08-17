@@ -79,7 +79,7 @@ const DetailPage = () => {
   const fetchRelatives = async () => {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`,
+        `https://api.themoviedb.org/3/movie/${id}/similar?language=ko-KR&page=1`,
         options
       );
       const data = await response.json();
@@ -112,7 +112,7 @@ const DetailPage = () => {
     fetchData();
     fetchCommentData();
     fetchRelativeData();
-  }, []);
+  }, [id]);
 
   // console.log(similar);
   return (

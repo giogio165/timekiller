@@ -12,7 +12,11 @@ const People = (people) => {
                 <div className="box-people_img">
                   <img
                     alt="사람"
-                    src={`https://image.tmdb.org/t/p/w500${people.people.profile_path}`}
+                    src={
+                      people.people.profile_path !== null
+                        ? `https://image.tmdb.org/t/p/w500${people.people.profile_path}`
+                        : "https://an2-mars.amz.wtchn.net/assets/aio_person_thumbnail-294cb5e0a2ea9b9893eb622092baae586e2371571ab2d5912b0ded11a1aa0655.png"
+                    }
                   />
                 </div>
                 <div className="box-people_info">
