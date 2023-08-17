@@ -148,7 +148,7 @@ const SSideBar = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 501;
+  z-index: 499;
   background: #141517;
   width: 240px;
   height: 100%;
