@@ -79,7 +79,7 @@ const DetailPage = () => {
   const fetchRelatives = async () => {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`,
+        `https://api.themoviedb.org/3/movie/${id}/similar?language=ko-KR&page=1`,
         options
       );
       const data = await response.json();
@@ -112,7 +112,7 @@ const DetailPage = () => {
     fetchData();
     fetchCommentData();
     fetchRelativeData();
-  }, []);
+  }, [id]);
 
   // console.log(similar);
   return (
@@ -324,16 +324,6 @@ const SMain = styled.main`
         outline: none 0;
         background: none;
       }
-      /* .li-btn2::after {
-        content: "";
-        display: inline-block;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        background: #fff;
-        width: 100%;
-        height: 2px;
-      } */
     }
   }
 
@@ -586,6 +576,7 @@ const SMain = styled.main`
     padding-right: 40px;
     padding-left: 40px;
     overflow: hidden;
+    width: 100%;
 
     .relative-title {
       display: flex;
@@ -612,6 +603,7 @@ const SMain = styled.main`
 
     .relative-contents {
       display: block;
+      overflow: hidden;
 
       .contents-list {
         margin-bottom: 12px;
@@ -622,17 +614,20 @@ const SMain = styled.main`
           ul {
             position: relative;
             z-index: 0;
-            white-space: nowrap;
             margin: 0px -6px;
             padding: 0;
             list-style-type: none;
+            width: 100%;
+            display: flex;
+            flex: auto;
+            flex-wrap: wrap;
 
             li {
               width: 10%;
               display: inline-block;
               position: relative;
               vertical-align: top;
-              padding: 0px 6px;
+              padding: 6px 6px;
               cursor: pointer;
 
               .img-container {

@@ -1,22 +1,34 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { contentUpdate } from "../global/store/detailSlice";
 
 const RelativeCard = ({ info }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const gotoDetailPage = () => {
+    navigate(`/detail/${info.id}`);
+    dispatch(contentUpdate(info));
+  };
   return (
     <>
       <SRelativeCard>
         <div>
-          <Link to={`/detail/${info.id}`} className="img-container">
+          <div className="img-container" onClick={gotoDetailPage}>
             <div className="img-container2">
               <div className="img-container3">
                 <img
-                  src={`https://image.tmdb.org/t/p/w500${info.poster_path}`}
+                  src={
+                    info.poster_path != null
+                      ? `https://image.tmdb.org/t/p/w500${info.poster_path}`
+                      : "https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg"
+                  }
                   alt="img"
                 />
               </div>
             </div>
-          </Link>
+          </div>
         </div>
       </SRelativeCard>
     </>
@@ -30,7 +42,7 @@ const SRelativeCard = styled.li`
   display: inline-block;
   position: relative;
   vertical-align: top;
-  padding: 0px 6px;
+  padding: 6px 6px;
   cursor: pointer;
 
   .img-container {

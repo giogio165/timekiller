@@ -21,6 +21,11 @@
   margin: 20px 0 0 0;
   cursor: pointer;
 }
+.UpcomingCard3Small {
+  position: relative;
+  margin: 20px 0 0 190px;
+  cursor: pointer;
+}
 
 .UpcomingCard3__overview {
   position: absolute;

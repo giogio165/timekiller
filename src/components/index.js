@@ -11,6 +11,7 @@ import ContentsTitle from "./ContentsTitle";
 import GenreBox from "./GenreBox";
 import SearchCard from "./SearchCard";
 import RelativeCard from "./RelativeCard";
+import LibraryCard from "./LibraryCard";
 
 export {
   Dropdown,
@@ -26,4 +27,5 @@ export {
   GenreBox,
   SearchCard,
   RelativeCard,
+  LibraryCard,
 };

@@ -7,11 +7,39 @@ import { SearchCard } from "../components";
 
 const SearchResultPage = () => {
   const [list, setList] = useState([]);
+  const [popular, setPopular] = useState(true);
+  const [movie, setMovie] = useState(false);
+  const [tv, setTv] = useState(false);
+  const [webtoon, setWebtoon] = useState(false);
   const word = useSelector((state) => {
     return state.search.value;
   });
   const match = useMatch(`/search/${word}`);
 
+  const popularHandler = () => {
+    setPopular(true);
+    setMovie(false);
+    setTv(false);
+    setWebtoon(false);
+  };
+  const movieHandler = () => {
+    setPopular(false);
+    setMovie(true);
+    setTv(false);
+    setWebtoon(false);
+  };
+  const tvHandler = () => {
+    setPopular(false);
+    setMovie(false);
+    setTv(true);
+    setWebtoon(false);
+  };
+  const webtoonHandler = () => {
+    setPopular(false);
+    setMovie(false);
+    setTv(false);
+    setWebtoon(true);
+  };
   const fetchSearch = async () => {
     const options = {
       method: "GET",
@@ -42,6 +70,8 @@ const SearchResultPage = () => {
     };
     fetchData();
   }, []);
+
+  console.log(list);
   return (
     <GlobalLayout>
       <SSRP>
@@ -50,22 +80,38 @@ const SearchResultPage = () => {
           <div className="container-filter">
             <ul className="filters">
               <li>
-                <button type="button" className="btn">
+                <button
+                  type="button"
+                  className={popular ? "btn" : "btn2"}
+                  onClick={popularHandler}
+                >
                   인기
                 </button>
               </li>
               <li>
-                <button type="button" className="btn">
+                <button
+                  type="button"
+                  className={movie ? "btn" : "btn2"}
+                  onClick={movieHandler}
+                >
                   영화
                 </button>
               </li>
               <li>
-                <button type="button" className="btn">
+                <button
+                  type="button"
+                  className={tv ? "btn" : "btn2"}
+                  onClick={tvHandler}
+                >
                   TV 프로그램
                 </button>
               </li>
               <li>
-                <button type="button" className="btn">
+                <button
+                  type="button"
+                  className={webtoon ? "btn" : "btn2"}
+                  onClick={webtoonHandler}
+                >
                   웹툰
                 </button>
               </li>
@@ -114,6 +160,31 @@ const SSRP = styled.main`
         list-style-type: none;
 
         .btn {
+          display: inline-block;
+          position: relative;
+          white-space: nowrap;
+          color: rgb(255, 255, 255);
+          font-size: 15px;
+          font-weight: 500;
+          letter-spacing: 0px;
+          line-height: 20px;
+          padding: 14px 20px;
+          outline: none 0;
+          background: none;
+          border: 0 none transparent;
+          cursor: pointer;
+        }
+        .btn::after {
+          content: "";
+          display: inline-block;
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+          background: rgb(255, 255, 255);
+          width: 100%;
+          height: 2px;
+        }
+        .btn2 {
           display: inline-block;
           position: relative;
           white-space: nowrap;

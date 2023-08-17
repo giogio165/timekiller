@@ -5,90 +5,85 @@ import { Link } from "react-router-dom";
 import { TbMovie } from "react-icons/tb";
 import { BiBook, BiMoviePlay } from "react-icons/bi";
 import { useSelector } from "react-redux";
+import { LibraryCard } from "../components/index";
 
 const LibraryPage = () => {
   const list = useSelector((state) => {
     return state.keep.library;
   });
+  const checkLogin = useSelector((state) => {
+    return state.isLogin.login;
+  });
+  console.log(checkLogin);
   console.log(list);
   return (
     <GlobalLayout>
-      <SLibraryPage>
-        <div></div>
-        <div className="wrapper">
-          <div className="library-title">
-            <h1>보관함</h1>
-          </div>
-          <section className="container">
-            <ul className="container-ul">
-              <li>
-                <Link to="/" className="li-custom">
-                  <div className="li-custom_info">
-                    <div className="li-custom_icon">
-                      <TbMovie />
-                    </div>
-                    <div className="li-custom_title">비디오</div>
-                  </div>
-                  <hr type="regular" />
-                </Link>
-              </li>
-              <li>
-                <Link to="/webtoon" className="li-custom">
-                  <div className="li-custom_info">
-                    <div className="li-custom_icon">
-                      <BiBook />
-                    </div>
-                    <div className="li-custom_title">웹툰</div>
-                  </div>
-                  <hr type="regular" />
-                </Link>
-              </li>
-              <li>
-                <Link to="/upcoming" className="li-custom">
-                  <div className="li-custom_info">
-                    <div className="li-custom_icon">
-                      <BiMoviePlay />
-                    </div>
-                    <div className="li-custom_title">개봉작</div>
-                  </div>
-                  <hr type="regular" />
-                </Link>
-              </li>
-            </ul>
-          </section>
-          <section className="container">
-            <div className="wrapper-title">
-              <div className="container-title">
-                <div>
-                  <h1>최근 보고싶어요한 콘텐츠</h1>
-                </div>
-              </div>
+      {checkLogin ? (
+        <SLibraryPage>
+          <div></div>
+          <div className="wrapper">
+            <div className="library-title">
+              <h1>보관함</h1>
             </div>
-            <div className="wrapper-contents">
-              <ul className="contents-ul">
+            <section className="container">
+              <ul className="container-ul">
                 <li>
-                  <div>
-                    <Link
-                      to={`detail:/${872585}`}
-                      className="container-contents"
-                    >
-                      <div className="contents-info">
-                        <div className="container-img">
-                          <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/4ZLnVUfiCe3wX8Ut9eyujndpyvA.jpg" />
-                        </div>
-                        <p className="title">오펜하이머</p>
-                        <p className="type">영화</p>
+                  <Link to="/" className="li-custom">
+                    <div className="li-custom_info">
+                      <div className="li-custom_icon">
+                        <TbMovie />
                       </div>
-                    </Link>
-                  </div>
-                  <article></article>
+                      <div className="li-custom_title">비디오</div>
+                    </div>
+                    <hr type="regular" />
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/webtoon" className="li-custom">
+                    <div className="li-custom_info">
+                      <div className="li-custom_icon">
+                        <BiBook />
+                      </div>
+                      <div className="li-custom_title">웹툰</div>
+                    </div>
+                    <hr type="regular" />
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/upcoming" className="li-custom">
+                    <div className="li-custom_info">
+                      <div className="li-custom_icon">
+                        <BiMoviePlay />
+                      </div>
+                      <div className="li-custom_title">개봉작</div>
+                    </div>
+                    <hr type="regular" />
+                  </Link>
                 </li>
               </ul>
-            </div>
-          </section>
-          <section className="container"></section>
-        </div>
-      </SLibraryPage>
+            </section>
+            <section className="container">
+              <div className="wrapper-title">
+                <div className="container-title">
+                  <div>
+                    <h1>최근 보고싶어요한 콘텐츠</h1>
+                  </div>
+                </div>
+              </div>
+              <div className="wrapper-contents">
+                <ul className="contents-ul">
+                  {list.map((elem, index) => (
+                    <LibraryCard elem={elem} key={index} />
+                  ))}
+                </ul>
+              </div>
+            </section>
+            <section className="container"></section>
+          </div>
+        </SLibraryPage>
+      ) : (
+        <h1 className="warning">로그인이 필요합니다.</h1>
+      )}
     </GlobalLayout>
   );
 };
@@ -216,74 +211,14 @@ const SLibraryPage = styled.main`
           padding: 0;
           margin: 0;
           list-style-type: none;
-
-          li {
-            width: 12.5%;
-            display: inline-block;
-            position: relative;
-            vertical-align: top;
-            padding: 0px 6px;
-            cursor: pointer;
-
-            .container-contents {
-              display: block;
-              outline: #000;
-              text-decoration: none;
-              color: #fff;
-              background-color: transparent;
-              cursor: pointer;
-
-              .contents-info {
-                position: relative;
-                white-space: pre-wrap;
-
-                .container-img {
-                  position: relative;
-                  padding-top: 147.3%;
-                  border-radius: 4px;
-                  overflow: hidden;
-
-                  img {
-                    position: absolute;
-                    top: 0px;
-                    left: 0px;
-                    z-index: 2;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                  }
-                }
-
-                .title {
-                  color: rgb(255, 255, 255);
-                  white-space: nowrap;
-                  margin: 3px 0px 0px;
-                  font-size: 15px;
-                  font-weight: 400;
-                  letter-spacing: 0px;
-                  line-height: 20px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  padding: 0;
-                }
-                .type {
-                  color: rgb(132, 134, 141);
-                  white-space: nowrap;
-                  margin: 2px 0px 0px;
-                  font-size: 14px;
-                  font-weight: 400;
-                  letter-spacing: 0px;
-                  text-decoration: none;
-                  line-height: 20px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  padding: 0;
-                }
-              }
-            }
-          }
         }
       }
     }
+  }
+
+  .warning {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;

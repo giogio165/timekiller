@@ -4,8 +4,20 @@ import { GlobalLayout } from "../global";
 import { Link } from "react-router-dom";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { ContentBox, ContentsTitle, GenreBox } from "../components";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const SearchPage = () => {
+  const sliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: window.innerWidth <= 1500 ? 5 : 8,
+    slidesToScroll: 1,
+    autoplay: false,
+    autoplaySpeed: 3000,
+  };
   return (
     <GlobalLayout>
       <SSearchPage>

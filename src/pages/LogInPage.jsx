@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import { GlobalLayout } from "../global";
 import { auth, signInWithEmailAndPassword } from "../fbase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { isLogin } from "../global/store/loginSlice";
 
 const LogInPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-
   //로그인 상태 확인 할 수 있음 -> 리덕스 go
-  const [login, setLogin] = useState(false);
+  // const [login, setLogin] = useState(false);
 
+  const dispatch = useDispatch();
   const [emailInputcheck, setEmailInputCheck] = useState(false);
   const [emailFocused, setEmailFocused] = useState(false);
 
@@ -22,6 +24,10 @@ const LogInPage = () => {
     navigate(`/signup`);
   };
 
+  // const checkLogin = useSelector((state) => {
+  //   return state.isLogin.login;
+  // });
+  // console.log(checkLogin);
   // 유효성검사
   const checkEmail = (e) => {
     const regExp =
@@ -47,7 +53,8 @@ const LogInPage = () => {
       );
       // User logged in
       const user = userCredential.user;
-      setLogin(true);
+      // setLogin(true);
+      dispatch(isLogin(true));
       console.log("로그인 완료:", user);
       navigate("/");
     } catch (error) {

@@ -3,20 +3,27 @@ import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
 const SearchCard = ({ info }) => {
+  const type = info.media_type;
   return (
     <>
       {info && (
         <SCard>
           <Link to={`/detail/${info.id}`} className="link-result">
             <div className="info-container">
-              <div className="img-container" purpose={info.media_type}>
+              <div
+                className={
+                  type === "person" ? "img-container2" : "img-container"
+                }
+              >
                 <img
                   src={
                     info.media_type === "person"
                       ? info.profile_path != null
                         ? `https://image.tmdb.org/t/p/w500${info.profile_path}`
                         : "https://an2-mars.amz.wtchn.net/assets/aio_person_thumbnail-294cb5e0a2ea9b9893eb622092baae586e2371571ab2d5912b0ded11a1aa0655.png"
-                      : `https://image.tmdb.org/t/p/w500${info.poster_path}`
+                      : info.poster_path != null
+                      ? `https://image.tmdb.org/t/p/w500${info.poster_path}`
+                      : "https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg"
                   }
                   alt="no image"
                 />
@@ -84,31 +91,29 @@ const SCard = styled.li`
         width: 48px;
         margin-right: 14px;
         overflow: hidden;
+        height: 70px;
+        border-radius: 4px;
 
-        ${(purpose) => {
-          switch (purpose) {
-            case "movie":
-              return css`
-                height: 70px;
-                border-radius: 4px;
-              `;
-            case "person":
-              return css`
-                height: 48px;
-                border-radius: 50%;
-              `;
-            case "tv":
-              return css`
-                height: 70px;
-                border-radius: 4px;
-              `;
-            default:
-              return css`
-                height: 70px;
-                border-radius: 4px;
-              `;
-          }
-        }}
+        img {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .img-container2 {
+        display: flex;
+        position: relative;
+        flex-shrink: 0;
+        justify-content: center;
+        align-items: center;
+        width: 48px;
+        margin-right: 14px;
+        overflow: hidden;
+        height: 48px;
+        border-radius: 50%;
 
         img {
           position: absolute;

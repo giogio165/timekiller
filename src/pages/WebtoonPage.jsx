@@ -11,7 +11,7 @@ const WebtoonPage = () => {
     "눈을 홀리는 힐링작화",
     "#로맨스",
   ];
-
+  const w = window.innerWidth;
   return (
     <GlobalLayout>
       <div className="WebtoonPage">
@@ -20,7 +20,7 @@ const WebtoonPage = () => {
         {sliderTitle.map((it) => (
           <>
             <WebtoonList it={it} number={3} />
-            <WebtoonList it={it} number={8} />
+            <WebtoonList it={it} number={w <= 1500 ? 5 : 8} />
           </>
         ))}
       </div>

@@ -7,7 +7,7 @@
   font-size: 14px;
   font-weight: 500;
   padding: 8px 16px;
-  margin: 0 8px 20px 8px;
+  margin: 0 8px 0 8px;
 }
 .Home__buttonClicked {
   border: 2px solid white;
@@ -24,18 +24,15 @@
 
 .MovieList {
   color: white;
-  width: 1500px;
+  width: 100%;
 }
 .MovieList2 {
-  width: 1500px;
+  width: 100%;
   height: 300px;
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
-.MovieList__title {
-  margin: 0px;
-}
 /* MovieCard.js css */
 
 .MovieCard {
@@ -43,12 +40,12 @@
   height: 230px;
   cursor: pointer;
   transition: transform 0.3s;
-  padding: 20px 0 20px 0;
+  padding: 30px 0 30px 0;
 }
 
 .MovieCard2 {
   width: 450px;
-  height: 270px;
+  height: 300px;
   cursor: pointer;
 }
 

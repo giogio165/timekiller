@@ -1,11 +1,13 @@
 import React from "react";
 
 const WebtoonHomeImg = ({ title }) => {
+  const w = window.innerWidth;
   return (
     <div className="WebtoonHomeImg">
       <h1 className="WebtoonHomeImg__title">{title}</h1>
       <img
         className="WebtoonHomeImg__img"
+        width={w <= 1500 ? "1050px" : "1400px"}
         src="https://i.namu.wiki/i/xjsb94DInkswk_GadxYW9I5yTihZcucsvyH8fRFP6FYizENL4ZIbXaWMM8u80xGGwp6DtUbcImLXZjmCJK-TUw.webp"
       ></img>
       <div className="WebtoonHomeImg__overview">

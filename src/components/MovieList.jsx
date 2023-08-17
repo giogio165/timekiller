@@ -36,7 +36,7 @@ const MovieList = ({ it }) => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 8,
+    slidesToShow: window.innerWidth <= 1500 ? 5 : 8,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 3000,
