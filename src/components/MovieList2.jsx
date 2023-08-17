@@ -42,7 +42,6 @@ const MovieList2 = () => {
       console.error("API Error:", error);
     }
   };
-  console.log(window.innerWidth);
   const sliderSettings = {
     dots: false,
     infinite: true,

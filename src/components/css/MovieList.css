@@ -118,6 +118,9 @@
   opacity: 0;
   transition: opacity 0.3s;
   border-radius: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .MovieCard:hover .MovieCard__overlay {
@@ -125,10 +128,14 @@
   opacity: 1;
 }
 .movie-info {
+  width: 170px;
   font-size: 13px;
   margin-left: 10px;
   margin-bottom: 20px;
   white-space: nowrap;
+}
+.movie-info h3 {
+  width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
