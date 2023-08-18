@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { GlobalLayout } from "../global";
-
 import MovieList from "../components/MovieList";
 import MovieList2 from "../components/MovieList2";
 import TvList from "../components/TvList";
 import HomeVideo from "../components/HomeVideo";
-
 const MainPage = () => {
   const [movieButton, setMovieButton] = useState(false);
   const [showWholeButton, setShowWholeButton] = useState(true);
@@ -38,8 +36,8 @@ const MainPage = () => {
   return (
     <GlobalLayout>
       <div className="Home">
-        <HomeVideo title={"홈"} />
-        <MovieList2 />
+        <MemoizedHomeVideo title={"홈"} />
+        <MemoizedMovieList2 />
         <button
           className={`Home__button${showWholeButton ? "Clicked" : ""}`}
           onClick={wholeClickHandler}
@@ -58,7 +56,6 @@ const MainPage = () => {
         >
           TV 시리즈
         </button>
-
         {movieButton
           ? sliderTitle.map((it, idx) => <MovieList it={it} key={idx} />)
           : ""}
@@ -77,5 +74,6 @@ const MainPage = () => {
     </GlobalLayout>
   );
 };
-
+const MemoizedHomeVideo = React.memo(HomeVideo);
+const MemoizedMovieList2 = React.memo(MovieList2);
 export default MainPage;
