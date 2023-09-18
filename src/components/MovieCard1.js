@@ -116,11 +116,12 @@ const StyledMovieCard2 = styled.div`
 `;
 
 const StyledMovieCard1 = styled.div`
-  width: 20%;
+  width: 75%;
   height: 230px;
   cursor: pointer;
   transition: transform 0.3s;
-  padding: 30px 0 30px 0;
+  margin: 30px 0 30px 0;
+  margin-left: 10%;
   &:hover {
     transform: scale(1.1);
     .MovieCard__overlay {
@@ -135,7 +136,7 @@ const MovieCardImgWrapper = styled.div`
   z-index: 1;
   > img {
     position: relative;
-    width: 140px;
+    width: 100%;
     height: 200px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -145,7 +146,7 @@ const MovieCardImgWrapper = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 140px;
+    width: 100%;
     height: 200px;
     background-color: rgba(0, 0, 0, 0.4);
     color: white;

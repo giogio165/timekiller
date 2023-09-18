@@ -54,7 +54,7 @@ const HomeVideo = ({ title }) => {
       <div className="HomeVideo__video">
         {video ? (
           <iframe
-            width={w <= 1500 ? "1050" : "1400"}
+            width={w <= 1500 ? "100%" : "100%"}
             height="500"
             src={`https://www.youtube.com/embed/${video.key}?autoplay=1&mute=1`}
             title="Video"
