@@ -1,4 +1,5 @@
 import "./App.css";
+import "./global/global.css";
 import "./components/css/MovieList.css";
 import "./components/css/MovieList2.css";
 import "./components/css/MovieInfoButton.css";
