@@ -87,14 +87,16 @@ const MovieCard1 = ({ it, number }) => {
 };
 
 const StyledMovieCard2 = styled.div`
-  width: 400px;
+  width: 80%;
   height: 240px;
   padding: 30px 0 30px 0;
+  margin-bottom: 30px;
+  margin-left: 10%;
 
   > img {
     position: relative;
     cursor: pointer;
-    width: 380px;
+    width: 100%;
     height: 180px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -114,7 +116,7 @@ const StyledMovieCard2 = styled.div`
 `;
 
 const StyledMovieCard1 = styled.div`
-  width: 170px;
+  width: 20%;
   height: 230px;
   cursor: pointer;
   transition: transform 0.3s;
