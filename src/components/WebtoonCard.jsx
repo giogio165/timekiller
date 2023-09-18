@@ -97,7 +97,7 @@ const SWebtoonInfo = styled.div`
 `;
 
 const SWebtoonCard = styled.div`
-  width: 380px;
+  width: 80%;
   height: 200px;
   cursor: pointer;
 
@@ -109,7 +109,7 @@ const SWebtoonCard = styled.div`
   .WebtoonCard__img-wrapper {
     width: 100%;
     position: relative;
-    background-color: #fff;
+    background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
     background-size: cover;
     border-radius: 8px;
     z-index: 1;
@@ -117,7 +117,7 @@ const SWebtoonCard = styled.div`
   }
   .Webtoon__poster {
     position: relative;
-    width: 170px;
+    width: 80%;
     height: 200px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -127,7 +127,7 @@ const SWebtoonCard = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 380px;
+    width: 100%;
     height: 200px;
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
@@ -140,7 +140,7 @@ const SWebtoonCard = styled.div`
     border-radius: 8px;
   }
   .WebtoonCard__freeTag {
-    width: 80px;
+    width: 30%;
     height: 30px;
     color: white;
     background-color: #f82d62;
@@ -158,10 +158,11 @@ const SWebtoonCard = styled.div`
 //여기서부터 Card2
 const SWebtoonCard2 = styled.div`
   position: relative;
-  width: 150px;
+  width: 80%;
   height: 200px;
   transition: transform 0.3s;
   padding: 15px 0 15px 0;
+  margin-bottom: 50px;
   cursor: pointer;
   &:hover {
     transform: scale(1.1);
@@ -171,10 +172,15 @@ const SWebtoonCard2 = styled.div`
   }
 
   .Webtoon__poster {
-    width: 150px;
+    width: 100%;
     height: 200px;
     background-repeat: no-repeat;
-    background-color: #fff;
+    background-image: linear-gradient(
+      to top,
+      #fdcbf1 0%,
+      #fdcbf1 1%,
+      #e6dee9 100%
+    );
     background-size: cover;
     border-radius: 8px;
   }
