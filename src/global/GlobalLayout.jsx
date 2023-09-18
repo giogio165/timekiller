@@ -13,12 +13,12 @@ const StGlobalContainer = styled.div`
   background-color: #000;
   background: #000;
   color: white;
-  padding: 80px 300px 0px 20rem;
+  padding: 80px 100px 0px 20rem;
   display: flex;
   flex-direction: column;
   min-height: 140vh;
 
-  @media (max-width: 1920px) {
+  /* @media (max-width: 1920px) {
     width: 1500px;
   }
   @media (max-width: 1680px) {
@@ -29,7 +29,7 @@ const StGlobalContainer = styled.div`
   }
   @media (max-width: 1480px) {
     width: 1000px;
-  }
+  } */
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
