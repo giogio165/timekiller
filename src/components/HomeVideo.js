@@ -1,63 +1,39 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { fetchMovies } from "../api/MovieApi";
+import { fetchVideosForMovie } from "../api/VideoApi";
 
 const HomeVideo = ({ title }) => {
   const [movies, setMovies] = useState([]);
-  const [video, setVideo] = useState(null);
+  const [videos, setVideos] = useState(null);
 
   useEffect(() => {
-    fetchMovies();
-    fetchVideo();
+    fetchMovies()
+      .then((movieData) => {
+        setMovies(movieData);
+
+        const selectedMovie = movieData[0];
+
+        fetchVideosForMovie(selectedMovie.id).then((videoData) => {
+          setVideos(videoData[0]);
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching movies:", error);
+      });
   }, []);
 
-  const fetchMovies = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/popular",
-        {
-          params: {
-            api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "en-US",
-            page: 1,
-          },
-        }
-      );
-      setMovies(response.data.results);
-    } catch (error) {
-      console.error("API Error:", error);
-    }
-  };
-  const fetchVideo = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/569094/videos",
-        {
-          params: {
-            api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "en-US",
-          },
-        }
-      );
-
-      if (response.data.results && response.data.results.length > 0) {
-        setVideo(response.data.results[0]);
-      }
-    } catch (error) {
-      console.error("API Error:", error);
-    }
-  };
-  const w = window.innerWidth;
   return (
     <SHomeVideo>
       <h1 className="HomeVideo__home">{title}</h1>
       <div className="HomeVideo__video">
-        {video ? (
+        {videos ? (
           <iframe
-            width={w <= 1500 ? "1050" : "1400"}
+            width="1050"
             height="500"
-            src={`https://www.youtube.com/embed/${video.key}?autoplay=1&mute=1`}
-            title="Video"
+            src={`https://www.youtube.com/embed/${videos.key}?autoplay=1&mute=1`}
+            title={videos.name}
             frameBorder="0"
             allowFullScreen
             allow="autoplay"
@@ -95,7 +71,7 @@ const SHomeVideo = styled.div`
   .HomeVideo__title {
     color: white;
     font-weight: 700;
-    font-size: 50px;
+    font-size: 30px;
     margin-left: 20px;
     margin-bottom: 10px;
   }
