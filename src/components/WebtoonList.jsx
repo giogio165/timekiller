@@ -3,8 +3,8 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../components/css/MovieList.css";
 import WebtoonCard from "./WebtoonCard";
+import styled from "styled-components";
 
 const WebtoonList = ({ it, number }) => {
   const [webtoons, setWebtoons] = useState([]);
@@ -34,7 +34,7 @@ const WebtoonList = ({ it, number }) => {
   };
 
   return (
-    <div className="MovieList">
+    <SWebtoonList>
       <h2 className="WebtoonList__title">{it}</h2>
       <Slider {...sliderSettings}>
         {webtoons.map((it) => (
@@ -43,8 +43,15 @@ const WebtoonList = ({ it, number }) => {
           </div>
         ))}
       </Slider>
-    </div>
+    </SWebtoonList>
   );
 };
 
+const SWebtoonList = styled.div`
+  > h2 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+`;
 export default WebtoonList;

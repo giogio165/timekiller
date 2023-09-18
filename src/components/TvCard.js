@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { contentUpdate } from "../global/store/detailSlice";
+import styled from "styled-components";
 
 const TvCard = ({ it }) => {
   const navigate = useNavigate();
@@ -46,14 +47,14 @@ const TvCard = ({ it }) => {
   };
 
   return (
-    <div className="MovieCard" onClick={gotoDetailPage}>
-      <div className="MovieCard__img-wrapper">
+    <STvCard onClick={gotoDetailPage}>
+      <STvCardImgWrapper>
         <img
           src={`https://image.tmdb.org/t/p/w500${it.poster_path}`}
           alt={`${it.original_name} Poster`}
           className="movie-poster"
         />
-        <div className="MovieCard__overlay">
+        <div className="TvCard__overlay">
           <div className="movie-info">
             <MovieInfoButton />
             <h3 className="movie-info__title">{it.original_name}</h3>
@@ -67,9 +68,66 @@ const TvCard = ({ it }) => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </STvCardImgWrapper>
+    </STvCard>
   );
 };
+
+const STvCard = styled.div`
+  width: 170px;
+  height: 230px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  padding: 30px 0 30px 0;
+  &:hover {
+    transform: scale(1.1);
+    .TvCard__overlay {
+      display: flex;
+      opacity: 1;
+    }
+  }
+`;
+
+const STvCardImgWrapper = styled.div`
+  position: relative;
+  border-radius: 8px;
+  z-index: 1;
+  > img {
+    position: relative;
+    width: 140px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+  }
+  .TvCard__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 140px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 8px;
+  }
+  .movie-info {
+    width: 120px;
+    font-size: 13px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    > h4 {
+      width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+`;
 
 export default TvCard;
