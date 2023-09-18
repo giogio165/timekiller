@@ -1,4 +1,5 @@
 import "./App.css";
+import "./global/global.css";
 import "./components/css/LoginPage.css";
 import "./components/css/SignupPage.css";
 import "./components/css/SideBar.css";

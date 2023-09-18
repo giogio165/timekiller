@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import { GlobalLayout } from "../global";
 import { auth, signInWithEmailAndPassword } from "../fbase";
 import { useNavigate } from "react-router-dom";
@@ -63,7 +64,7 @@ const LogInPage = () => {
   };
   // console.log("login", login);
   return (
-    <GlobalLayout>
+    <SLoginPage>
       <div className="LogInPage">
         <button className="signup-btn" onClick={gotoSignupPage}>
           회원가입
@@ -128,8 +129,13 @@ const LogInPage = () => {
           {error && <div className="error">{error}</div>}
         </div>
       </div>
-    </GlobalLayout>
+    </SLoginPage>
   );
 };
 
 export default LogInPage;
+
+const SLoginPage = styled.div`
+  background-color: #000;
+  color: #fff;
+`;
