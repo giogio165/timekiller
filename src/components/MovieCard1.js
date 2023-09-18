@@ -89,7 +89,6 @@ const MovieCard1 = ({ it, number }) => {
 const StyledMovieCard2 = styled.div`
   width: 400px;
   height: 240px;
-  transition: transform 0.3s;
   padding: 30px 0 30px 0;
 
   > img {
@@ -100,6 +99,11 @@ const StyledMovieCard2 = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 8px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   .movie-title {
