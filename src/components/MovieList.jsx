@@ -5,32 +5,20 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MovieCard1 from "./MovieCard1";
 import styled from "styled-components";
+import { fetchMovies } from "../api/MovieApi";
 
 const MovieList = ({ it }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetchMovies();
+    fetchMovies()
+      .then((response) => {
+        setMovies(response);
+      })
+      .catch((error) => {
+        console.error("API Error:", error);
+      });
   }, []);
-
-  const fetchMovies = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/popular",
-        {
-          params: {
-            api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "ko-KR",
-            page: 1,
-          },
-        }
-      );
-
-      setMovies(response.data.results);
-    } catch (error) {
-      console.error("API Error:", error);
-    }
-  };
 
   const sliderSettings = {
     dots: false,
