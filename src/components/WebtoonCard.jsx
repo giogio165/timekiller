@@ -81,7 +81,7 @@ const SWebtoonCon = styled.div`
   width: 100%;
 `;
 const SWebtoonInfo = styled.div`
-  margin: 10px 0 10px 10px;
+  margin: 10px 0 10px 10%;
   white-space: nowrap;
   overflow: hidden;
 
@@ -99,6 +99,7 @@ const SWebtoonInfo = styled.div`
 const SWebtoonCard = styled.div`
   width: 80%;
   height: 200px;
+  margin-left: 10%;
   cursor: pointer;
 
   &:hover .WebtoonCard__overlay {
@@ -163,6 +164,7 @@ const SWebtoonCard2 = styled.div`
   transition: transform 0.3s;
   padding: 15px 0 15px 0;
   margin-bottom: 50px;
+  margin-left: 10%;
   cursor: pointer;
   &:hover {
     transform: scale(1.1);
