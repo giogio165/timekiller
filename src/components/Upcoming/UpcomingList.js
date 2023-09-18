@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
+import styled from "styled-components";
 import UpcomingCard1 from "./UpcomingCard1";
 import UpcomingCard2 from "./UpcomingCard2";
 
@@ -10,7 +11,6 @@ const UpcomingList = ({ title, sliderTitle }) => {
   useEffect(() => {
     fetchUncomingMovies();
   }, []);
-  console.log("movies", movies);
 
   const fetchUncomingMovies = async () => {
     try {
@@ -71,7 +71,7 @@ const UpcomingList = ({ title, sliderTitle }) => {
   };
 
   return (
-    <div className="UpcomingList">
+    <SUpcomingList>
       <h1>{title}</h1>
       <Slider {...sliderSettings3}>
         {movies.map((it) => (
@@ -95,8 +95,12 @@ const UpcomingList = ({ title, sliderTitle }) => {
           </Slider>
         </>
       ))}
-    </div>
+    </SUpcomingList>
   );
 };
+
+const SUpcomingList = styled.div`
+  color: white;
+`;
 
 export default UpcomingList;
