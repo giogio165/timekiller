@@ -7,6 +7,7 @@ import { fetchVideosForMovie } from "../api/VideoApi";
 const HomeVideo = ({ title }) => {
   const [movies, setMovies] = useState([]);
   const [videos, setVideos] = useState(null);
+  const w = window.innerWidth;
 
   useEffect(() => {
     fetchMovies()
