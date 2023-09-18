@@ -1,10 +1,4 @@
 import "./App.css";
-import "./components/css/MovieList.css";
-import "./components/css/MovieList2.css";
-import "./components/css/MovieInfoButton.css";
-import "./components/css/HomeVideo.css";
-import "./components/css/UpcomingList.css";
-import "./components/css/WebtoonPage.css";
 import "./components/css/LoginPage.css";
 import "./components/css/SignupPage.css";
 import "./components/css/SideBar.css";

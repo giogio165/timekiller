@@ -3,8 +3,8 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../components/css/MovieList.css";
 import MovieCard1 from "./MovieCard1";
+import styled from "styled-components";
 
 const MovieList = ({ it }) => {
   const [movies, setMovies] = useState([]);
@@ -43,8 +43,8 @@ const MovieList = ({ it }) => {
   };
 
   return (
-    <div className="MovieList">
-      <h2 className="MovieList__title">{it}</h2>
+    <SMovieList>
+      <h2>{it}</h2>
       <Slider {...sliderSettings}>
         {movies.map((it) => (
           <div key={it.id}>
@@ -52,8 +52,11 @@ const MovieList = ({ it }) => {
           </div>
         ))}
       </Slider>
-    </div>
+    </SMovieList>
   );
 };
-
+const SMovieList = styled.div`
+  color: white;
+  width: 100%;
+`;
 export default MovieList;

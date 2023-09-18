@@ -4,6 +4,7 @@ import MovieList from "../components/MovieList";
 import MovieList2 from "../components/MovieList2";
 import TvList from "../components/TvList";
 import HomeVideo from "../components/HomeVideo";
+import styled from "styled-components";
 const MainPage = () => {
   const [movieButton, setMovieButton] = useState(false);
   const [showWholeButton, setShowWholeButton] = useState(true);
@@ -38,24 +39,24 @@ const MainPage = () => {
       <div className="Home">
         <MemoizedHomeVideo title={"홈"} />
         <MemoizedMovieList2 />
-        <button
+        <Button
           className={`Home__button${showWholeButton ? "Clicked" : ""}`}
           onClick={wholeClickHandler}
         >
           전체
-        </button>
-        <button
+        </Button>
+        <Button
           className={`Home__button${movieButton ? "Clicked" : ""}`}
           onClick={movieClickHandler}
         >
           영화
-        </button>
-        <button
+        </Button>
+        <Button
           className={`Home__button${tvButton ? "Clicked" : ""}`}
           onClick={tvClickHandler}
         >
           TV 시리즈
-        </button>
+        </Button>
         {movieButton
           ? sliderTitle.map((it, idx) => <MovieList it={it} key={idx} />)
           : ""}
@@ -74,6 +75,25 @@ const MainPage = () => {
     </GlobalLayout>
   );
 };
+
 const MemoizedHomeVideo = React.memo(HomeVideo);
 const MemoizedMovieList2 = React.memo(MovieList2);
+
+const Button = styled.button`
+  border: 2px solid rgb(132, 134, 141);
+  border-radius: 24px;
+  background-color: black;
+  color: rgb(132, 134, 141);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  margin: 0 8px 0 8px;
+
+  &.clicked {
+    border: 2px solid white;
+    background-color: white;
+    color: black;
+  }
+`;
+
 export default MainPage;
