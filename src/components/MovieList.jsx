@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -46,5 +45,8 @@ const MovieList = ({ it }) => {
 const SMovieList = styled.div`
   color: white;
   width: 100%;
+  > h2 {
+    margin-top: 30px;
+  }
 `;
 export default MovieList;

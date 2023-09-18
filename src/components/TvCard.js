@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { contentUpdate } from "../global/store/detailSlice";
 import styled from "styled-components";
+import { fetchGenreNames } from "../api/TvApi";
 
 const TvCard = ({ it }) => {
   const navigate = useNavigate();
@@ -18,33 +19,8 @@ const TvCard = ({ it }) => {
   const [genreNames, setGenreNames] = useState([]);
 
   useEffect(() => {
-    fetchGenreNames(it.genre_ids);
+    fetchGenreNames(it.genre_ids).then((names) => setGenreNames(names));
   }, [it.genre_ids]);
-
-  const fetchGenreNames = async (genreCodes) => {
-    try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/genre/movie/list`,
-        {
-          params: {
-            api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "ko-KR",
-          },
-        }
-      );
-
-      const matchingGenres = response.data.genres.filter((genre) =>
-        genreCodes.includes(genre.id)
-      );
-
-      const limitedGenres = matchingGenres.slice(0, 2);
-
-      const genreNames = limitedGenres.map((genre) => genre.name);
-      setGenreNames(genreNames);
-    } catch (error) {
-      console.error("API Error:", error);
-    }
-  };
 
   return (
     <STvCard onClick={gotoDetailPage}>
@@ -80,7 +56,7 @@ const STvCard = styled.div`
   transition: transform 0.3s;
   padding: 30px 0 30px 0;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     .TvCard__overlay {
       display: flex;
       opacity: 1;
