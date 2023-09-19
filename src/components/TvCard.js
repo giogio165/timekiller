@@ -50,11 +50,11 @@ const TvCard = ({ it }) => {
 };
 
 const STvCard = styled.div`
-  width: 170px;
+  width: 100%;
   height: 230px;
   cursor: pointer;
   transition: transform 0.3s;
-  padding: 30px 0 30px 0;
+  margin: 30px 0 30px 10%;
   &:hover {
     transform: scale(1.05);
     .TvCard__overlay {
@@ -70,7 +70,7 @@ const STvCardImgWrapper = styled.div`
   z-index: 1;
   > img {
     position: relative;
-    width: 140px;
+    width: 75%;
     height: 200px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -80,7 +80,7 @@ const STvCardImgWrapper = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 140px;
+    width: 100%;
     height: 200px;
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
@@ -93,7 +93,7 @@ const STvCardImgWrapper = styled.div`
     border-radius: 8px;
   }
   .movie-info {
-    width: 120px;
+    width: 90%;
     font-size: 13px;
     margin-left: 10px;
     margin-bottom: 20px;
