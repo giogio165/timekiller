@@ -7,18 +7,10 @@ import styled from "styled-components";
 
 const WebtoonCard = ({ it, number }) => {
   // number는 WebtoonPage에서 넘어옴, Carousel에 들어갈 아이템 갯수/ it은 webtoon
-  console.log(it);
   const navigate = useNavigate();
   const toDetailPage = () => {
     navigate("/detail");
   };
-  const w = window.innerWidth;
-  const cardClassName =
-    number === 3
-      ? w <= 1500
-        ? "WebtoonCardSmall"
-        : "WebtoonCard"
-      : "WebtoonCard2";
 
   return (
     <SWebtoonCon>
@@ -54,7 +46,7 @@ const WebtoonCard = ({ it, number }) => {
           <div className="WebtoonCard2__overlay ">
             <div className="webtoon-info2">
               <MovieInfoButton />
-              <h3 className="WebtoonCard2__title">{it.title}</h3>
+              <h4 className="WebtoonCard2__title">{it.title}</h4>
               <div>{it.author}</div>
               <div>
                 찜
@@ -159,17 +151,17 @@ const SWebtoonCard = styled.div`
 //여기서부터 Card2
 const SWebtoonCard2 = styled.div`
   position: relative;
-  width: 80%;
-  height: 200px;
+  width: 75%;
+  height: 210px;
   transition: transform 0.3s;
-  padding: 15px 0 15px 0;
+  padding: 30px 0 30px 0;
   margin-bottom: 50px;
   margin-left: 10%;
   cursor: pointer;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     .WebtoonCard2__overlay {
-      opacity: 100%;
+      opacity: 1;
     }
   }
 
@@ -205,10 +197,20 @@ const SWebtoonCard2 = styled.div`
 
     .webtoon-info2 {
       font-size: 13px;
-      margin: 20px 0 30px 10px;
+      width: 85%;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-left: 8px;
+      margin-bottom: 20px;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      > h4 {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
   .WebtoonCard__purchaseTag {
@@ -223,7 +225,7 @@ const SWebtoonCard2 = styled.div`
     align-items: center;
     font-weight: 700;
     position: absolute;
-    top: 20px;
+    top: 45px;
     left: 10px;
     z-index: 2;
   }

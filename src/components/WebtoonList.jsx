@@ -48,6 +48,8 @@ const WebtoonList = ({ it, number }) => {
 };
 
 const SWebtoonList = styled.div`
+  color: white;
+  width: 100%;
   > h2 {
     margin-top: 25px;
     margin-bottom: 10px;

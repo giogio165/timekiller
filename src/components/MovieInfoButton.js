@@ -40,11 +40,10 @@ const SMovieInfoButton = styled.div`
 
   .MovieInfoButton {
     width: 60%;
-    display: flex;
-    justify-content: space-between;
   }
   .movie-info__btn {
     background-color: transparent;
+    margin-right: 5px;
     border: none;
     cursor: pointer;
   }

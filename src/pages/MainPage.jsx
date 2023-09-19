@@ -87,7 +87,7 @@ const Button = styled.button`
   font-size: 14px;
   font-weight: 500;
   padding: 8px 16px;
-  margin: 0 8px 0 8px;
+  margin: 0 8px 20px 8px;
 
   &.Home__buttonClicked {
     border: 2px solid white;

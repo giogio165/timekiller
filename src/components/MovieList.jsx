@@ -46,7 +46,7 @@ const SMovieList = styled.div`
   color: white;
   width: 100%;
   > h2 {
-    margin-top: 30px;
+    margin-top: 10px;
   }
 `;
 export default MovieList;
