@@ -5,7 +5,6 @@ import {
   faCirclePlay,
   faCirclePlus,
 } from "@fortawesome/free-solid-svg-icons";
-import "./css/MovieInfoButton.css";
 import styled from "styled-components";
 
 const MovieInfoButton = () => {
