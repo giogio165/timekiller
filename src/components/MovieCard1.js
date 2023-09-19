@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { contentUpdate } from "../global/store/detailSlice";
 import MovieInfoButton from "./MovieInfoButton";
 import styled from "styled-components";
+import { fetchGenreNames } from "../api/MovieApi";
 
 const MovieCard1 = ({ it, number }) => {
   const navigate = useNavigate();
@@ -18,33 +18,8 @@ const MovieCard1 = ({ it, number }) => {
   const [genreNames, setGenreNames] = useState([]);
 
   useEffect(() => {
-    fetchGenreNames(it.genre_ids);
+    fetchGenreNames(it.genre_ids).then((names) => setGenreNames(names));
   }, [it.genre_ids]);
-
-  const fetchGenreNames = async (genreCodes) => {
-    try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/genre/movie/list`,
-        {
-          params: {
-            api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "ko-KR",
-          },
-        }
-      );
-
-      const matchingGenres = response.data.genres.filter((genre) =>
-        genreCodes.includes(genre.id)
-      );
-
-      const limitedGenres = matchingGenres.slice(0, 2);
-
-      const genreNames = limitedGenres.map((genre) => genre.name);
-      setGenreNames(genreNames);
-    } catch (error) {
-      console.error("API Error:", error);
-    }
-  };
 
   return (
     <>
@@ -89,9 +64,7 @@ const MovieCard1 = ({ it, number }) => {
 const StyledMovieCard2 = styled.div`
   width: 80%;
   height: 240px;
-  padding: 30px 0 30px 0;
-  margin-bottom: 30px;
-  margin-left: 10%;
+
 
   > img {
     position: relative;
@@ -123,7 +96,7 @@ const StyledMovieCard1 = styled.div`
   margin: 30px 0 30px 0;
   margin-left: 10%;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     .MovieCard__overlay {
       display: flex;
       opacity: 1;

@@ -1,36 +1,23 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MovieCard1 from "./MovieCard1";
 import styled from "styled-components";
+import { fetchMovies } from "../api/MovieApi";
 
 const MovieList = ({ it }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetchMovies();
+    fetchMovies()
+      .then((response) => {
+        setMovies(response);
+      })
+      .catch((error) => {
+        console.error("API Error:", error);
+      });
   }, []);
-
-  const fetchMovies = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/popular",
-        {
-          params: {
-            api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "ko-KR",
-            page: 1,
-          },
-        }
-      );
-
-      setMovies(response.data.results);
-    } catch (error) {
-      console.error("API Error:", error);
-    }
-  };
 
   const sliderSettings = {
     dots: false,
@@ -58,5 +45,8 @@ const MovieList = ({ it }) => {
 const SMovieList = styled.div`
   color: white;
   width: 100%;
+  > h2 {
+    margin-top: 30px;
+  }
 `;
 export default MovieList;

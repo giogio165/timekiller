@@ -5,32 +5,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TvCard from "./TvCard";
 import styled from "styled-components";
+import { fetchTvShows } from "../api/TvApi";
 
 const TvList = ({ it }) => {
   const [tvShows, setTvShows] = useState([]);
 
   useEffect(() => {
-    fetchTvShows();
+    fetchTvShows()
+      .then((response) => setTvShows(response))
+      .catch((error) => console.error("API Error:", error));
   }, []);
-
-  const fetchTvShows = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.themoviedb.org/3/tv/popular",
-        {
-          params: {
-            api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "ko-KR",
-            page: 2,
-          },
-        }
-      );
-
-      setTvShows(response.data.results);
-    } catch (error) {
-      console.error("API Error:", error);
-    }
-  };
 
   const sliderSettings = {
     dots: false,
@@ -47,7 +31,9 @@ const TvList = ({ it }) => {
       <h2 className="MovieList__title">{it}</h2>
       <Slider {...sliderSettings}>
         {tvShows.map((it) => (
-          <TvCard it={it} key={it.id} />
+          <div key={it.id}>
+            <TvCard it={it} />
+          </div>
         ))}
       </Slider>
     </STvList>
@@ -57,5 +43,8 @@ const TvList = ({ it }) => {
 const STvList = styled.div`
   color: white;
   width: 100%;
+  > h2 {
+    margin-top: 30px;
+  }
 `;
 export default TvList;
