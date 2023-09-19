@@ -65,7 +65,6 @@ const StyledMovieCard2 = styled.div`
   width: 80%;
   height: 240px;
 
-
   > img {
     position: relative;
     cursor: pointer;
@@ -116,11 +115,11 @@ const MovieCardImgWrapper = styled.div`
     border-radius: 8px;
   }
   .MovieCard__overlay {
+    width: 100%;
+    height: 200px;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 200px;
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
     display: flex;
@@ -132,13 +131,17 @@ const MovieCardImgWrapper = styled.div`
     border-radius: 8px;
   }
   .movie-info {
-    width: 120px;
+    width: 85%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     font-size: 13px;
-    margin-left: 10px;
+    margin-left: 8px;
     margin-bottom: 20px;
     white-space: nowrap;
     > h4 {
-      width: 120px;
+      width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
     }

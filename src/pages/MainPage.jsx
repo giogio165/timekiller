@@ -89,7 +89,7 @@ const Button = styled.button`
   padding: 8px 16px;
   margin: 0 8px 0 8px;
 
-  &.clicked {
+  &.Home__buttonClicked {
     border: 2px solid white;
     background-color: white;
     color: black;
