@@ -7,6 +7,7 @@ import { fetchVideosForMovie } from "../api/VideoApi";
 const HomeVideo = ({ title }) => {
   const [movies, setMovies] = useState([]);
   const [videos, setVideos] = useState(null);
+  const w = window.innerWidth;
 
   useEffect(() => {
     fetchMovies()
@@ -30,7 +31,7 @@ const HomeVideo = ({ title }) => {
       <div className="HomeVideo__video">
         {videos ? (
           <iframe
-            width="1050"
+            width={w <= 1500 ? "100%" : "100%"}
             height="500"
             src={`https://www.youtube.com/embed/${videos.key}?autoplay=1&mute=1`}
             title={videos.name}
