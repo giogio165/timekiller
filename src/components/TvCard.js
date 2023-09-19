@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { contentUpdate } from "../global/store/detailSlice";
 import styled from "styled-components";
+import { fetchGenreNames } from "../api/TvApi";
 
 const TvCard = ({ it }) => {
   const navigate = useNavigate();
@@ -18,33 +19,8 @@ const TvCard = ({ it }) => {
   const [genreNames, setGenreNames] = useState([]);
 
   useEffect(() => {
-    fetchGenreNames(it.genre_ids);
+    fetchGenreNames(it.genre_ids).then((names) => setGenreNames(names));
   }, [it.genre_ids]);
-
-  const fetchGenreNames = async (genreCodes) => {
-    try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/genre/movie/list`,
-        {
-          params: {
-            api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "ko-KR",
-          },
-        }
-      );
-
-      const matchingGenres = response.data.genres.filter((genre) =>
-        genreCodes.includes(genre.id)
-      );
-
-      const limitedGenres = matchingGenres.slice(0, 2);
-
-      const genreNames = limitedGenres.map((genre) => genre.name);
-      setGenreNames(genreNames);
-    } catch (error) {
-      console.error("API Error:", error);
-    }
-  };
 
   return (
     <STvCard onClick={gotoDetailPage}>
@@ -57,7 +33,7 @@ const TvCard = ({ it }) => {
         <div className="TvCard__overlay">
           <div className="movie-info">
             <MovieInfoButton />
-            <h3 className="movie-info__title">{it.original_name}</h3>
+            <h4 className="movie-info__title">{it.original_name}</h4>
             <div>
               평균
               <FontAwesomeIcon icon={faStar} style={{ color: "#ffffff" }} />
@@ -74,13 +50,14 @@ const TvCard = ({ it }) => {
 };
 
 const STvCard = styled.div`
-  width: 170px;
+  width: 75%;
   height: 230px;
   cursor: pointer;
   transition: transform 0.3s;
-  padding: 30px 0 30px 0;
+  margin: 30px 0 30px 0;
+  margin-left: 10%;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     .TvCard__overlay {
       display: flex;
       opacity: 1;
@@ -94,18 +71,18 @@ const STvCardImgWrapper = styled.div`
   z-index: 1;
   > img {
     position: relative;
-    width: 140px;
+    width: 100%;
     height: 200px;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 8px;
   }
   .TvCard__overlay {
+    width: 100%;
+    height: 200px;
     position: absolute;
     top: 0;
     left: 0;
-    width: 140px;
-    height: 200px;
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
     display: flex;
@@ -117,13 +94,17 @@ const STvCardImgWrapper = styled.div`
     border-radius: 8px;
   }
   .movie-info {
-    width: 120px;
+    width: 85%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     font-size: 13px;
-    margin-left: 10px;
+    margin-left: 8px;
     margin-bottom: 20px;
     white-space: nowrap;
     > h4 {
-      width: 120px;
+      width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
     }

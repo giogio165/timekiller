@@ -26,13 +26,12 @@ const UpcomingCard = ({ it, number }) => {
             <div className="UpcomingCard-overview">{it.overview}</div>
           </SMovieInfo>
           <SUpComingCardImgWrapper1>
-            {/* <div className="UpcomingCard1__overlay "></div> */}
             <img
-              src={`https://image.tmdb.org/t/p/w500${it.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500${it.backdrop_path}`}
               alt={`${it.original_title} Poster`}
               style={{
                 position: "relative",
-                width: "412px",
+                width: "90%",
                 height: "200px",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
@@ -52,7 +51,7 @@ const UpcomingCard = ({ it, number }) => {
               className={cardPosterClassName}
               style={{
                 position: "relative",
-                width: "284px",
+                width: "80%",
                 height: "160px",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
@@ -116,7 +115,7 @@ const SUpComingCardImgWrapper1 = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 421px;
+    width: 90%;
     height: 200px;
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
@@ -147,6 +146,7 @@ const SUpcomingCard2 = styled.div`
   position: relative;
   margin: 20px 0 20px 0;
   cursor: pointer;
+
   &:hover {
     .UpcomingCard2__overlay {
       display: flex;
@@ -163,7 +163,7 @@ const SUpComingCardImgWrapper2 = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 284px;
+    width: 80%;
     height: 160px;
     background-color: rgba(0, 0, 0, 0.4);
     color: white;

@@ -5,43 +5,17 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MovieCard1 from "./MovieCard1";
 import styled from "styled-components";
+import { fetchMoviesWithImages } from "../api/MovieApi";
 
 const MovieList2 = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetchMovies();
+    fetchMoviesWithImages().then((moviesWithImages) => {
+      setMovies(moviesWithImages);
+    });
   }, []);
 
-  const fetchMovies = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/popular",
-        {
-          params: {
-            api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "ko-KR",
-            page: 1,
-          },
-        }
-      );
-
-      const moviesWithImages = await Promise.all(
-        response.data.results.map(async (movie) => {
-          const imageResponse = await fetch(
-            `https://api.themoviedb.org/3/movie/${movie.id}/images?api_key=fcdcf37d8779f435786606a2ddd02898`
-          );
-          const imageData = await imageResponse.json();
-          const image = imageData.backdrops[0]?.file_path || "";
-          return { ...movie, image };
-        })
-      );
-
-      setMovies(moviesWithImages);
-    } catch (error) {
-      console.error("API Error:", error);
-    }
-  };
   const sliderSettings = {
     dots: false,
     infinite: true,
@@ -66,8 +40,10 @@ const MovieList2 = () => {
 };
 const SMovieList = styled.div`
   width: 100%;
-  height: 300px;
   color: white;
   margin-bottom: 30px;
+  .MovieList2 {
+    width: 100%;
+  }
 `;
 export default MovieList2;
