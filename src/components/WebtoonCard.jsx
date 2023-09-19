@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import React from "react";
 import MovieInfoButton from "./MovieInfoButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,9 +7,11 @@ import styled from "styled-components";
 
 const WebtoonCard = ({ it, number }) => {
   // number는 WebtoonPage에서 넘어옴, Carousel에 들어갈 아이템 갯수/ it은 webtoon
-  const navigate = useNavigate();
-  const toDetailPage = () => {
-    navigate("/detail");
+  const webtoonUrl = it.url;
+  const gotoWebtoonUrl = () => {
+    if (webtoonUrl) {
+      window.open(webtoonUrl, "_blank");
+    }
   };
 
   return (
@@ -20,7 +22,7 @@ const WebtoonCard = ({ it, number }) => {
             <div className="WebtoonCard__subtitle">왓차오리지널 웹툰</div>
             <div className="WebtoonCard__title">{it.title}</div>
           </SWebtoonInfo>
-          <SWebtoonCard onClick={toDetailPage}>
+          <SWebtoonCard onClick={gotoWebtoonUrl}>
             <div className="WebtoonCard__img-wrapper">
               <img
                 src={it.img}
@@ -34,7 +36,7 @@ const WebtoonCard = ({ it, number }) => {
         </div>
       ) : (
         //두번째 webtoon Carousel
-        <SWebtoonCard2 onClick={toDetailPage}>
+        <SWebtoonCard2 onClick={gotoWebtoonUrl}>
           <div className="WebtoonCard__img-wrapper">
             <div className="WebtoonCard__purchaseTag">개별구매</div>
             <img
