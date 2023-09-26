@@ -89,10 +89,10 @@ const StyledMovieCard2 = styled.div`
 
 const StyledMovieCard1 = styled.div`
   width: 75%;
-  height: 230px;
+  height: 210px;
   cursor: pointer;
   transition: transform 0.3s;
-  margin: 30px 0 30px 0;
+  margin: 20px 0 20px 0;
   margin-left: 10%;
   &:hover {
     transform: scale(1.05);
