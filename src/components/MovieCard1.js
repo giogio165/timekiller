@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { contentUpdate } from "../global/store/detailSlice";
 import MovieInfoButton from "./MovieInfoButton";
 import styled from "styled-components";
+import { fetchGenreNames } from "../api/MovieApi";
 
 const MovieCard1 = ({ it, number }) => {
   const navigate = useNavigate();
@@ -18,33 +18,8 @@ const MovieCard1 = ({ it, number }) => {
   const [genreNames, setGenreNames] = useState([]);
 
   useEffect(() => {
-    fetchGenreNames(it.genre_ids);
+    fetchGenreNames(it.genre_ids).then((names) => setGenreNames(names));
   }, [it.genre_ids]);
-
-  const fetchGenreNames = async (genreCodes) => {
-    try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/genre/movie/list`,
-        {
-          params: {
-            api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "ko-KR",
-          },
-        }
-      );
-
-      const matchingGenres = response.data.genres.filter((genre) =>
-        genreCodes.includes(genre.id)
-      );
-
-      const limitedGenres = matchingGenres.slice(0, 2);
-
-      const genreNames = limitedGenres.map((genre) => genre.name);
-      setGenreNames(genreNames);
-    } catch (error) {
-      console.error("API Error:", error);
-    }
-  };
 
   return (
     <>
@@ -53,7 +28,7 @@ const MovieCard1 = ({ it, number }) => {
         <StyledMovieCard2 onClick={gotoDetailPage}>
           <div className="movie-title">{it.original_title}</div>
           <img
-            src={`https://image.tmdb.org/t/p/original${it.image}`}
+            src={`https://image.tmdb.org/t/p/original/${it.image}`}
             alt={it.title}
           />
         </StyledMovieCard2>
@@ -62,7 +37,7 @@ const MovieCard1 = ({ it, number }) => {
         <StyledMovieCard1 onClick={gotoDetailPage}>
           <MovieCardImgWrapper>
             <img
-              src={`https://image.tmdb.org/t/p/w300${it.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w300/${it.poster_path}`}
               alt={`${it.original_title} Poster`}
             />
             <div className="MovieCard__overlay">
@@ -87,14 +62,13 @@ const MovieCard1 = ({ it, number }) => {
 };
 
 const StyledMovieCard2 = styled.div`
-  width: 400px;
+  width: 80%;
   height: 240px;
-  padding: 30px 0 30px 0;
-
+  margin-left: 10%;
   > img {
     position: relative;
     cursor: pointer;
-    width: 380px;
+    width: 100%;
     height: 180px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -114,13 +88,14 @@ const StyledMovieCard2 = styled.div`
 `;
 
 const StyledMovieCard1 = styled.div`
-  width: 170px;
+  width: 75%;
   height: 230px;
   cursor: pointer;
   transition: transform 0.3s;
-  padding: 30px 0 30px 0;
+  margin: 30px 0 30px 0;
+  margin-left: 10%;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     .MovieCard__overlay {
       display: flex;
       opacity: 1;
@@ -133,18 +108,18 @@ const MovieCardImgWrapper = styled.div`
   z-index: 1;
   > img {
     position: relative;
-    width: 140px;
+    width: 100%;
     height: 200px;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 8px;
   }
   .MovieCard__overlay {
+    width: 100%;
+    height: 200px;
     position: absolute;
     top: 0;
     left: 0;
-    width: 140px;
-    height: 200px;
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
     display: flex;
@@ -156,13 +131,17 @@ const MovieCardImgWrapper = styled.div`
     border-radius: 8px;
   }
   .movie-info {
-    width: 120px;
+    width: 85%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     font-size: 13px;
-    margin-left: 10px;
+    margin-left: 8px;
     margin-bottom: 20px;
     white-space: nowrap;
     > h4 {
-      width: 120px;
+      width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
     }

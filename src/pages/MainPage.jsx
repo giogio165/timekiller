@@ -27,11 +27,11 @@ const MainPage = () => {
   };
 
   const sliderTitle = [
-    "왓차 최고인기작",
-    "왓차 익스클루시브",
+    "최고인기작",
+    "익스클루시브",
     "설탕이 필요할 때 꺼내보세요",
-    "왓차 Top 10",
-    "오직 왓챠에서",
+    "Top 10",
+    "여름이 다가오면",
   ];
 
   return (
@@ -89,7 +89,7 @@ const Button = styled.button`
   padding: 8px 16px;
   margin: 0 8px 0 8px;
 
-  &.clicked {
+  &.Home__buttonClicked {
     border: 2px solid white;
     background-color: white;
     color: black;
