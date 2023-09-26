@@ -28,7 +28,7 @@ const MovieCard1 = ({ it, number }) => {
         <StyledMovieCard2 onClick={gotoDetailPage}>
           <div className="movie-title">{it.original_title}</div>
           <img
-            src={`https://image.tmdb.org/t/p/original${it.image}`}
+            src={`https://image.tmdb.org/t/p/original/${it.image}`}
             alt={it.title}
           />
         </StyledMovieCard2>
@@ -37,7 +37,7 @@ const MovieCard1 = ({ it, number }) => {
         <StyledMovieCard1 onClick={gotoDetailPage}>
           <MovieCardImgWrapper>
             <img
-              src={`https://image.tmdb.org/t/p/w300${it.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w300/${it.poster_path}`}
               alt={`${it.original_title} Poster`}
             />
             <div className="MovieCard__overlay">
@@ -64,7 +64,7 @@ const MovieCard1 = ({ it, number }) => {
 const StyledMovieCard2 = styled.div`
   width: 80%;
   height: 240px;
-
+  margin-left: 10%;
   > img {
     position: relative;
     cursor: pointer;
