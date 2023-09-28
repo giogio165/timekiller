@@ -13,7 +13,6 @@ import {
   UpcomingPage,
   WebtoonPage,
   LogInPage,
-  MyPage,
   SignupPage,
   SearchResultPage,
 } from "./pages/index";

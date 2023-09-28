@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { GlobalLayout } from "../global";
-import { useParams, useMatch } from "react-router-dom";
-import { SearchCard } from "../components";
+import { useMatch } from "react-router-dom";
+import { SearchCard } from "../components/index";
 
 const SearchResultPage = () => {
   const [list, setList] = useState([]);
