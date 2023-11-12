@@ -37,6 +37,7 @@ const HomeVideo = ({ title }) => {
             frameBorder="0"
             allowFullScreen
             allow="autoplay"
+            loading="lazy"
           ></iframe>
         ) : (
           "Loading video..."

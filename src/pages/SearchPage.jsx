@@ -1,12 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { GlobalLayout } from "../global";
-import { Link } from "react-router-dom";
-import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
-import { ContentBox, ContentsTitle, GenreBox } from "../components";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { ContentBox, ContentsTitle, GenreBox } from "../components/index";
 
 const SearchPage = () => {
   return (

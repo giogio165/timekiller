@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { GlobalLayout } from "../global";
-import MovieList from "../components/MovieList";
-import MovieList2 from "../components/MovieList2";
-import TvList from "../components/TvList";
-import HomeVideo from "../components/HomeVideo";
+import { MovieList, MovieList2, TvList, HomeVideo } from "../components/index";
 import styled from "styled-components";
+
 const MainPage = () => {
   const [movieButton, setMovieButton] = useState(false);
   const [showWholeButton, setShowWholeButton] = useState(true);

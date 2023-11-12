@@ -1,6 +1,5 @@
 import React from "react";
-import WebtoonHomeImg from "../components/WebtoonHomeImg";
-import WebtoonList from "../components/WebtoonList";
+import { WebtoonList, WebtoonHomeImg } from "../components/index";
 import { GlobalLayout } from "../global";
 
 const WebtoonPage = () => {
