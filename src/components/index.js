@@ -19,6 +19,7 @@ import MovieList from "./MovieList";
 import MovieList2 from "./MovieList2";
 import TvList from "./TvList";
 import HomeVideo from "./HomeVideo";
+import WebtoonList from "./WebtoonList";
 
 export {
   Dropdown,
@@ -42,4 +43,5 @@ export {
   MovieList2,
   TvList,
   HomeVideo,
+  WebtoonList,
 };
