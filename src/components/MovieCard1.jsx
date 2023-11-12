@@ -28,7 +28,7 @@ const MovieCard1 = ({ it, number }) => {
         <StyledMovieCard2 onClick={gotoDetailPage}>
           <div className="movie-title">{it.original_title}</div>
           <img
-            src={`https://image.tmdb.org/t/p/original/${it.image}`}
+            src={`https://image.tmdb.org/t/p/w300/${it.image}`}
             alt={it.title}
           />
         </StyledMovieCard2>

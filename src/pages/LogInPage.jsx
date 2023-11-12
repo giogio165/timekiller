@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { GlobalLayout } from "../global";
 import { auth, signInWithEmailAndPassword } from "../fbase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

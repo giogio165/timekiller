@@ -8,6 +8,7 @@ import MyPage from "./MyPage";
 import LogInPage from "./LogInPage";
 import SignupPage from "./SignupPage";
 import SearchResultPage from "./SearchResultPage";
+
 export {
   MainPage,
   WebtoonPage,

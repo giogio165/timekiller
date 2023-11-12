@@ -1,5 +1,5 @@
 import React from "react";
-import UpcomingList from "../components/Upcoming/UpcomingList";
+import { UpcomingList } from "../components/index";
 import { GlobalLayout } from "../global";
 
 const UpcomingPage = () => {
