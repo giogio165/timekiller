@@ -1,4 +1,4 @@
-# 슈퍼코딩 Project
+# 왓챠 클론 Project
 
 ## 폴더 컨벤션
 
