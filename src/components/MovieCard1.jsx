@@ -11,6 +11,7 @@ import { fetchGenreNames } from "../api/MovieApi";
 const MovieCard1 = ({ it, number }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const gotoDetailPage = () => {
     navigate(`/detail/${it.id}`);
     dispatch(contentUpdate(it));
@@ -42,7 +43,7 @@ const MovieCard1 = ({ it, number }) => {
             />
             <div className="MovieCard__overlay">
               <div className="movie-info">
-                <MovieInfoButton />
+                <MovieInfoButton content={it} />
                 <h4>{it.original_title}</h4>
                 <div>
                   평균

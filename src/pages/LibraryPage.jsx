@@ -14,8 +14,8 @@ const LibraryPage = () => {
   const checkLogin = useSelector((state) => {
     return state.isLogin.login;
   });
-  console.log(checkLogin);
-  console.log(list);
+  // console.log(checkLogin);
+  // console.log("리스트", list);
   return (
     <GlobalLayout>
       {checkLogin ? (
@@ -35,6 +35,15 @@ const LibraryPage = () => {
                       </div>
                       <div className="li-custom_title">비디오</div>
                     </div>
+                    <section className="container">
+                      <div className="wrapper-contents">
+                        <ul className="contents-ul">
+                          {list.map((elem, index) => (
+                            <LibraryCard elem={elem} key={index} />
+                          ))}
+                        </ul>
+                      </div>
+                    </section>
                     <hr type="regular" />
                   </Link>
                 </li>
@@ -49,36 +58,8 @@ const LibraryPage = () => {
                     <hr type="regular" />
                   </Link>
                 </li>
-                <li>
-                  <Link to="/upcoming" className="li-custom">
-                    <div className="li-custom_info">
-                      <div className="li-custom_icon">
-                        <BiMoviePlay />
-                      </div>
-                      <div className="li-custom_title">개봉작</div>
-                    </div>
-                    <hr type="regular" />
-                  </Link>
-                </li>
               </ul>
             </section>
-            <section className="container">
-              <div className="wrapper-title">
-                <div className="container-title">
-                  <div>
-                    <h1>최근 보고싶어요한 콘텐츠</h1>
-                  </div>
-                </div>
-              </div>
-              <div className="wrapper-contents">
-                <ul className="contents-ul">
-                  {list.map((elem, index) => (
-                    <LibraryCard elem={elem} key={index} />
-                  ))}
-                </ul>
-              </div>
-            </section>
-            <section className="container"></section>
           </div>
         </SLibraryPage>
       ) : (

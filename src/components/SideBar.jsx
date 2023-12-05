@@ -58,24 +58,6 @@ const SideBar = () => {
           <li className="li-custom">
             <div
               className={`${
-                activeItem === 1 ? "li-custom_list_active" : "li-custom_list"
-              }`}
-              onClick={() => {
-                handleItemClick(1);
-                handleNavigation("/webtoon");
-              }}
-            >
-              <div className="li-custom_info">
-                <div className="li-custom_icon">
-                  <BiBook />
-                </div>
-              </div>
-              웹툰
-            </div>
-          </li>
-          <li className="li-custom">
-            <div
-              className={`${
                 activeItem === 2 ? "li-custom_list_active" : "li-custom_list"
               }`}
               onClick={() => {
@@ -91,9 +73,6 @@ const SideBar = () => {
               개봉관
             </div>
           </li>
-        </ul>
-        <hr />
-        <ul className="sidebar-section_ul">
           <li className="li-custom">
             <div
               className={`${
@@ -112,6 +91,27 @@ const SideBar = () => {
               찾기
             </div>
           </li>
+          <li className="li-custom">
+            <div
+              className={`${
+                activeItem === 1 ? "li-custom_list_active" : "li-custom_list"
+              }`}
+              onClick={() => {
+                handleItemClick(1);
+                handleNavigation("/webtoon");
+              }}
+            >
+              <div className="li-custom_info">
+                <div className="li-custom_icon">
+                  <BiBook />
+                </div>
+              </div>
+              웹툰
+            </div>
+          </li>
+        </ul>
+        <hr />
+        <ul className="sidebar-section_ul">
           <li className="li-custom">
             <div
               className={`${

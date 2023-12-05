@@ -7,20 +7,21 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
-const MovieInfoButton = () => {
+const MovieInfoButton = ({ content }) => {
   const pinkColor = "#F82D62";
   const basicColor = "#FFFFFF";
+
   return (
     <SMovieInfoButton>
       <div className="MovieInfoButton">
-        <button className="movie-info__btn">
+        {/* <button className="movie-info__btn">
           <FontAwesomeIcon
             className="movie-info__playIcon"
             icon={faCirclePlay}
             size="2x"
             color={basicColor}
           />
-        </button>
+        </button> */}
         <button className="movie-info__btn">
           <FontAwesomeIcon
             className="movie-info__plusBtn"

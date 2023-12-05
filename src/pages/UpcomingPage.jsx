@@ -4,11 +4,11 @@ import { GlobalLayout } from "../global";
 
 const UpcomingPage = () => {
   const sliderTitle = [
-    "왓차 최고인기작",
-    "왓차 익스클루시브",
+    "금주 최고 인기작",
+    "익스클루시브",
     "설탕이 필요할 때 꺼내보세요",
-    "왓차 Top 10",
-    "오직 왓챠에서",
+    "Top 10",
+    "드라마",
   ];
   return (
     <GlobalLayout>

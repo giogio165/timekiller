@@ -41,6 +41,7 @@ const UpcomingList = ({ title, sliderTitle }) => {
       console.error("API Error:", error);
     }
   };
+
   const w = window.innerWidth;
   const sliderSettings = {
     dots: false,
@@ -73,11 +74,11 @@ const UpcomingList = ({ title, sliderTitle }) => {
   return (
     <SUpcomingList>
       <h1>{title}</h1>
-      <Slider {...sliderSettings3}>
+      {/* <Slider {...sliderSettings3}>
         {movies.map((it) => (
           <UpcomingCard1 it={it} />
         ))}
-      </Slider>
+      </Slider> */}
       {sliderTitle.map((it) => (
         <>
           <Slider {...sliderSettings2}>

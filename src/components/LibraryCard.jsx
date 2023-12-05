@@ -7,11 +7,11 @@ import { contentUpdate } from "../global/store/detailSlice";
 const LibraryCard = ({ elem }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const goDetailPage = () => {
     navigate(`/detail/${elem.id}`);
     dispatch(contentUpdate(elem));
   };
-  console.log(elem);
   return (
     <>
       <SLibraryCard>

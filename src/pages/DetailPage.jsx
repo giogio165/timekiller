@@ -28,7 +28,8 @@ const DetailPage = () => {
   const arr = useSelector((state) => {
     return state.keep.library;
   });
-  console.log(arr);
+
+  console.log("arr", arr);
   const options = {
     method: "GET",
     headers: {
@@ -37,6 +38,30 @@ const DetailPage = () => {
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyODQ4MGY5NTM0MDFkYjYwZTU1M2U0MTI4NGY1ZjQwNyIsInN1YiI6IjYzNjBmZGI4NDBkMGZlMDA4MjY3ZjUwYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tfm55H9d6vX72r5ZgVUk2HlkmK15hVNdfCiP7NkgWnQ",
     },
   };
+
+  const openYouTubeVideo = async () => {
+    try {
+      const apiKey = "fcdcf37d8779f435786606a2ddd02898";
+
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}`
+      );
+
+      const data = await response.json();
+
+      if (data.results.length > 0) {
+        const youtubeVideoKey = data.results[0].key;
+        const youtubeVideoUrl = `https://www.youtube.com/watch?v=${youtubeVideoKey}`;
+
+        window.open(youtubeVideoUrl, "_blank");
+      } else {
+        console.error("No videos found for the movie");
+      }
+    } catch (error) {
+      console.error("Error fetching movie videos", error);
+    }
+  };
+
   const relativeHandler = () => {
     setInform(false);
     setRelative(true);
@@ -114,7 +139,6 @@ const DetailPage = () => {
     fetchRelativeData();
   }, [id]);
 
-  // console.log(similar);
   return (
     <GlobalLayout>
       <SMain>
@@ -126,7 +150,7 @@ const DetailPage = () => {
             <ContentsInfo id={id} real={real} />
             <div className="container-play">
               <section>
-                <div className="container-play_btn">
+                <div className="container-play_btn" onClick={openYouTubeVideo}>
                   <div className="play">
                     <div className="icon">
                       <HiPlay />

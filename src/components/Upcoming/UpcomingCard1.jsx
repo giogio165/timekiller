@@ -8,13 +8,6 @@ const UpcomingCard1 = ({ it }) => {
         <img
           src={`https://image.tmdb.org/t/p/w500${it.backdrop_path}`}
           alt={`${it.original_title} Poster`}
-          style={{
-            width: "700px",
-            height: "450px",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            borderRadius: "8px",
-          }}
         />
       </SUpcomingImgWrapper>
 
@@ -27,6 +20,7 @@ export default UpcomingCard1;
 
 const SUpcomingCardWrapper = styled.div`
   position: relative;
+  width: 100%;
   margin: 20px 0 0 0;
   cursor: pointer;
 
@@ -56,4 +50,9 @@ const SUpcomingImgWrapper = styled.div`
   position: relative;
   border-radius: 8px;
   z-index: 1;
+  width: 20%;
+  height: "450px"
+  backgroundRepeat: "no-repeat"
+  backgroundSize: "cover"
+  borderRadius: "8px"
 `;
