@@ -55,7 +55,7 @@ const SideBar = () => {
               비디오
             </div>
           </li>
-          <li className="li-custom">
+          {/* <li className="li-custom">
             <div
               className={`${
                 activeItem === 2 ? "li-custom_list_active" : "li-custom_list"
@@ -72,7 +72,7 @@ const SideBar = () => {
               </div>
               개봉관
             </div>
-          </li>
+          </li> */}
           <li className="li-custom">
             <div
               className={`${

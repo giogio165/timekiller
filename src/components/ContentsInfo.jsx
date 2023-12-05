@@ -10,7 +10,7 @@ const ContentsInfo = (props) => {
   const real = useSelector((state) => {
     return state.contentUpdate.value;
   });
-  console.log(real);
+  // console.log(real);
   const options = {
     method: "GET",
     headers: {

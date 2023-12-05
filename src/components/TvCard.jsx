@@ -12,6 +12,7 @@ import { fetchGenreNames } from "../api/TvApi";
 const TvCard = ({ it }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const gotoDetailPage = () => {
     navigate(`/detail/${it.id}`);
     dispatch(contentUpdate(it));
@@ -32,7 +33,7 @@ const TvCard = ({ it }) => {
         />
         <div className="TvCard__overlay">
           <div className="movie-info">
-            <MovieInfoButton />
+            <MovieInfoButton content={it} />
             <h4 className="movie-info__title">{it.original_name}</h4>
             <div>
               평균

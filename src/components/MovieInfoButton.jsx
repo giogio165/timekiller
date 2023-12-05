@@ -1,5 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDispatch } from "react-redux";
+import { keep } from "../global/store/keepSlice";
+
 import {
   faStar,
   faCirclePlay,
@@ -11,6 +14,12 @@ const MovieInfoButton = ({ content }) => {
   const pinkColor = "#F82D62";
   const basicColor = "#FFFFFF";
 
+  const dispatch = useDispatch();
+
+  const handleKeepButtonClick = () => {
+    dispatch(keep(content));
+  };
+  // console.log("콘텐츠 누름", content);
   return (
     <SMovieInfoButton>
       <div className="MovieInfoButton">
@@ -22,7 +31,7 @@ const MovieInfoButton = ({ content }) => {
             color={basicColor}
           />
         </button> */}
-        <button className="movie-info__btn">
+        <button className="movie-info__btn" onClick={handleKeepButtonClick}>
           <FontAwesomeIcon
             className="movie-info__plusBtn"
             icon={faCirclePlus}

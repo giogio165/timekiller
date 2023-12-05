@@ -15,7 +15,7 @@ const LibraryPage = () => {
     return state.isLogin.login;
   });
   // console.log(checkLogin);
-  // console.log("리스트", list);
+  console.log("리스트", list);
   return (
     <GlobalLayout>
       {checkLogin ? (
@@ -25,40 +25,33 @@ const LibraryPage = () => {
             <div className="library-title">
               <h1>보관함</h1>
             </div>
+
             <section className="container">
-              <ul className="container-ul">
-                <li>
-                  <Link to="/" className="li-custom">
-                    <div className="li-custom_info">
-                      <div className="li-custom_icon">
-                        <TbMovie />
-                      </div>
-                      <div className="li-custom_title">비디오</div>
-                    </div>
-                    <section className="container">
-                      <div className="wrapper-contents">
-                        <ul className="contents-ul">
-                          {list.map((elem, index) => (
-                            <LibraryCard elem={elem} key={index} />
-                          ))}
-                        </ul>
-                      </div>
-                    </section>
-                    <hr type="regular" />
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/webtoon" className="li-custom">
-                    <div className="li-custom_info">
-                      <div className="li-custom_icon">
-                        <BiBook />
-                      </div>
-                      <div className="li-custom_title">웹툰</div>
-                    </div>
-                    <hr type="regular" />
-                  </Link>
-                </li>
-              </ul>
+              <div className="ui-custom">
+                <div className="ui-custom_info">
+                  <div className="ui-custom_icon">
+                    <TbMovie />
+                  </div>
+                  <div className="ui-custom_title">비디오</div>
+                </div>
+                <hr type="regular" />
+              </div>
+              <div className="container-contents">
+                {list.map((content, index) => (
+                  <LibraryCard content={content} key={index} />
+                ))}
+              </div>
+            </section>
+            <section className="container">
+              <div className="ui-custom">
+                <div className="ui-custom_info">
+                  <div className="ui-custom_icon">
+                    <BiBook />
+                  </div>
+                  <div className="ui-custom_title">웹툰</div>
+                </div>
+                <hr type="regular" />
+              </div>
             </section>
           </div>
         </SLibraryPage>
@@ -102,59 +95,52 @@ const SLibraryPage = styled.main`
     .container {
       margin-bottom: 32px;
 
-      .container-ul {
-        padding: 0;
-        margin: 0;
-        list-style-type: none;
-        display: block;
+      .container-contents {
+        width: 100%;
+        height: 100%;
+      }
+      .ui-custom {
+        display: flex;
+        position: relative;
+        justify-content: flex-start;
+        align-items: center;
+        color: rgb(255, 255, 255);
+        white-space: nowrap;
+        height: 56px;
+        overflow: hidden;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: pointer;
 
-        li {
-          display: list-item;
+        hr {
+          background-color: rgb(27, 28, 29);
+          width: 100%;
+          height: 1px;
+          padding: 0px;
+          border: none;
+          margin: 0px;
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+        }
 
-          .li-custom {
-            display: flex;
-            position: relative;
-            justify-content: flex-start;
-            align-items: center;
-            color: rgb(255, 255, 255);
-            white-space: nowrap;
-            height: 56px;
-            overflow: hidden;
-            text-decoration: none;
-            background-color: transparent;
-            cursor: pointer;
+        .ui-custom_info {
+          display: flex;
+          overflow: hidden;
 
-            hr {
-              background-color: rgb(27, 28, 29);
-              width: 100%;
-              height: 1px;
-              padding: 0px;
-              border: none;
-              margin: 0px;
-              position: absolute;
-              bottom: 0px;
-              left: 0px;
-            }
-
-            .li-custom_info {
-              display: flex;
-              overflow: hidden;
-
-              .li-custom_icon {
-                width: 24px;
-                height: 24px;
-                font-size: 24px;
-                margin-right: 12px;
-              }
-            }
-            .li-custom_title {
-              font-size: 19px;
-              font-weight: 400;
-              letter-spacing: 0px;
-              overflow: hidden;
-              text-overflow: ellipsis;
-            }
+          .ui-custom_icon {
+            width: 24px;
+            height: 24px;
+            font-size: 24px;
+            margin-right: 12px;
           }
+        }
+        .ui-custom_title {
+          font-size: 19px;
+          font-weight: 400;
+          letter-spacing: 0px;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
 
