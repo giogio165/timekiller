@@ -10,16 +10,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
-const MovieInfoButton = ({ content }) => {
+const MovieInfoButton = ({ content, webtoon }) => {
   const pinkColor = "#F82D62";
   const basicColor = "#FFFFFF";
 
   const dispatch = useDispatch();
 
   const handleKeepButtonClick = () => {
-    dispatch(keep(content));
+    content ? dispatch(keep(content)) : dispatch(keep(webtoon));
   };
-  // console.log("콘텐츠 누름", content);
   return (
     <SMovieInfoButton>
       <div className="MovieInfoButton">

@@ -47,7 +47,7 @@ const WebtoonCard = ({ it, number }) => {
           </div>
           <div className="WebtoonCard2__overlay ">
             <div className="webtoon-info2">
-              <MovieInfoButton />
+              <MovieInfoButton webtoon={it} />
               <h4 className="WebtoonCard2__title">{it.title}</h4>
               <div>{it.author}</div>
               <div>

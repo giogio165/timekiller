@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { GlobalLayout } from "../global";
-import { Link } from "react-router-dom";
 import { TbMovie } from "react-icons/tb";
 import { BiBook, BiMoviePlay } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { LibraryCard } from "../components/index";
+import { useState } from "react";
 
 const LibraryPage = () => {
+  const [videos, setVideos] = useState([]);
+  const [webtoons, setWebtoons] = useState([]);
+
   const list = useSelector((state) => {
     return state.keep.library;
   });
@@ -15,7 +18,22 @@ const LibraryPage = () => {
     return state.isLogin.login;
   });
   // console.log(checkLogin);
-  console.log("리스트", list);
+  console.log(webtoons, "웹툰");
+
+  const sortContent = () => {
+    list.forEach((content) => {
+      if (content.webtoonId) {
+        setWebtoons((prevWebtoons) => [...prevWebtoons, content]);
+      } else {
+        setVideos((prevVideos) => [...prevVideos, content]);
+      }
+    });
+  };
+
+  useEffect(() => {
+    sortContent();
+  }, [list]);
+
   return (
     <GlobalLayout>
       {checkLogin ? (
@@ -37,8 +55,8 @@ const LibraryPage = () => {
                 <hr type="regular" />
               </div>
               <div className="container-contents">
-                {list.map((content, index) => (
-                  <LibraryCard content={content} key={index} />
+                {videos.map((video, index) => (
+                  <LibraryCard video={video} key={index} />
                 ))}
               </div>
             </section>
@@ -52,6 +70,9 @@ const LibraryPage = () => {
                 </div>
                 <hr type="regular" />
               </div>
+              {webtoons.map((webtoons, index) => (
+                <LibraryCard webtoon={webtoons} key={index} />
+              ))}
             </section>
           </div>
         </SLibraryPage>

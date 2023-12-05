@@ -4,28 +4,45 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { contentUpdate } from "../global/store/detailSlice";
 
-const LibraryCard = ({ content }) => {
+const LibraryCard = ({ video, webtoon }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const goDetailPage = () => {
-    navigate(`/detail/${content.id}`);
-    dispatch(contentUpdate(content));
+    navigate(`/detail/${video.id}`);
+    dispatch(contentUpdate(video));
+  };
+
+  const gotoWebtoonUrl = () => {
+    if (webtoon.url) {
+      window.open(webtoon.url, "_blank");
+    }
   };
 
   return (
     <>
       <SLibraryCard>
-        <div className="contents-container" onClick={goDetailPage}>
-          <div className="contents-poster">
-            <img
-              src={`https://image.tmdb.org/t/p/w300${content?.poster_path}`}
-            />
+        {video ? (
+          <div className="contents-container" onClick={goDetailPage}>
+            <div className="contents-poster">
+              <img
+                src={`https://image.tmdb.org/t/p/w300${video?.poster_path}`}
+              />
+            </div>
+            <div className="contents-info">
+              <p className="title">{video?.title || video?.name}</p>
+            </div>
           </div>
-          <div className="contents-info">
-            <p className="title">{content?.title || content?.name}</p>
+        ) : (
+          <div className="contents-container" onClick={gotoWebtoonUrl}>
+            <div className="contents-poster">
+              <img src={webtoon.img} />
+            </div>
+            <div className="contents-info">
+              <p className="title">{webtoon?.title || webtoon?.name}</p>
+            </div>
           </div>
-        </div>
+        )}
       </SLibraryCard>
     </>
   );
