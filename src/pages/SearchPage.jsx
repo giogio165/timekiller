@@ -1,8 +1,27 @@
 import styled from "styled-components";
 import { GlobalLayout } from "../global";
 import { ContentBox, ContentsTitle, GenreBox } from "../components/index";
+import { useEffect, useState } from "react";
+import { fetchGenreNames, fetchMoviesWithImages } from "../api/MovieApi";
 
 const SearchPage = () => {
+  const [movies, setMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const moviesWithImages = await fetchMoviesWithImages();
+      setMovies(moviesWithImages);
+    };
+
+    fetchData();
+  }, []);
+
+  const goToActionMovie = () => {
+    const actionMovies = movies.filter((movie) => movie.genre_ids.includes(28));
+    setFilteredMovies(actionMovies);
+  };
+  console.log(filteredMovies);
   return (
     <GlobalLayout>
       <SSearchPage>
@@ -13,23 +32,19 @@ const SearchPage = () => {
               <ul className="contents-genre">
                 <GenreBox
                   img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
-                  title="판타지"
+                  title="액션"
+                />
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="어드벤쳐"
+                />
+                <GenreBox
+                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
+                  title="애니메이션"
                 />
                 <GenreBox
                   img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
                   title="코미디"
-                />
-                <GenreBox
-                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
-                  title="짝사랑"
-                />
-                <GenreBox
-                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
-                  title="삼각관계"
-                />
-                <GenreBox
-                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
-                  title="액션"
                 />
               </ul>
             </div>
@@ -46,14 +61,7 @@ const SearchPage = () => {
                   img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
                   title="코미디"
                 />
-                <GenreBox
-                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
-                  title="짝사랑"
-                />
-                <GenreBox
-                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
-                  title="삼각관계"
-                />
+
                 <GenreBox
                   img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
                   title="액션"
@@ -73,14 +81,7 @@ const SearchPage = () => {
                   img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
                   title="코미디"
                 />
-                <GenreBox
-                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
-                  title="짝사랑"
-                />
-                <GenreBox
-                  img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
-                  title="삼각관계"
-                />
+
                 <GenreBox
                   img="https://an2-img.amz.wtchn.net/image/v2/eEtmM07lXFYer0NKD_mOYw.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaVlXTnJaM0p2ZFc1a0lqcDdJbklpT2pJMU5Td2laeUk2TWpVMUxDSmlJam95TlRWOUxDSm9Jam95TnpBc0luQWlPaUl2ZGpJdmMzUnZjbVV2YzNablgzUmxiWEJzWVhSbEx6RTJOVGMxTURJeU56STVPREEzTWpFM01ETWlMQ0p6ZG1kZmNHRnlZVzBpT25zaVkyOXNiM0l4SWpvaUl6UTJNVVk1T1NKOUxDSjNJam8zTWpCOS45N0NWclFRbExMcXA4eVBtZFdrWGFEb3UxS0Y2emMtRjFFSk5HMmE0b1Bn"
                   title="액션"
@@ -88,8 +89,6 @@ const SearchPage = () => {
               </ul>
             </div>
           </div>
-          <div className="container-slider"></div>
-          <div className="container-slider"></div>
         </div>
       </SSearchPage>
     </GlobalLayout>

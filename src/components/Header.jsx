@@ -63,7 +63,6 @@ const Header = () => {
     dispatch(search(keyword));
     navigate(`/search/${keyword}`);
   };
-  console.log(keyword);
 
   return (
     <SHeader>

@@ -1,20 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const GenreBox = (props) => {
   return (
     <>
       <SGenreBox>
         <div>
-          <Link to="/" className="content-link">
+          <div className="content-link">
             <div className="img-container">
               <img src={props.img} alt="장르" />
               <div>
                 <p>{props.title}</p>
               </div>
             </div>
-          </Link>
+          </div>
         </div>
       </SGenreBox>
     </>

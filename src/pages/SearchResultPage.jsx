@@ -9,11 +9,9 @@ import { fetchSearch } from "../api/MovieApi";
 
 const SearchResultPage = () => {
   const [list, setList] = useState([]);
-
   const [filteredResults, setFilteredResults] = useState([]);
   const [mediaType, setMediaType] = useState("all");
 
-  console.log("리스트", list);
   const word = useSelector((state) => {
     return state.search.value;
   });

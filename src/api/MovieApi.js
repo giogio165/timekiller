@@ -82,7 +82,6 @@ export const fetchGenreNames = async (genreIds) => {
 };
 
 export const fetchSearch = async (word) => {
-  console.log("단어검색", word);
   try {
     const response = await axios.get(
       "https://api.themoviedb.org/3/search/multi",
