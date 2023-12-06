@@ -6,8 +6,9 @@ import WebtoonCard from "./WebtoonCard";
 import styled from "styled-components";
 import { fetchWebtoons } from "../api/Webtoon";
 
-const WebtoonList = ({ it, number }) => {
+const WebtoonList = ({ title, number }) => {
   const [webtoons, setWebtoons] = useState([]);
+
   useEffect(() => {
     fetchWebtoons()
       .then((response) => setWebtoons(response))
@@ -28,7 +29,7 @@ const WebtoonList = ({ it, number }) => {
 
   return (
     <SWebtoonList>
-      {webtoons && <h2 className="WebtoonList__title">{it}</h2>}
+      {webtoons && <h2 className="WebtoonList__title">{title}</h2>}
       <Slider {...sliderSettings}>
         {webtoons &&
           webtoons.map((it) => (

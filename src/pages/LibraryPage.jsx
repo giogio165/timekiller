@@ -18,7 +18,6 @@ const LibraryPage = () => {
     return state.isLogin.login;
   });
   // console.log(checkLogin);
-  console.log(webtoons, "웹툰");
 
   const sortContent = () => {
     list.forEach((content) => {

@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { GlobalLayout } from "../global";
 import { ContentBox, ContentsTitle, GenreBox } from "../components/index";
@@ -7,25 +6,9 @@ const SearchPage = () => {
   return (
     <GlobalLayout>
       <SSearchPage>
-        <div></div>
         <div className="container">
-          <div></div>
           <div className="container-slider">
-            <ContentsTitle title="인기" />
-            <div className="container-slide_contents">
-              <ul className="contents">
-                <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/cUd87tC-O7nptoEl-XXcKw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5USXpNekV3TmpJeE5EUXlNemd3TkRBaWZRLjVVYmg1NnAzYTF4aTdtSUtnY2RTTmhYSDBaSXRmVWVrUUNabm9vQ2N4Qnc" />
-                <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/eKF-pdLY5tbergbPSC8sjQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5UWTBNRE14Tmpnek5USTVPVEUxTlRVaWZRLkp0WW1jYlBTZGVLcWt6am1mY3dCdVI1U1l6NEQ5eFViRjhMeDNzYkxtQ0U" />
-                <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/SBNgOzimAOsvFNCsWFV_vQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5USXpNVGcwT0RRNE5UVTNPRGt6TkRRaWZRLkkycWVMS1lzelpsZThvUFJodDMySzV1b0VCeVdsbElXa1ZyQ0REZE1CRXM" />
-                <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/e-tAqiLFRw6HUJ7YzTs0LA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5USXpNekV4TURjME16UTJOemN6TlRBaWZRLkRfX09YT2FseFVTSmRhbzRFT2pfTmp5enJObkJuQlltLS1ISmNYZjZERGs" />
-                <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/Saobl6tsaBCqmFzWaLssuA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5URTRNekk1TWpZNU5UWTBNRFU0TlRJaWZRLmpSNlNUN3dHbE1rY25Cdk5uc25XaF9YUEpXRk1pcG9FT24zTGJ3N1A4U1k" />
-                <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/q93-NejmzE5iO3Zu1jimVQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5USXpNekk0T0RjMU5UZ3lPVFUyTXpjaWZRLlVTX0pxU1VFU0ltX2xtN1hMUjY2TkJoZ2FJQlpPV2xTNFJCaERRLVpMLVk" />
-                <ContentBox img="https://an2-img.amz.wtchn.net/image/v2/NlAAsKoCI-k051kTcjRE4A.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5EQXdlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5UWXpPRGt5TWpjNU5qTXdNRFEyTURFaWZRLnN0X2pGZ2w1WDVqdklydVk0Z21GcG1aQ2Nyb3h5NVdLQkwweGlrbGplVVE" />
-              </ul>
-            </div>
-          </div>
-          <div className="container-slider">
-            <ContentsTitle title="웹툰 장르" />
+            <ContentsTitle title="영화 장르" />
             <div className="container-slide_contents">
               <ul className="contents-genre">
                 <GenreBox
@@ -52,7 +35,7 @@ const SearchPage = () => {
             </div>
           </div>
           <div className="container-slider">
-            <ContentsTitle title="웹툰 장르" />
+            <ContentsTitle title="드라마 장르" />
             <div className="container-slide_contents">
               <ul className="contents-genre">
                 <GenreBox
@@ -79,7 +62,7 @@ const SearchPage = () => {
             </div>
           </div>
           <div className="container-slider">
-            <ContentsTitle title="웹툰 장르" />
+            <ContentsTitle title="웹툰" />
             <div className="container-slide_contents">
               <ul className="contents-genre">
                 <GenreBox

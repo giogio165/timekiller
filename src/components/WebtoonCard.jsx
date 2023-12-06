@@ -14,6 +14,8 @@ const WebtoonCard = ({ it, number }) => {
     }
   };
 
+  console.log(number);
+
   return (
     <SWebtoonCon>
       {number === 3 ? ( // 첫번째 webtoon Carousel
