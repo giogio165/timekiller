@@ -15,6 +15,7 @@ import {
   LogInPage,
   SignupPage,
   SearchResultPage,
+  SearchGenre,
 } from "./pages/index";
 import { Header, SideBar } from "./components/index";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -33,6 +34,7 @@ function App() {
           <Route path="/upcoming" element={<UpcomingPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/library" element={<LibraryPage />} />
+          <Route path="/genres" element={<SearchGenre />} />
           <Route path="/login" element={<LogInPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/detail/:id" element={<DetailPage />} />

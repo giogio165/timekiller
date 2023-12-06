@@ -1,7 +1,7 @@
 import React from "react";
 
 const SearchGenre = () => {
-  return <div>SearchGenre</div>;
+  return <div></div>;
 };
 
 export default SearchGenre;

@@ -8,6 +8,7 @@ import MyPage from "./MyPage";
 import LogInPage from "./LogInPage";
 import SignupPage from "./SignupPage";
 import SearchResultPage from "./SearchResultPage";
+import SearchGenre from "./SearchGenre";
 
 export {
   MainPage,
@@ -20,4 +21,5 @@ export {
   MyPage,
   SignupPage,
   SearchResultPage,
+  SearchGenre,
 };
