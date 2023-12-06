@@ -5,73 +5,43 @@ import { GlobalLayout } from "../global";
 import { useMatch } from "react-router-dom";
 import { SearchCard } from "../components/index";
 
+import { fetchSearch } from "../api/MovieApi";
+
 const SearchResultPage = () => {
   const [list, setList] = useState([]);
-  const [popular, setPopular] = useState(true);
-  const [movie, setMovie] = useState(false);
-  const [tv, setTv] = useState(false);
-  const [webtoon, setWebtoon] = useState(false);
+
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [mediaType, setMediaType] = useState("all");
+
+  console.log("리스트", list);
   const word = useSelector((state) => {
     return state.search.value;
   });
   const match = useMatch(`/search/${word}`);
 
-  const popularHandler = () => {
-    setPopular(true);
-    setMovie(false);
-    setTv(false);
-    setWebtoon(false);
-  };
-  const movieHandler = () => {
-    setPopular(false);
-    setMovie(true);
-    setTv(false);
-    setWebtoon(false);
-  };
-  const tvHandler = () => {
-    setPopular(false);
-    setMovie(false);
-    setTv(true);
-    setWebtoon(false);
-  };
-  const webtoonHandler = () => {
-    setPopular(false);
-    setMovie(false);
-    setTv(false);
-    setWebtoon(true);
-  };
-  const fetchSearch = async () => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyODQ4MGY5NTM0MDFkYjYwZTU1M2U0MTI4NGY1ZjQwNyIsInN1YiI6IjYzNjBmZGI4NDBkMGZlMDA4MjY3ZjUwYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tfm55H9d6vX72r5ZgVUk2HlkmK15hVNdfCiP7NkgWnQ",
-      },
-    };
-    try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/search/multi?query=${word}&include_adult=false&language=ko-KR&page=1`,
-        options
-      );
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("API Error:", error);
-      return null;
-    }
-  };
   useEffect(() => {
     const fetchData = async () => {
-      const searchResult = await fetchSearch();
+      const searchResult = await fetchSearch(word);
       if (searchResult) {
-        setList(searchResult.results);
+        setList(searchResult);
       }
     };
     fetchData();
   }, [word]);
 
-  console.log(list);
+  useEffect(() => {
+    if (mediaType === "all") {
+      setFilteredResults(list);
+    } else {
+      const filtered = list.filter((item) => item.media_type === mediaType);
+      setFilteredResults(filtered);
+    }
+  }, [mediaType, list]);
+
+  const handleMediaTypeChange = (type) => {
+    setMediaType(type);
+  };
+
   return (
     <GlobalLayout>
       <SSRP>
@@ -82,17 +52,17 @@ const SearchResultPage = () => {
               <li>
                 <button
                   type="button"
-                  className={popular ? "btn" : "btn2"}
-                  onClick={popularHandler}
+                  className={mediaType === "all" ? "btn" : "btn2"}
+                  onClick={() => handleMediaTypeChange("all")}
                 >
-                  인기
+                  전체
                 </button>
               </li>
               <li>
                 <button
                   type="button"
-                  className={movie ? "btn" : "btn2"}
-                  onClick={movieHandler}
+                  className={mediaType === "movie" ? "btn" : "btn2"}
+                  onClick={() => handleMediaTypeChange("movie")}
                 >
                   영화
                 </button>
@@ -100,8 +70,8 @@ const SearchResultPage = () => {
               <li>
                 <button
                   type="button"
-                  className={tv ? "btn" : "btn2"}
-                  onClick={tvHandler}
+                  className={mediaType === "tv" ? "btn" : "btn2"}
+                  onClick={() => handleMediaTypeChange("tv")}
                 >
                   TV 프로그램
                 </button>
@@ -109,8 +79,7 @@ const SearchResultPage = () => {
               <li>
                 <button
                   type="button"
-                  className={webtoon ? "btn" : "btn2"}
-                  onClick={webtoonHandler}
+                  className={mediaType === "webtoon" ? "btn" : "btn2"}
                 >
                   웹툰
                 </button>
@@ -119,10 +88,10 @@ const SearchResultPage = () => {
           </div>
           <hr type="regular" />
         </section>
-        {list && (
+        {filteredResults.length > 0 && (
           <section className="wrapper-results">
             <ul>
-              {list.map((info, index) => (
+              {filteredResults.map((info, index) => (
                 <SearchCard info={info} key={index} />
               ))}
             </ul>

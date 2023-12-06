@@ -10,55 +10,38 @@ import {
   ContentsInfo,
   RelativeCard,
 } from "../components";
+
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { keep } from "../global/store/keepSlice";
+import { openTvYouTubeVideo, openYouTubeVideo } from "../api/VideoApi";
+import { fetchComment, fetchPeople, fetchRelatives } from "../api/MovieApi";
+import { fetchTvPeople, fetchTvRealatives } from "../api/TvApi";
 
 const DetailPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+
   const [peoples, setPeoples] = useState([]);
   const [comments, setComments] = useState([]);
   const [similar, setSimilar] = useState([]);
   const [relative, setRelative] = useState(false);
   const [inform, setInform] = useState(true);
+
   const real = useSelector((state) => {
     return state.contentUpdate.value;
   });
+
+  console.log("real", real);
   const arr = useSelector((state) => {
     return state.keep.library;
   });
 
-  console.log("arr", arr);
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyODQ4MGY5NTM0MDFkYjYwZTU1M2U0MTI4NGY1ZjQwNyIsInN1YiI6IjYzNjBmZGI4NDBkMGZlMDA4MjY3ZjUwYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tfm55H9d6vX72r5ZgVUk2HlkmK15hVNdfCiP7NkgWnQ",
-    },
-  };
-
-  const openYouTubeVideo = async () => {
-    try {
-      const apiKey = "fcdcf37d8779f435786606a2ddd02898";
-
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}`
-      );
-
-      const data = await response.json();
-
-      if (data.results.length > 0) {
-        const youtubeVideoKey = data.results[0].key;
-        const youtubeVideoUrl = `https://www.youtube.com/watch?v=${youtubeVideoKey}`;
-
-        window.open(youtubeVideoUrl, "_blank");
-      } else {
-        console.error("No videos found for the movie");
-      }
-    } catch (error) {
-      console.error("Error fetching movie videos", error);
+  const goToYoutube = () => {
+    if (real?.title) {
+      openYouTubeVideo(id);
+    } else {
+      openTvYouTubeVideo(id);
     }
   };
 
@@ -74,67 +57,38 @@ const DetailPage = () => {
     dispatch(keep(real));
   };
 
-  const fetchPeople = async () => {
-    try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/credits?language=ko-KR`,
-        options
-      );
-      const data = await response.json();
-      // console.log(data);
-      return data;
-    } catch (error) {
-      console.error("API Error:", error);
-      return null;
-    }
-  };
-  const fetchComment = async () => {
-    try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1`,
-        options
-      );
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("API Error:", error);
-      return null;
-    }
-  };
-  const fetchRelatives = async () => {
-    try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/similar?language=ko-KR&page=1`,
-        options
-      );
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("API Error:", error);
-      return null;
-    }
-  };
   useEffect(() => {
-    const fetchData = async () => {
-      const peopleInfo = await fetchPeople();
+    const fetchPeopleData = async () => {
+      var peopleInfo = [];
+      if (real.name) {
+        peopleInfo = await fetchTvPeople(id);
+      } else {
+        peopleInfo = await fetchPeople(id);
+      }
+
       if (peopleInfo.cast) {
         setPeoples(peopleInfo.cast.slice(0, 7));
       }
     };
     const fetchCommentData = async () => {
-      const commentInfo = await fetchComment();
+      const commentInfo = await fetchComment(id);
       if (commentInfo) {
         setComments(commentInfo.results);
       }
     };
     const fetchRelativeData = async () => {
-      const contentsRelative = await fetchRelatives();
+      var contentsRelative = [];
+      if (real.name) {
+        contentsRelative = await fetchTvRealatives(id);
+      } else {
+        contentsRelative = await fetchRelatives(id);
+      }
+
       if (contentsRelative) {
-        // console.log(contentsRelative.results);
         setSimilar(contentsRelative.results);
       }
     };
-    fetchData();
+    fetchPeopleData();
     fetchCommentData();
     fetchRelativeData();
   }, [id]);
@@ -150,12 +104,17 @@ const DetailPage = () => {
             <ContentsInfo id={id} real={real} />
             <div className="container-play">
               <section>
-                <div className="container-play_btn" onClick={openYouTubeVideo}>
+                <div
+                  className="container-play_btn"
+                  onClick={() => {
+                    goToYoutube();
+                  }}
+                >
                   <div className="play">
                     <div className="icon">
                       <HiPlay />
                     </div>
-                    감상하기
+                    예고편 감상하기
                   </div>
                 </div>
                 <div className="container-play_btn">
@@ -203,7 +162,10 @@ const DetailPage = () => {
                       alt="pic"
                       src="https://an2-mars.amz.wtchn.net/assets/reason_icons/rate_24-c3f027bf1048b7f33daefe37a233e9bf8d1d331b0b508bedefe7a8fed772a5d1.png"
                     />
-                    <p>최근 시청한 회원들의 70%가 7점 이상 평가했어요.</p>
+                    <p>
+                      {real?.vote_count}명의 회원이 {real?.vote_average}로
+                      평가했어요.
+                    </p>
                   </li>
                 </ul>
               </section>
@@ -218,7 +180,7 @@ const DetailPage = () => {
                     <div>더보기</div>
                   </div>
                 </div>
-                {/* 컴포넌트로 분리 */}
+
                 <ul type="listItem" className="people-list">
                   {peoples.map((people, index) => (
                     <People people={people} key={index} />
@@ -231,7 +193,7 @@ const DetailPage = () => {
                     <div className="review-title">
                       <div>
                         <h1>
-                          왓챠피디아 사용자 평
+                          사용자 평
                           <div className="review-number">
                             <span>
                               {comments.length !== 0 ? comments.length : 0}
@@ -275,7 +237,7 @@ const DetailPage = () => {
               <div className="contents-list">
                 <div className="contents-list_container">
                   <ul>
-                    {similar.map((elem, index) => (
+                    {similar?.map((elem, index) => (
                       <RelativeCard info={elem} key={index} />
                     ))}
                   </ul>

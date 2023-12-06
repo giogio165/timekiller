@@ -1,14 +1,28 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { contentUpdate } from "../global/store/detailSlice";
 
 const SearchCard = ({ info }) => {
   const type = info.media_type;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const gotoDetailPage = () => {
+    navigate(`/detail/${info.id}`);
+    dispatch(contentUpdate(info));
+  };
   return (
     <>
       {info && (
         <SCard>
-          <Link to={`/detail/${info.id}`} className="link-result">
+          <div
+            className="link-result"
+            onClick={() => {
+              gotoDetailPage();
+            }}
+          >
             <div className="info-container">
               <div
                 className={
@@ -36,19 +50,18 @@ const SearchCard = ({ info }) => {
                       : `${info.name}`
                     : `${info.name}`}
                 </div>
-                {info.release_date && (
-                  <div className="name">
-                    {info.media_type !== "person"
-                      ? `${info.media_type} · ${info.release_date.substring(
-                          0,
-                          4
-                        )}`
-                      : ""}
-                  </div>
-                )}
+
+                <div className="name">
+                  {info.media_type !== "person" && info.media_type === "movie"
+                    ? `${info.media_type} · ${info.release_date.substring(
+                        0,
+                        4
+                      )}`
+                    : `${info.media_type}`}
+                </div>
               </div>
             </div>
-          </Link>
+          </div>
         </SCard>
       )}
     </>

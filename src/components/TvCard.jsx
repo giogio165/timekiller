@@ -16,6 +16,7 @@ const TvCard = ({ it }) => {
   const gotoDetailPage = () => {
     navigate(`/detail/${it.id}`);
     dispatch(contentUpdate(it));
+    console.log("넘겨줌", it);
   };
   const [genreNames, setGenreNames] = useState([]);
 

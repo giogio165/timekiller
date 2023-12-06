@@ -26,9 +26,6 @@ const Header = () => {
   const gotoLoginPage = () => {
     navigate("/login");
   };
-  const goHome = () => {
-    navigate("/");
-  };
 
   const gotoLibrary = () => {
     navigate("/library");
@@ -66,6 +63,7 @@ const Header = () => {
     dispatch(search(keyword));
     navigate(`/search/${keyword}`);
   };
+  console.log(keyword);
 
   return (
     <SHeader>

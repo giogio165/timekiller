@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  content: {},
+  value: {}, // change 'content' to 'value'
 };
 
 const contentSlice = createSlice({
@@ -16,3 +16,5 @@ const contentSlice = createSlice({
 
 export default contentSlice;
 export const { contentUpdate } = contentSlice.actions;
+
+console.log(contentUpdate, "넘겨받음");

@@ -2,85 +2,38 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { fetchMovieDetail } from "../api/MovieApi";
+import { fetchTvDetail } from "../api/TvApi";
 
 const ContentsInfo = (props) => {
   const [genreNames, setGenreNames] = useState([]);
   const [movieRuntime, setMovieRuntime] = useState("");
   const [episodes, setEpisodes] = useState("");
-  const real = useSelector((state) => {
-    return state.contentUpdate.value;
-  });
-  // console.log(real);
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyODQ4MGY5NTM0MDFkYjYwZTU1M2U0MTI4NGY1ZjQwNyIsInN1YiI6IjYzNjBmZGI4NDBkMGZlMDA4MjY3ZjUwYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tfm55H9d6vX72r5ZgVUk2HlkmK15hVNdfCiP7NkgWnQ",
-    },
-  };
 
-  const fetchGenreName = async (genreCode) => {
-    try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/genre/movie/list`,
-        {
-          params: {
-            api_key: "fcdcf37d8779f435786606a2ddd02898",
-            language: "ko-KR",
-          },
-        }
-      );
+  const findGenres = () => {
+    let genresArray;
 
-      const matchingGenres = response.data.genres.filter((genre) =>
-        genreCode.includes(genre.id)
-      );
-
-      const limitedGenres = matchingGenres.slice(0, 2);
-
-      const genreNames = limitedGenres.map((genre) => genre.name);
-      setGenreNames(genreNames);
-    } catch (error) {
-      console.error("API Error:", error);
+    if (movieRuntime.genres && movieRuntime.genres.length > 0) {
+      genresArray = movieRuntime.genres.map((genre) => genre.name);
+    } else if (episodes.genres && episodes.genres.length > 0) {
+      genresArray = episodes.genres.map((genre) => genre.name);
+    } else {
+      genresArray = [];
     }
+
+    setGenreNames(genresArray.join(", "));
   };
-  const fetchMovieDetail = async () => {
-    try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${props.id}?language=ko-KR`,
-        options
-      );
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("API Error:", error);
-      return null;
-    }
-  };
-  const fetchTvDetail = async () => {
-    try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/tv/${props.id}?language=ko-KR`,
-        options
-      );
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("API Error:", error);
-      return null;
-    }
-  };
+
   useEffect(() => {
-    fetchGenreName(props.real.genre_ids);
     const fetchDetails = async () => {
-      const movieDetail = await fetchMovieDetail();
+      const movieDetail = await fetchMovieDetail(props.id);
       if (movieDetail) {
-        console.log(movieRuntime);
         setMovieRuntime(movieDetail);
       }
     };
+
     const fetchTvDetails = async () => {
-      const tvDetail = await fetchTvDetail();
+      const tvDetail = await fetchTvDetail(props.id);
       if (tvDetail) {
         setEpisodes(tvDetail);
       }
@@ -88,15 +41,16 @@ const ContentsInfo = (props) => {
 
     fetchDetails();
     fetchTvDetails();
-  }, [props.real.genre_ids]);
+    findGenres();
+  }, [props.id]);
 
   return (
     <SContentsInfo>
-      {props.real && (
+      {props && (
         <section type="portrait" className="container-info">
           <div type="portrait" className="container-info_img">
             <img
-              alt="노팅힐"
+              alt={movieRuntime.id}
               src={`https://image.tmdb.org/t/p/w300${props.real.poster_path}`}
             />
           </div>
@@ -108,27 +62,18 @@ const ContentsInfo = (props) => {
             </h1>
             <p className="contents-info_p1">
               <span>
-                <label>{genreNames[0]}</label>
-                <label>
-                  {genreNames.length >= 2 ? " · " + genreNames[1] : ""}
-                </label>{" "}
-                ·{" "}
-                <span>
-                  {props.real.name !== undefined &&
-                  props.real.name === episodes.name
-                    ? episodes?.episode_run_time[0] + "화 "
-                    : movieRuntime.runtime + "분 "}
-                </span>
-                ·{" "}
+                <label>{genreNames}</label>
+
                 <span className="contents-info_score">
                   {Math.round(props.real.vote_average * 10) / 10}점
                 </span>
               </span>
               <span className="separator"></span>
               <span>
-                <span className="age">{props.real.adult ? 19 : 12}</span>
+                {/* <span className="age">{props.real.adult ? 19 : 12}</span> */}
               </span>
             </p>
+
             <p className="contents-info_p2">{props.real.overview}</p>
           </div>
         </section>
