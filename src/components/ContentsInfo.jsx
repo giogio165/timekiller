@@ -9,7 +9,6 @@ const ContentsInfo = (props) => {
   const [genreNames, setGenreNames] = useState([]);
   const [movieRuntime, setMovieRuntime] = useState("");
   const [episodes, setEpisodes] = useState("");
-
   const findGenres = () => {
     let genresArray;
 
@@ -42,7 +41,7 @@ const ContentsInfo = (props) => {
     fetchDetails();
     fetchTvDetails();
     findGenres();
-  }, [props.id]);
+  }, [props.id, movieRuntime, episodes]);
 
   return (
     <SContentsInfo>
@@ -63,7 +62,6 @@ const ContentsInfo = (props) => {
             <p className="contents-info_p1">
               <span>
                 <label>{genreNames}</label>
-
                 <span className="contents-info_score">
                   {Math.round(props.real.vote_average * 10) / 10}점
                 </span>
@@ -149,6 +147,7 @@ const SContentsInfo = styled.div`
 
         label {
           outline: #000;
+          margin-right: 5px;
         }
         .contents-info_score {
           color: rgb(255, 255, 255);

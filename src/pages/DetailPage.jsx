@@ -32,7 +32,6 @@ const DetailPage = () => {
     return state.contentUpdate.value;
   });
 
-  console.log("real", real);
   const arr = useSelector((state) => {
     return state.keep.library;
   });
