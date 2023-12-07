@@ -10,9 +10,14 @@ const SearchCard = ({ info }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const gotoDetailPage = () => {
-    navigate(`/detail/${info.id}`);
-    dispatch(contentUpdate(info));
+    if (info.media_type) {
+      navigate(`/detail/${info.id}`);
+      dispatch(contentUpdate(info));
+    } else {
+      window.open(info.url, "_blank");
+    }
   };
+
   return (
     <>
       {info && (
@@ -31,13 +36,15 @@ const SearchCard = ({ info }) => {
               >
                 <img
                   src={
-                    info.media_type === "person"
-                      ? info.profile_path != null
-                        ? `https://image.tmdb.org/t/p/w500${info.profile_path}`
-                        : "https://an2-mars.amz.wtchn.net/assets/aio_person_thumbnail-294cb5e0a2ea9b9893eb622092baae586e2371571ab2d5912b0ded11a1aa0655.png"
-                      : info.poster_path != null
-                      ? `https://image.tmdb.org/t/p/w500${info.poster_path}`
-                      : "https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg"
+                    info.media_type
+                      ? info.media_type === "person"
+                        ? info.profile_path != null
+                          ? `https://image.tmdb.org/t/p/w500${info.profile_path}`
+                          : "https://an2-mars.amz.wtchn.net/assets/aio_person_thumbnail-294cb5e0a2ea9b9893eb622092baae586e2371571ab2d5912b0ded11a1aa0655.png"
+                        : info.poster_path != null
+                        ? `https://image.tmdb.org/t/p/w500${info.poster_path}`
+                        : "https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg"
+                      : info.img
                   }
                   alt="no image"
                 />
@@ -57,7 +64,9 @@ const SearchCard = ({ info }) => {
                         0,
                         4
                       )}`
-                    : `${info.media_type}`}
+                    : `${info.media_type}`
+                    ? ""
+                    : ""}
                 </div>
               </div>
             </div>

@@ -21,7 +21,6 @@ const SearchPage = () => {
     dispatch(search(keyword));
     navigate(`/search/${keyword}`);
   };
-  console.log(keyword);
   return (
     <GlobalLayout>
       <SSearchPage>

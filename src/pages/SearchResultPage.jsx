@@ -6,12 +6,15 @@ import { useMatch } from "react-router-dom";
 import { SearchCard } from "../components/index";
 
 import { fetchSearch } from "../api/MovieApi";
+import { fetchWebtoons } from "../api/Webtoon";
 
 const SearchResultPage = () => {
   const [list, setList] = useState([]);
-  const [filteredResults, setFilteredResults] = useState([]);
   const [mediaType, setMediaType] = useState("all");
+  const [webtoon, setWebtoon] = useState([]);
 
+  const [filteredResults, setFilteredResults] = useState([]);
+  console.log(webtoon);
   const word = useSelector((state) => {
     return state.search.value;
   });
@@ -24,17 +27,29 @@ const SearchResultPage = () => {
         setList(searchResult);
       }
     };
+    const fetchWebtoonData = async () => {
+      const webtoonData = await fetchWebtoons();
+      setWebtoon(webtoonData);
+    };
+
     fetchData();
+    fetchWebtoonData();
   }, [word]);
 
   useEffect(() => {
     if (mediaType === "all") {
       setFilteredResults(list);
-    } else {
+    } else if (mediaType === "movie" || mediaType === "tv") {
       const filtered = list.filter((item) => item.media_type === mediaType);
       setFilteredResults(filtered);
+    } else if (mediaType === "webtoon") {
+      const filteredWebtoonData = webtoon.filter((item) =>
+        item.searchKeyword.includes(word)
+      );
+      console.log("필터웹툰", filteredWebtoonData);
+      setFilteredResults(filteredWebtoonData);
     }
-  }, [mediaType, list]);
+  }, [mediaType, list, webtoon]);
 
   const handleMediaTypeChange = (type) => {
     setMediaType(type);
@@ -78,6 +93,7 @@ const SearchResultPage = () => {
                 <button
                   type="button"
                   className={mediaType === "webtoon" ? "btn" : "btn2"}
+                  onClick={() => handleMediaTypeChange("webtoon")}
                 >
                   웹툰
                 </button>
