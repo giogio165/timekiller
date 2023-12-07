@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { GlobalLayout } from "../global";
 import { createUserWithEmailAndPassword, auth } from "../fbase";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const SignupPage = () => {
   const [name, setName] = useState("");
@@ -54,7 +55,7 @@ const SignupPage = () => {
   };
 
   return (
-    <GlobalLayout>
+    <SLoginPage>
       <div className="SignupPage">
         <button className="signup-btn" onClick={gotoSignupPage}>
           회원가입
@@ -137,8 +138,13 @@ const SignupPage = () => {
           </form>
         </div>
       </div>
-    </GlobalLayout>
+    </SLoginPage>
   );
 };
 
 export default SignupPage;
+
+const SLoginPage = styled.div`
+  background-color: #000;
+  color: #fff;
+`;
