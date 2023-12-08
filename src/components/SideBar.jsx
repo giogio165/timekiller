@@ -31,7 +31,7 @@ const SideBar = () => {
       <>
         <div className="logo-btn">
           <div className="container_img" onClick={goHome}>
-            <img alt="Watcha" src={img} />
+            <img alt="TITIME" src={img} />
           </div>
         </div>
       </>
