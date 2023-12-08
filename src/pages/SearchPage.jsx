@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import { GlobalLayout } from "../global";
+import { useDispatch } from "react-redux";
+import { BiSearch } from "react-icons/bi";
 import { search } from "../global/store/searchSlice";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const SearchPage = () => {
   const [keyword, setKeyword] = useState("");
