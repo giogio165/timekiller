@@ -1,9 +1,5 @@
 import styled from "styled-components";
 import { GlobalLayout } from "../global";
-import { ContentBox, ContentsTitle, GenreBox } from "../components/index";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { BiSearch } from "react-icons/bi";
 import { search } from "../global/store/searchSlice";
 import { useNavigate } from "react-router-dom";
 

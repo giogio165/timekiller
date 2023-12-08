@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
-import UpcomingCard1 from "./UpcomingCard1";
 import UpcomingCard2 from "./UpcomingCard2";
 
 const UpcomingList = ({ title, sliderTitle }) => {
@@ -61,15 +60,15 @@ const UpcomingList = ({ title, sliderTitle }) => {
     autoplay: false,
     autoplaySpeed: 3000,
   };
-  const sliderSettings3 = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: w <= 1700 ? (w <= 1500 ? 1.2 : 1.5) : 1.8,
-    slidesToScroll: 1,
-    autoplay: false,
-    autoplaySpeed: 3000,
-  };
+  // const sliderSettings3 = {
+  //   dots: false,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: w <= 1700 ? (w <= 1500 ? 1.2 : 1.5) : 1.8,
+  //   slidesToScroll: 1,
+  //   autoplay: false,
+  //   autoplaySpeed: 3000,
+  // };
 
   return (
     <SUpcomingList>

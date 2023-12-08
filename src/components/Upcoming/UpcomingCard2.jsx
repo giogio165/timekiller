@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import MovieInfoButton from "../MovieInfoButton";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +12,6 @@ const UpcomingCard = ({ it, number }) => {
     navigate(`/detail/${it.id}`);
   };
 
-  const cardClassName = number === 2 ? "UpcomingCard" : "UpcomingCard2";
   const cardPosterClassName =
     number === 2 ? "UpcomingCard-poster" : "UpcomingCard-poster2";
 

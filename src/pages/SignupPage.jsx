@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { GlobalLayout } from "../global";
 import { createUserWithEmailAndPassword, auth } from "../fbase";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";

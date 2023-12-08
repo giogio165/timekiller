@@ -14,11 +14,10 @@ const SearchResultPage = () => {
   const [webtoon, setWebtoon] = useState([]);
 
   const [filteredResults, setFilteredResults] = useState([]);
-  console.log(webtoon);
   const word = useSelector((state) => {
     return state.search.value;
   });
-  const match = useMatch(`/search/${word}`);
+  // const match = useMatch(`/search/${word}`);
 
   useEffect(() => {
     const fetchData = async () => {

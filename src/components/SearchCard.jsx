@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import { Link } from "react-router-dom";
+import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { contentUpdate } from "../global/store/detailSlice";
@@ -46,7 +45,7 @@ const SearchCard = ({ info }) => {
                         : "https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg"
                       : info.img
                   }
-                  alt="no image"
+                  alt="search_img"
                 />
               </div>
               <div className="info">

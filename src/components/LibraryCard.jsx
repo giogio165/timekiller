@@ -26,6 +26,7 @@ const LibraryCard = ({ video, webtoon }) => {
           <div className="contents-container" onClick={goDetailPage}>
             <div className="contents-poster">
               <img
+                alt="video_poster"
                 src={`https://image.tmdb.org/t/p/w300${video?.poster_path}`}
               />
             </div>
@@ -36,7 +37,7 @@ const LibraryCard = ({ video, webtoon }) => {
         ) : (
           <div className="contents-container" onClick={gotoWebtoonUrl}>
             <div className="contents-poster">
-              <img src={webtoon.img} />
+              <img src={webtoon.img} alt="webtoon_img" />
             </div>
             <div className="contents-info">
               <p className="title">{webtoon?.title || webtoon?.name}</p>

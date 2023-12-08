@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { BiBell } from "react-icons/bi";
-import { BiSearch } from "react-icons/bi";
-import { useMatch, useNavigate, Link } from "react-router-dom";
+import { useMatch, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { search } from "../global/store/searchSlice";
 import { isLogin } from "../global/store/loginSlice";
@@ -16,8 +15,8 @@ const Header = () => {
   const word = useSelector((state) => {
     return state.search.value;
   });
-  const searchMatch = useMatch("/search");
-  const searchResultMatch = useMatch(`/search/${word}`);
+  // const searchMatch = useMatch("/search");
+  // const searchResultMatch = useMatch(`/search/${word}`);
 
   const checkLogin = useSelector((state) => {
     return state.isLogin.login;
@@ -54,15 +53,15 @@ const Header = () => {
   const toggleDropdown = () => {
     setIsDropdownVisible((prevState) => !prevState);
   };
-  const onChangeHandle = (event) => {
-    setKeyword(event.target.value);
-  };
-  const onSubmitHandle = (event) => {
-    event.preventDefault();
-    setKeyword("");
-    dispatch(search(keyword));
-    navigate(`/search/${keyword}`);
-  };
+  // const onChangeHandle = (event) => {
+  //   setKeyword(event.target.value);
+  // };
+  // const onSubmitHandle = (event) => {
+  //   event.preventDefault();
+  //   setKeyword("");
+  //   dispatch(search(keyword));
+  //   navigate(`/search/${keyword}`);
+  // };
 
   return (
     <SHeader>

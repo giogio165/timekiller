@@ -8,6 +8,7 @@ const WebtoonHomeImg = ({ title }) => {
       {/* <h1 className="WebtoonHomeImg__title">{title}</h1> */}
       <div className="image-container">
         <img
+          alt="webtoon_home_img"
           className="WebtoonHomeImg__img"
           width={w <= 1500 ? "1050px" : "1400px"}
           src="https://i.namu.wiki/i/xjsb94DInkswk_GadxYW9I5yTihZcucsvyH8fRFP6FYizENL4ZIbXaWMM8u80xGGwp6DtUbcImLXZjmCJK-TUw.webp"

@@ -32,9 +32,9 @@ const DetailPage = () => {
     return state.contentUpdate.value;
   });
 
-  const arr = useSelector((state) => {
-    return state.keep.library;
-  });
+  // const arr = useSelector((state) => {
+  //   return state.keep.library;
+  // });
 
   const goToYoutube = () => {
     if (real?.title) {

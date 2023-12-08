@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { TbMovie } from "react-icons/tb";
-import { BiBook, BiMoviePlay } from "react-icons/bi";
+import { BiBook } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
 import { LuInbox } from "react-icons/lu";
 import { useSelector } from "react-redux";

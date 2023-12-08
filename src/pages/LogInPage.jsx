@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { auth, signInWithEmailAndPassword } from "../fbase";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { isLogin } from "../global/store/loginSlice";
 
 const LogInPage = () => {

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { GlobalLayout } from "../global";
 import { TbMovie } from "react-icons/tb";
-import { BiBook, BiMoviePlay } from "react-icons/bi";
+import { BiBook } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { LibraryCard } from "../components/index";
 import { useState } from "react";

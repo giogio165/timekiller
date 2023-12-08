@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
-import { useSelector } from "react-redux";
 import { fetchMovieDetail } from "../api/MovieApi";
 import { fetchTvDetail } from "../api/TvApi";
 

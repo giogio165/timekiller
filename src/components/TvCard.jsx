@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import MovieInfoButton from "./MovieInfoButton";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

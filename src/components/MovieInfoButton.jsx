@@ -3,11 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from "react-redux";
 import { keep } from "../global/store/keepSlice";
 
-import {
-  faStar,
-  faCirclePlay,
-  faCirclePlus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
 const MovieInfoButton = ({ content, webtoon }) => {
