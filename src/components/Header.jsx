@@ -1,20 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { BiBell } from "react-icons/bi";
-import { useMatch, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { search } from "../global/store/searchSlice";
 import { isLogin } from "../global/store/loginSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [keyword, setKeyword] = useState("");
+  // const [keyword, setKeyword] = useState("");
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
-  const word = useSelector((state) => {
-    return state.search.value;
-  });
+  // const word = useSelector((state) => {
+  //   return state.search.value;
+  // });
   // const searchMatch = useMatch("/search");
   // const searchResultMatch = useMatch(`/search/${word}`);
 

@@ -90,7 +90,7 @@ const DetailPage = () => {
     fetchPeopleData();
     fetchCommentData();
     fetchRelativeData();
-  }, [id]);
+  }, [id, real.name]);
 
   return (
     <GlobalLayout>

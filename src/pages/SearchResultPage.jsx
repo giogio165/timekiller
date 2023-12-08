@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { GlobalLayout } from "../global";
-import { useMatch } from "react-router-dom";
 import { SearchCard } from "../components/index";
 
 import { fetchSearch } from "../api/MovieApi";
@@ -48,7 +47,7 @@ const SearchResultPage = () => {
       console.log("필터웹툰", filteredWebtoonData);
       setFilteredResults(filteredWebtoonData);
     }
-  }, [mediaType, list, webtoon]);
+  }, [mediaType, list, webtoon, word]);
 
   const handleMediaTypeChange = (type) => {
     setMediaType(type);

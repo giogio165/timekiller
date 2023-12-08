@@ -24,7 +24,7 @@ const SignupPage = () => {
   // 유효성검사
   const checkEmail = (e) => {
     const regExp =
-      /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     setEmailInputCheck(regExp.test(e.target.value));
   };
   const checkPassword = (e) => {

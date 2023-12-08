@@ -7,7 +7,7 @@ import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
 const MovieInfoButton = ({ content, webtoon }) => {
-  const pinkColor = "#F82D62";
+  // const pinkColor = "#F82D62";
   const basicColor = "#FFFFFF";
 
   const dispatch = useDispatch();

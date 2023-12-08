@@ -119,11 +119,10 @@ const SideBar = () => {
               }`}
               onClick={() => {
                 handleItemClick(4);
-                {
-                  isLogin
-                    ? handleNavigation("/library")
-                    : handleNavigation("/login");
-                }
+
+                isLogin
+                  ? handleNavigation("/library")
+                  : handleNavigation("/login");
               }}
             >
               <div className="li-custom_info">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { fetchMovieDetail } from "../api/MovieApi";
 import { fetchTvDetail } from "../api/TvApi";
@@ -7,7 +7,8 @@ const ContentsInfo = (props) => {
   const [genreNames, setGenreNames] = useState([]);
   const [movieRuntime, setMovieRuntime] = useState("");
   const [episodes, setEpisodes] = useState("");
-  const findGenres = () => {
+
+  const findGenres = useCallback(() => {
     let genresArray;
 
     if (movieRuntime.genres && movieRuntime.genres.length > 0) {
@@ -19,7 +20,7 @@ const ContentsInfo = (props) => {
     }
 
     setGenreNames(genresArray.join(", "));
-  };
+  }, [movieRuntime, episodes]);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -38,8 +39,9 @@ const ContentsInfo = (props) => {
 
     fetchDetails();
     fetchTvDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     findGenres();
-  }, [props.id, movieRuntime, episodes]);
+  }, [props.id, movieRuntime, episodes, findGenres]);
 
   return (
     <SContentsInfo>
