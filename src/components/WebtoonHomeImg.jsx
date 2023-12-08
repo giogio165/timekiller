@@ -5,7 +5,7 @@ const WebtoonHomeImg = ({ title }) => {
   const w = window.innerWidth;
   return (
     <SWebtoonHomeImg>
-      <h1 className="WebtoonHomeImg__title">{title}</h1>
+      {/* <h1 className="WebtoonHomeImg__title">{title}</h1> */}
       <div className="image-container">
         <img
           className="WebtoonHomeImg__img"

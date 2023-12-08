@@ -26,7 +26,7 @@ const HomeVideo = ({ title }) => {
 
   return (
     <SHomeVideo>
-      <h1 className="HomeVideo__home">{title}</h1>
+      {/* <h1 className="HomeVideo__home">{title}</h1> */}
       <div className="HomeVideo__video">
         {videos ? (
           <iframe

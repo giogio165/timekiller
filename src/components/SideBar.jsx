@@ -7,7 +7,7 @@ import { BiSearch } from "react-icons/bi";
 import { LuInbox } from "react-icons/lu";
 import { useSelector } from "react-redux";
 
-import img from "./../assets/timekiller_logo.png";
+import img from "./../assets/titime.png";
 
 // 추후에 컴포넌트 세분화시키기
 
@@ -157,7 +157,7 @@ const SSideBar = styled.nav`
     margin: 20px 30px;
 
     img {
-      height: 60px;
+      height: 50px;
     }
   }
   .sidebar-section {
