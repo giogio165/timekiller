@@ -53,5 +53,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://Watcha-clone.github.io/Watcha_clone"
+  "homepage": "https://Watcha-clone.github.io/Watcha_clone",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
 }
