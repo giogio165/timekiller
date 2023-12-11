@@ -185,6 +185,47 @@ const SSideBar = styled.nav`
         padding: 0;
         margin: 0;
 
+        .li-custom_list_active {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          width: 100%;
+          padding: 8px 12px;
+          border: 0;
+          border-radius: 8px;
+          appearance: none;
+          outline: none;
+          font-size: 14px;
+          font-weight: 400;
+          letter-spacing: 0px;
+          text-decoration: none;
+          line-height: 20px;
+          color: #fff;
+          background: #303133;
+          box-sizing: border-box;
+          cursor: pointer;
+        }
+        .li-custom_list {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          width: 100%;
+          padding: 8px 12px;
+          border: 0;
+          border-radius: 8px;
+          appearance: none;
+          outline: none;
+          font-size: 14px;
+          font-weight: 400;
+          letter-spacing: 0px;
+          text-decoration: none;
+          line-height: 20px;
+          background: #141517;
+          color: #fff;
+          box-sizing: border-box;
+          cursor: pointer;
+        }
+
         .li-custom_info {
           display: flex;
           position: relative;

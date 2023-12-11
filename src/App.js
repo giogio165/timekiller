@@ -1,8 +1,4 @@
 import "./global/global.css";
-import "./components/css/LoginPage.css";
-import "./components/css/SignupPage.css";
-import "./components/css/SideBar.css";
-// css 파일 하나로 수정 필요함.
 
 import React from "react";
 import {
